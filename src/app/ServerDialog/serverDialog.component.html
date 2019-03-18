@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{server.title}}</h1>
+<div mat-dialog-content>
+  <mat-chip-list>
+    <mat-chip>{{server.configuration.gameStyle}}</mat-chip>
+    <mat-chip *ngIf="server.configuration.superflags">Flags</mat-chip>
+    <mat-chip *ngIf="server.configuration.badflags">Bad Flags</mat-chip>
+    <mat-chip *ngIf="server.configuration.noTeamKills">No TKs</mat-chip>
+  </mat-chip-list><br>
+  <table>
+    <tr><td>Address</td><td>{{server.address}}:{{server.port}}</td></tr>
+    <tr><td>IP</td><td>{{server.ip}}</td></tr>
+    <tr><td>Owner</td><td>{{server.owner}}</td></tr>
+    <tr><td>Country</td><td>{{server.country}}</td></tr>
+    <tr><td>Protocol</td><td>{{server.protocol}}</td></tr>
+  </table>
+  <h3>Players: {{server.players.length}}</h3>
+  <mat-table *ngIf="server.players.length > 0" [dataSource]="playerData" matSort matSortActive="score" matSortDirection="desc" matSortDisableClear>
+    <ng-container matColumnDef="callsign">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Callsign</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="team">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.team}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Score</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.wins - player.losses}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="winsLosses">
+      <mat-header-cell *matHeaderCellDef>Wins / Losses</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.wins}} / {{player.losses}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="playerCollumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: playerCollumns;"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,23 @@
+table{
+  width: 100%;
+}
+
+// .search{
+//   width: 100%;
+//   padding: 4px 8px;
+// }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-column-players,
+.mat-column-country{
+  max-width: 70px;
+}
+.mat-column-gameStyle{
+  max-width: 120px;
+}
+.mat-column-address{
+  max-width: 500px;
+}
