@@ -3,9 +3,9 @@
   <button mat-raised-button color="accent" (click)="getServers()">{{status}}</button>
   <button mat-button [matMenuTriggerFor]="apiMenu">API</button>
     <mat-menu #apiMenu="matMenu">
-      <button mat-menu-item (click)="api = 0">API 1</button>
-      <button mat-menu-item (click)="api = 1">API 2</button>
-      <button mat-menu-item (click)="api = 2">API 3</button>
+      <button mat-menu-item (click)="api = 0">Public</button>
+      <button mat-menu-item (click)="api = 1">Local</button>
+      <button mat-menu-item (click)="api = 2">Internal</button>
   </mat-menu>
   <mat-form-field class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
