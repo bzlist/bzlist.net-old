@@ -6,12 +6,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {AppRoutingModule} from "./app-routing.module";
 
 import {AppComponent} from "./app.component";
+import {ServersComponent} from "./Servers/servers.component";
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
     AppComponent,
+    ServersComponent,
     ServerDialog
   ],
   entryComponents: [
@@ -27,7 +29,6 @@ import {MaterialModule} from "./material.module";
   providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule{
 
 }

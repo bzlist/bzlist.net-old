@@ -6,29 +6,10 @@ mat-toolbar > *{
   margin: 0 12px;
 }
 
-table{
-  width: 100%;
-}
-
 .container{
   padding: 8px 16px;
 }
 
-.search{
-  width: 100%;
-}
-
 .spacer {
   flex: 1 1 auto;
-}
-
-.mat-column-players,
-.mat-column-country{
-  max-width: 70px;
-}
-.mat-column-gameStyle{
-  max-width: 140px;
-}
-.mat-column-address{
-  max-width: 500px;
 }

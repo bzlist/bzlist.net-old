@@ -1,0 +1,35 @@
+<div class="container">
+  <h3>{{servers?.length || 0}} Public Servers Online</h3>
+  <mat-form-field class="search">
+    <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
+  </mat-form-field>
+</div>
+<mat-table [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
+  <ng-container matColumnDef="players">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Players</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.players.length}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.address}}:{{server.port}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="country">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+    <mat-cell *matCellDef="let server"><img src="https://countryflags.io/{{server.country}}/flat/32.png" alt="{{server.country}}" matTooltip="{{server.country}}" matTooltipPosition="left"></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="gameStyle">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Game Style</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.configuration.gameStyle}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.title}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Click for details" (click)="showServerDialog(row)"></mat-row>
+</mat-table>
