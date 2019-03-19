@@ -58,12 +58,14 @@ export class ServerHelper{
 
   static verboseGameStyle(server: Server): string{
     switch(server.configuration.gameStyle){
-      case "FFA":
-        return "Free For All";
       case "CTF":
         return "Capture The Flag";
+      case "FFA":
+        return "Free For All";
+        case "OFFA":
+          return "Open Free For All";
       default:
-        console.log("Unable to verbose 'gameStyle'");
+        console.log("Unable to verbose gameStyle: ", server.configuration.gameStyle);
         return server.configuration.gameStyle;
     }
   }
