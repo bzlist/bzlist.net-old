@@ -1,7 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource, MatSort, MatDialog} from "@angular/material";
 
+import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
 import {Server, ServerHelper} from "../server";
 
@@ -11,16 +11,14 @@ import {Server, ServerHelper} from "../server";
   styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent{
-  status = "No Data Fetched";
+  status = "Fetch Data";
 
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData = new MatTableDataSource<Server>(this.servers);
   @ViewChild(MatSort) sort: MatSort;
 
-  readonly API_ROOT_URL = "http://192.168.254.28:3000/";
-
-  constructor(private http: HttpClient, private dialog: MatDialog){}
+  constructor(private apiService: ApiService, private dialog: MatDialog){}
 
   ngAfterViewInit(): void{
     this.getServers();
@@ -29,17 +27,18 @@ export class ServersComponent{
   }
 
   getServers(): void{
-    this.status = "Loading...";
+    this.status = "Refreshing";
 
-    this.http.get<Server[]>(this.API_ROOT_URL).subscribe(res => {
-      this.servers = res;
+    this.apiService.getServers().subscribe((data: Server[]) => {
+      this.servers = data;
       this.serverData.data = this.servers;
-      
-      this.status = `${this.servers.length} Public Servers Online`;
 
       for(let i = 0; i < this.servers.length; i++){
         this.servers[i] = ServerHelper.verbose(this.servers[i]);
       }
+
+      this.status = "Refreshed";
+      setTimeout(() => this.status = "Refresh", 1000);
     });
   }
 
