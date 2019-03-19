@@ -1,6 +1,6 @@
 <div class="container">
   <h2>{{servers?.length || 0}} Public Servers Online</h2>
-  <button mat-raised-button (click)="getServers()">{{status}}</button>
+  <button mat-raised-button color="accent" (click)="getServers()">{{status}}</button>
   <mat-form-field class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
   </mat-form-field>
