@@ -1,9 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z4">
-  <mat-toolbar-row>
-    <span>{{title}}</span>
-    <button mat-button (click)="getServers()">{{status}}</button>
-    <span class="spacer"></span>
-  </mat-toolbar-row>
+  <span>{{title}}</span>
+  <button mat-button (click)="getServers()">{{status}}</button>
+  <span class="spacer"></span>
 </mat-toolbar>
 <div class="container">
   <h3>{{servers?.length || 0}} Public Servers Online</h3>
