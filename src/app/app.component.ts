@@ -1,6 +1,6 @@
 import {Component, ViewChild} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {MatTableDataSource, MatPaginator, MatSort, MatDialog} from "@angular/material";
+import {MatTableDataSource, MatSort, MatDialog} from "@angular/material";
 
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {Server, ServerHelper} from "./server";
