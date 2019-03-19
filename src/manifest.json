@@ -2,7 +2,7 @@
   "short_name": "BZList",
   "name": "BZFlag Servers List",
   "start_url": "/",
-  "theme_color": "#3F51B5",
+  "theme_color": "#1565C0",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "portrait",
