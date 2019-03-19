@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {MatTableDataSource, MatSort, MatDialog} from "@angular/material";
+import {MatTableDataSource, MatSort, MatDialog, MatMenuTrigger} from "@angular/material";
 
 import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
@@ -13,6 +13,7 @@ import {Server, ServerHelper} from "../server";
 export class ServersComponent{
   status = "Fetch Data";
 
+  api: number = 0;
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData = new MatTableDataSource<Server>(this.servers);
@@ -29,7 +30,7 @@ export class ServersComponent{
   getServers(): void{
     this.status = "Refreshing";
 
-    this.apiService.getServers().subscribe((data: Server[]) => {
+    this.apiService.getServers(this.api).subscribe((data: Server[]) => {
       this.servers = data;
       this.serverData.data = this.servers;
 
