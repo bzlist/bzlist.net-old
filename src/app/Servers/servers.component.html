@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>{{servers?.length || 0}} Public Servers Online</h3>
+  <h3>{{status}}</h3>
   <mat-form-field class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
   </mat-form-field>
@@ -31,5 +31,5 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Click for details" (click)="showServerDialog(row)"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showServerDialog(row)"></mat-row>
 </mat-table>

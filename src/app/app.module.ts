@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {AppRoutingModule} from "./app-routing.module";
 
 import {AppComponent} from "./app.component";
+import {HelpPageComponent} from "./HelpPage/helpPage.component";
 import {ServersComponent} from "./Servers/servers.component";
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
@@ -13,6 +14,7 @@ import {MaterialModule} from "./material.module";
 @NgModule({
   declarations: [
     AppComponent,
+    HelpPageComponent,
     ServersComponent,
     ServerDialog
   ],

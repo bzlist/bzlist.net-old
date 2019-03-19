@@ -11,7 +11,7 @@ import {Server, ServerHelper} from "../server";
   styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent{
-  status = "Load";
+  status = "No Data Fetched";
 
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
@@ -35,8 +35,7 @@ export class ServersComponent{
       this.servers = res;
       this.serverData.data = this.servers;
       
-      this.status = "Refreshed";
-      setTimeout(() => this.status = "Refresh", 2000);
+      this.status = `${this.servers.length} Public Servers Online`;
 
       for(let i = 0; i < this.servers.length; i++){
         this.servers[i] = ServerHelper.verbose(this.servers[i]);

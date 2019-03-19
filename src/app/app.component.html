@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="mat-elevation-z4">
-  <span>{{title}}</span>
-  <button mat-button (click)="getServers()">{{status}}</button>
-  <span class="spacer"></span>
+  <span>BZList</span>
+  <button mat-button routerLink="/">Servers</button>
+  <button mat-button routerLink="/help">Help</button>
 </mat-toolbar>
-<servers></servers>
+<router-outlet></router-outlet>
