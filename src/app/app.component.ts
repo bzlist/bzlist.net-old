@@ -18,7 +18,6 @@ export class AppComponent{
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData = new MatTableDataSource<Server>(this.servers);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   readonly API_ROOT_URL = "http://192.168.254.28:3000/";
@@ -28,12 +27,11 @@ export class AppComponent{
   ngAfterViewInit(): void{
     this.getServers();
 
-    this.serverData.paginator = this.paginator;
     this.serverData.sort = this.sort;
   }
 
   getServers(): void{
-    this.status = "Refreshing";
+    this.status = "Loading...";
 
     this.http.get<Server[]>(this.API_ROOT_URL).subscribe(res => {
       this.servers = res;
