@@ -1,11 +1,12 @@
 {
+  "name": "BZList",
   "short_name": "BZList",
-  "name": "BZFlag Servers List",
+  "discription": "BZFlag Servers List",
   "start_url": "/",
   "theme_color": "#1565C0",
   "background_color": "#FFFFFF",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "any",
   "icons": [
     {
       "src": "/assets/images/icons/icon-32x32.png",
