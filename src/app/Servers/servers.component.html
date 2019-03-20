@@ -8,11 +8,11 @@
     <button mat-menu-item (click)="api = 2">Internal</button>
   </mat-menu>
   <small>Last database update was {{lastDBUpdate}}. {{status}}</small>
-  <mat-form-field class="search">
+  <mat-form-field *ngIf="servers?.length > 0" class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
   </mat-form-field>
 </div>
-<mat-table [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
+<mat-table *ngIf="servers?.length > 0" [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
   <ng-container matColumnDef="players">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Players</mat-header-cell>
     <mat-cell *matCellDef="let server">{{server.players.length}}</mat-cell>

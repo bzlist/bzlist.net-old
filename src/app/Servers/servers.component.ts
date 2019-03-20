@@ -27,6 +27,19 @@ export class ServersComponent{
     this.getServers();
 
     this.serverData.sort = this.sort;
+    this.serverData.filterPredicate = (data: Server, filters: string) => {
+      const matchFilter = [];
+      const filterArray = filters.split(',');
+      const columns = [data.address, data.ip, data.title, data.country, data.protocol, data.owner, data.configuration.gameStyle];
+      
+      filterArray.forEach(filter => {
+        const customFilter = [];
+        columns.forEach(column => customFilter.push(column.toLowerCase().includes(filter)));
+        matchFilter.push(customFilter.some(Boolean));
+      });
+
+      return matchFilter.every(Boolean);
+    }
   }
 
   getServers(): void{
@@ -60,7 +73,7 @@ export class ServersComponent{
     });
   }
 
-  searchServers(search: string): void{
-    this.serverData.filter = search.trim().toLowerCase();
+  searchServers(filter: string): void{
+    this.serverData.filter = filter.trim().toLocaleLowerCase();
   }
 }
