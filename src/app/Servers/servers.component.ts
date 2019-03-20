@@ -33,8 +33,10 @@ export class ServersComponent{
       const columns = [data.address, data.ip, data.title, data.country, data.protocol, data.owner, data.configuration.gameStyle];
       
       filterArray.forEach(filter => {
+        filter = filter.trim().toLocaleLowerCase();
         const customFilter = [];
-        columns.forEach(column => customFilter.push(column.toLowerCase().includes(filter)));
+        
+        columns.forEach(column => customFilter.push(column.trim().toLocaleLowerCase().includes(filter)));
         matchFilter.push(customFilter.some(Boolean));
       });
 
