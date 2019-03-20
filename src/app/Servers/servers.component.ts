@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {MatTableDataSource, MatSort, MatDialog, MatMenuTrigger} from "@angular/material";
+import {MatTableDataSource, MatSort, MatDialog, MatPaginator} from "@angular/material";
 
 import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
@@ -24,6 +24,7 @@ export class ServersComponent{
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData = new MatTableDataSource<Server>(this.servers);
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private apiService: ApiService, private dialog: MatDialog){}
 
@@ -31,6 +32,8 @@ export class ServersComponent{
     this.getServers();
 
     this.serverData.sort = this.sort;
+    this.serverData.paginator = this.paginator;
+
     this.serverData.filterPredicate = (data: Server, filters: string) => {
       const matchFilter = [];
       const filterArray = filters.split(',');
