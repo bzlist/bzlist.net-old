@@ -12,6 +12,15 @@ body{
   margin: 0;
 }
 
+a{
+  color: #1565C0;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
 .container{
   padding: 8px 16px;
 }
