@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>{{servers?.length || 0}} Public Servers Online</h2>
+  <h3>{{servers?.length || 0}} Public Servers Online</h3>
   <button mat-raised-button color="accent" (click)="getServers()">Refresh</button>
   <button mat-button [matMenuTriggerFor]="apiMenu">API</button>
   <mat-menu #apiMenu="matMenu">
