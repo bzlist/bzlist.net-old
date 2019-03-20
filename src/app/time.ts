@@ -9,13 +9,17 @@ export class Time{
     // return `${dateTime.getUTCMonth()}/${dateTime.getUTCDay()}/${dateTime.getUTCFullYear()} ${dateTime.getUTCHours()}:${dateTime.getUTCMinutes()}:${dateTime.getUTCSeconds()}`;
   }
 
-  static autoFormatTime(seconds: number): string{
-    let time: string = seconds + " seconds";
+  static autoFormatTime(seconds: number, allowSeconds: boolean = false): string{
+    let time: string = "this minute";
+
+    if(allowSeconds){
+      let time: string = Math.floor(seconds) + " seconds ago";
+    }
   
     if(seconds >= 3600){
-      time = Math.floor(seconds / 3600) + " hours";
+      time = Math.floor(seconds / 3600) + " hours ago";
     }else if(seconds >= 60){
-      time = Math.floor(seconds / 60) + " minutes";
+      time = Math.floor(seconds / 60) + " minutes ago";
     }
   
     return time;

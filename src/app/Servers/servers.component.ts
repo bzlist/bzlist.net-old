@@ -12,8 +12,12 @@ import {Time} from "../time";
   styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent{
-  lastDBUpdate = "";
-  status = "Fetch Data";
+  lastClientUpdate: string = "never";
+  lastClientUpdateTimestamp: number;
+
+  lastDBUpdate: string = "never";
+  lastDBUpdateTimestamp: number;
+  status: string = "";
 
   api: number = 0;
   servers: Server[];
@@ -42,10 +46,12 @@ export class ServersComponent{
 
       return matchFilter.every(Boolean);
     }
+
+    setInterval(() => this.updateTimestamps(), 10000);
   }
 
   getServers(): void{
-    this.status = "Refreshing";
+    this.status = "Status: Refreshing";
 
     this.apiService.getServers(this.api).subscribe((data: Server[]) => {
       this.servers = data;
@@ -57,13 +63,18 @@ export class ServersComponent{
           timestamp = this.servers[i].timestamp;
         }
       }
-      this.lastDBUpdate = Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - timestamp)) + ` ago (${Time.format(timestamp)})`;
+      
 
       for(let i = 0; i < this.servers.length; i++){
         this.servers[i] = ServerHelper.verbose(this.servers[i]);
       }
 
-      this.status = "Refreshed";
+      this.lastDBUpdateTimestamp = timestamp;
+      this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
+
+      this.updateTimestamps();
+
+      this.status = "Status: Refreshed";
       setTimeout(() => this.status = "", 5000);
     });
   }
@@ -77,5 +88,10 @@ export class ServersComponent{
 
   searchServers(filter: string): void{
     this.serverData.filter = filter.trim().toLocaleLowerCase();
+  }
+
+  updateTimestamps(): void{
+    this.lastDBUpdate = `${Time.autoFormatTime(new Date().getTime() / 1000 - this.lastDBUpdateTimestamp)} (${Time.format(this.lastDBUpdateTimestamp)})`;
+    this.lastClientUpdate = Time.autoFormatTime(new Date().getTime() / 1000 - this.lastClientUpdateTimestamp);
   }
 }
