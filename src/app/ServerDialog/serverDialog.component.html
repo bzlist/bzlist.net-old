@@ -6,6 +6,7 @@
     <mat-chip *ngIf="server.configuration.antidoteFlags">Antidote Flags</mat-chip>
     <mat-chip *ngIf="server.configuration.noTeamKills">No TKs</mat-chip>
   </mat-chip-list><br>
+  <small *ngIf="updated != ''">Updated {{updated}}</small>
   <table>
     <tr><td>Address</td><td>{{server.address}}:{{server.port}}</td></tr>
     <tr><td>IP</td><td>{{server.ip}}</td></tr>

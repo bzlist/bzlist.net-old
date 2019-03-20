@@ -4,6 +4,7 @@ import {MatTableDataSource, MatSort, MatDialog, MatMenuTrigger} from "@angular/m
 import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
 import {Server, ServerHelper} from "../server";
+import {Time} from "../time";
 
 @Component({
   selector: "servers",
@@ -11,6 +12,7 @@ import {Server, ServerHelper} from "../server";
   styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent{
+  lastDBUpdate = "";
   status = "Fetch Data";
 
   api: number = 0;
@@ -34,12 +36,20 @@ export class ServersComponent{
       this.servers = data;
       this.serverData.data = this.servers;
 
+      let timestamp = 0;
+      for(let i: number = 0; i < this.servers.length; i++){
+        if(this.servers[i].timestamp > timestamp){
+          timestamp = this.servers[i].timestamp;
+        }
+      }
+      this.lastDBUpdate = Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - timestamp)) + ` ago (${Time.format(timestamp)})`;
+
       for(let i = 0; i < this.servers.length; i++){
         this.servers[i] = ServerHelper.verbose(this.servers[i]);
       }
 
       this.status = "Refreshed";
-      setTimeout(() => this.status = "Refresh", 1000);
+      setTimeout(() => this.status = "", 5000);
     });
   }
 
