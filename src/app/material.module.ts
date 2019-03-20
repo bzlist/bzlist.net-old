@@ -7,4 +7,5 @@ const modules = [MatIconModule, MatToolbarModule, MatTooltipModule, MatButtonMod
   imports: modules,
   exports: modules
 })
-export class MaterialModule{}
+export class MaterialModule{
+}
