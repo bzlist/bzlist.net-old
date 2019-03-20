@@ -13,7 +13,7 @@ export class ApiService{
   constructor(private http: HttpClient){}
 
   getServers(apiIndex: number): Observable<Server[]>{
-    if(apiIndex > this.API_ROOT_URLS.length){
+    if(apiIndex > this.API_ROOT_URLS.length || apiIndex < 0){
       apiIndex = 0;
     }
 
