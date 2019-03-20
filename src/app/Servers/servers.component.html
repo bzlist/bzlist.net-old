@@ -25,7 +25,7 @@
 
   <ng-container matColumnDef="country">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
-    <mat-cell *matCellDef="let server"><img src="https://countryflags.io/{{server.country}}/flat/32.png" alt="{{server.country}}" matTooltip="{{server.country}}" matTooltipPosition="left"></mat-cell>
+    <mat-cell *matCellDef="let server"><img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left"></mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="gameStyle">

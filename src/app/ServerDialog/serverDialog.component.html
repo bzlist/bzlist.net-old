@@ -15,7 +15,7 @@
     <tr><td>Protocol</td><td>{{server.protocol}}</td></tr>
   </table>
   <h3>Players: {{server.players.length}}</h3>
-  <mat-table *ngIf="server.players.length > 0" [dataSource]="playerData" matSort matSortActive="score" matSortDirection="desc" matSortDisableClear>
+  <mat-table *ngIf="server.players.length > 0" [dataSource]="playerData" matSort matSortActive="score" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
     <ng-container matColumnDef="callsign">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Callsign</mat-header-cell>
       <mat-cell *matCellDef="let player">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</mat-cell>
@@ -23,7 +23,7 @@
 
     <ng-container matColumnDef="team">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
-      <mat-cell *matCellDef="let player">{{player.team}}</mat-cell>
+      <mat-cell *matCellDef="let player">{{server.teams[player.team].name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="score">

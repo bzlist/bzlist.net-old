@@ -70,7 +70,7 @@ export class ServersComponent{
 
   showServerDialog(server: Server): void{
     this.dialog.open(ServerDialog, {
-      minWidth: "500px",
+      minWidth: "700px",
       data: server
     });
   }
