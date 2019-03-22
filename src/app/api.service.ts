@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   providedIn: "root"
 })
 export class ApiService{
-  readonly API_ROOT_URLS: string[] = ["https://bzlist.ns01.biz/api/", "http://localhost:3000/", "http://192.168.254.28:3000/"];
+  readonly API_ROOT_URLS: string[] = ["https://bzlist.ns01.biz/", "http://localhost:3000/", "http://192.168.254.28:3000/"];
   
   constructor(private http: HttpClient){}
 
