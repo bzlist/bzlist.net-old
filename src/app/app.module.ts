@@ -8,7 +8,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
 import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
-import {ThirdPartyLicensesPageComponent} from "./thirdPartyLicensesPage/thirdPartyLicensesPage.component";
+import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPartyLicensesPage.component";
 import {ServersComponent} from "./Servers/servers.component";
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
