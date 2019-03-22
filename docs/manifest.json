@@ -1,0 +1,37 @@
+{
+  "name": "BZList",
+  "short_name": "BZList",
+  "discription": "BZFlag Servers List",
+  "start_url": "/",
+  "theme_color": "#1565C0",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/images/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/mstile-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/andoird-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/andoird-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

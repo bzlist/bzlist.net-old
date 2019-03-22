@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BZList</title>
+  <base href="/bzlist/">  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="theme-color" content="#1565C0">
+  <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.092667610dc3049952de.css"></head>
+<body>
+  <app-root></app-root>
+  <script>
+    if("serviceWorker" in navigator){
+      navigator.serviceWorker.register("service-worker.js").then(registration => {
+        console.log("Service worker registered");
+      }).catch(err => {
+        console.error("Service worker error\n", err);
+      });
+    }
+  </script>
+<script type="text/javascript" src="runtime.b57bf819d5bdce77f1c7.js"></script><script type="text/javascript" src="polyfills.f5ce8ecea387adbb1689.js"></script><script type="text/javascript" src="main.f8446aeccb045b34e00c.js"></script></body>
+</html>
