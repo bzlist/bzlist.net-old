@@ -3,18 +3,18 @@ const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 module.exports = {
   navigateFallback: "/index.html",
   navigateFallbackWhitelist: [/^(?!\/__)/],
-  stripPrefix: "dist",
-  root: "dist/",
+  stripPrefix: "docs",
+  root: "docs/",
   plugins: [
     new SWPrecacheWebpackPlugin({
       cacheId: "bzlist-client",
       filename: "service-worker.js",
       staticFileGlobs: [
-        "dist/index.html",
-        "dist/**.js",
-        "dist/**.css"
+        "docs/index.html",
+        "docs/**.js",
+        "docs/**.css"
       ],
-      stripPrefix: "dist/assets/",
+      stripPrefix: "docs/assets/",
       mergeStaticsConfig: true
     })
   ]
