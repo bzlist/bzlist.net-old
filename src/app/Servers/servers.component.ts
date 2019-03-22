@@ -19,7 +19,6 @@ export class ServersComponent{
   lastDBUpdateTimestamp: number;
   status: string = "";
 
-  api: number = 0;
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData = new MatTableDataSource<Server>(this.servers);
@@ -56,7 +55,7 @@ export class ServersComponent{
   getServers(): void{
     this.status = "Status: Refreshing";
 
-    this.apiService.getServers(this.api).subscribe((data: Server[]) => {
+    this.apiService.getServers().subscribe((data: Server[]) => {
       this.servers = data;
       this.serverData.data = this.servers;
 

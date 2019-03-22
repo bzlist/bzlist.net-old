@@ -8,15 +8,11 @@ import {Observable} from "rxjs";
   providedIn: "root"
 })
 export class ApiService{
-  readonly API_ROOT_URLS: string[] = ["https://bzlist.ns01.biz/", "http://localhost:3000/", "http://192.168.254.28:3000/"];
+  readonly API_ROOT_URL: string = "https://bzlist.ns01.biz/";
   
   constructor(private http: HttpClient){}
 
-  getServers(apiIndex: number): Observable<Server[]>{
-    if(apiIndex > this.API_ROOT_URLS.length || apiIndex < 0){
-      apiIndex = 0;
-    }
-
-    return this.http.get<Server[]>(this.API_ROOT_URLS[apiIndex]);
+  getServers(): Observable<Server[]>{
+    return this.http.get<Server[]>(this.API_ROOT_URL);
   }
 }
