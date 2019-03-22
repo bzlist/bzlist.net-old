@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod--output-path docs --base-href /bzlist/",
+    "build": "ng build --prod --output-path docs --base-href /bzlist/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-pwa": "ng build --prod--output-path docs --base-href /bzlist/ && sw-precache --root=docs --config=precache-config.js"
+    "build-pwa": "ng build --prod --output-path docs --base-href /bzlist/ && sw-precache --root=docs --config=precache-config.js"
   },
   "private": true,
   "dependencies": {
