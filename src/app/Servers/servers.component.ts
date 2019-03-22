@@ -53,7 +53,7 @@ export class ServersComponent{
   }
 
   getServers(): void{
-    this.status = "Status: Refreshing";
+    this.status = "- Refreshing";
 
     this.apiService.getServers().subscribe((data: Server[]) => {
       this.servers = data;
@@ -76,8 +76,8 @@ export class ServersComponent{
 
       this.updateTimestamps();
 
-      this.status = "Status: Refreshed";
-      setTimeout(() => this.status = "", 5000);
+      this.status = "- Refreshed";
+      setTimeout(() => this.status = "", 2000);
     });
   }
 

@@ -3,6 +3,7 @@ import {Routes, RouterModule} from "@angular/router";
 
 import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
+import {ThirdPartyLicensesPageComponent} from "./thirdPartyLicensesPage/thirdPartyLicensesPage.component";
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: "help",
     component: HelpPageComponent
+  },
+  {
+    path: "3rdpartylicenses",
+    "component": ThirdPartyLicensesPageComponent
   }
 ];
 
