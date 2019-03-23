@@ -62,11 +62,15 @@ export class ServerHelper{
         return "Capture The Flag";
       case "FFA":
         return "Free For All";
-        case "OFFA":
-          return "Open Free For All";
+      case "OFFA":
+        return "Open Free For All";
+      case "Rabbit":
+        break;
       default:
         console.log("Unable to verbose gameStyle: ", server.configuration.gameStyle);
-        return server.configuration.gameStyle;
+        break;
     }
+
+    return server.configuration.gameStyle;
   }
 }

@@ -17,10 +17,10 @@ export class ServerDialog{
   updated = "";
 
   constructor(public dialogRef: MatDialogRef<ServerDialog>, @Inject(MAT_DIALOG_DATA) public server: Server){
-    this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - server.timestamp))} ago (${Time.format(server.timestamp)})`;
   }
   
   ngAfterViewInit(): void{
+    this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - this.server.timestamp))} ago (${Time.format(this.server.timestamp)})`;
     this.playerData.sort = this.playerSort;
   }
 }
