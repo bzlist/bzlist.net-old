@@ -1,4 +1,4 @@
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, OnInit} from "@angular/core";
 import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
 import {ApiService} from "../api.service";
@@ -11,7 +11,7 @@ import {Time} from "../time";
   templateUrl: "./servers.component.html",
   styleUrls: ["./servers.component.scss"]
 })
-export class ServersComponent{
+export class ServersComponent implements OnInit{
   lastClientUpdate: string = "never";
   lastClientUpdateTimestamp: number;
 
@@ -20,16 +20,16 @@ export class ServersComponent{
 
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
-  serverData = new MatTableDataSource<Server>(this.servers);
+  serverData: MatTableDataSource<Server>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog, private snackBar: MatSnackBar){}
+  constructor(private apiService: ApiService, private dialog: MatDialog, private snackBar: MatSnackBar){
+  }
 
-  ngAfterViewInit(): void{
-    this.getServers();
-
-    this.serverData.sort = this.sort;
+  ngOnInit(): void{
+    this.serverData = new MatTableDataSource<Server>();
+    setTimeout(() => this.serverData.sort = this.sort);
     this.serverData.paginator = this.paginator;
 
     this.serverData.filterPredicate = (data: Server, filters: string) => {
@@ -47,6 +47,8 @@ export class ServersComponent{
 
       return matchFilter.every(Boolean);
     }
+    
+    this.getServers();
 
     setInterval(() => this.updateTimestamps(), 10000);
   }

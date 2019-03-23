@@ -11,6 +11,7 @@ export interface Player{
   team: string;
   wins: number;
   losses: number;
+  score: number;
 }
 
 interface Configuration{
