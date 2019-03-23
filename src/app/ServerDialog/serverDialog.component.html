@@ -23,7 +23,7 @@
 
     <ng-container matColumnDef="team">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
-      <mat-cell *matCellDef="let player">{{server.teams[player.team].name}}</mat-cell>
+      <mat-cell *matCellDef="let player">{{player.team}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="score">
