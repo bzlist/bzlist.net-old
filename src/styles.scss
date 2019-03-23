@@ -22,6 +22,10 @@ a:hover{
   text-decoration: underline;
 }
 
+mat-toolbar > a:hover{
+  text-decoration: none;
+}
+
 .container{
   padding: 8px 24px;
 }
