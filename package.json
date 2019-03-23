@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href /bzlist/",
+    "build": "ng build --prod --base-href /client/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-pwa": "ng build --prod --base-href /bzlist/ && sw-precache --config=precache-config.js",
+    "build-pwa": "ng build --prod --base-href /client/ && sw-precache --config=precache-config.js",
     "deploy": "ngh"
   },
   "private": true,
