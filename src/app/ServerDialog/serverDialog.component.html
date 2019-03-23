@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>{{server.title}}</h1>
 <div mat-dialog-content>
   <mat-chip-list>
-    <mat-chip>{{server.configuration.gameStyle}}</mat-chip>
-    <mat-chip *ngIf="server.configuration.superflags">Flags</mat-chip>
-    <mat-chip *ngIf="server.configuration.antidoteFlags">Antidote Flags</mat-chip>
-    <mat-chip *ngIf="server.configuration.noTeamKills">No TKs</mat-chip>
+    <mat-chip disabled>{{server.configuration.gameStyle}}</mat-chip>
+    <mat-chip disabled *ngIf="server.configuration.superflags">Flags</mat-chip>
+    <mat-chip disabled *ngIf="server.configuration.antidoteFlags">Antidote Flags</mat-chip>
+    <mat-chip disabled *ngIf="server.configuration.noTeamKills">No TKs</mat-chip>
   </mat-chip-list><br>
   <small *ngIf="updated != ''">Updated {{updated}}</small>
   <table>
