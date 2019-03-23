@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 style="margin:0">{{servers?.length || 0}} Public Servers Online {{status}}</h3>
+  <h3 style="margin:0">{{servers?.length || 0}} Public Servers Online</h3>
   <small>Last client update was {{lastClientUpdate}}. Last database update was {{lastDBUpdate}}</small><br><br>
   <button mat-raised-button color="accent" (click)="getServers()">Refresh</button>
   <mat-form-field *ngIf="servers?.length > 0" class="search">

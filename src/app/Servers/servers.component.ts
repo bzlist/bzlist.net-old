@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {MatTableDataSource, MatSort, MatDialog, MatPaginator} from "@angular/material";
+import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
 import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
@@ -17,7 +17,6 @@ export class ServersComponent{
 
   lastDBUpdate: string = "never";
   lastDBUpdateTimestamp: number;
-  status: string = "";
 
   servers: Server[];
   displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
@@ -25,7 +24,7 @@ export class ServersComponent{
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog){}
+  constructor(private apiService: ApiService, private dialog: MatDialog, private snackBar: MatSnackBar){}
 
   ngAfterViewInit(): void{
     this.getServers();
@@ -53,7 +52,7 @@ export class ServersComponent{
   }
 
   getServers(): void{
-    this.status = "- Refreshing";
+    this.openSnackBar("Refreshing...");
 
     this.apiService.getServers().subscribe((data: Server[]) => {
       this.servers = data;
@@ -75,9 +74,7 @@ export class ServersComponent{
       this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
 
       this.updateTimestamps();
-
-      this.status = "- Refreshed";
-      setTimeout(() => this.status = "", 2000);
+      this.openSnackBar("Refreshed");
     });
   }
 
@@ -95,5 +92,15 @@ export class ServersComponent{
   updateTimestamps(): void{
     this.lastDBUpdate = `${Time.autoFormatTime(new Date().getTime() / 1000 - this.lastDBUpdateTimestamp)} (${Time.format(this.lastDBUpdateTimestamp)})`;
     this.lastClientUpdate = Time.autoFormatTime(new Date().getTime() / 1000 - this.lastClientUpdateTimestamp);
+  }
+
+  openSnackBar(message: string, action: string = "Dismiss", duration: number = 3000): MatSnackBarRef<SimpleSnackBar>{
+    const snackBarRef = this.snackBar.open(message, action, {
+      duration
+    });
+
+    snackBarRef.onAction().subscribe(snackBarRef.dismiss);
+
+    return snackBarRef;
   }
 }
