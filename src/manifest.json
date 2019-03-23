@@ -3,7 +3,7 @@
   "short_name": "BZList",
   "discription": "BZFlag server and player list",
   "start_url": "/bzlist/",
-  "theme_color": "#1565C0",
+  "theme_color": "#1976D2",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "any",
