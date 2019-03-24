@@ -28,12 +28,12 @@
 
     <ng-container matColumnDef="score">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Score</mat-header-cell>
-      <mat-cell *matCellDef="let player">{{player.score}}</mat-cell>
+      <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.score : ""}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="winsLosses">
       <mat-header-cell *matHeaderCellDef>Wins / Losses</mat-header-cell>
-      <mat-cell *matCellDef="let player">{{player.wins}} / {{player.losses}}</mat-cell>
+      <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="playerCollumns"></mat-header-row>
