@@ -96,6 +96,7 @@ export class ServersComponent implements OnInit{
       this.serverData.data = this.servers;
 
       this.totalPlayers = 0;
+      this.totalObservers = 0;
 
       let timestamp = 0;
       for(let i = 0; i < this.servers.length; i++){
