@@ -26,7 +26,7 @@ export class ServersComponent implements OnInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
   columns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
-  _displayedColumns = [0, 1, 3, 4, 5];
+  _displayedColumns = [0, 1, 2, 4, 5, 6];
 
   get displayedColumns(): string[]{
     const columns: string[] = [];
