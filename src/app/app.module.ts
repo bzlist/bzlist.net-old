@@ -1,9 +1,12 @@
 import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 
 import {AppRoutingModule} from "./app-routing.module";
+
+import {CookieService} from "ngx-cookie-service";
 
 import {AppComponent} from "./app.component";
 import {HomePageComponent} from "./HomePage/homePage.component";
@@ -30,9 +33,12 @@ import {MaterialModule} from "./material.module";
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule{

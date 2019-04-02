@@ -8,13 +8,17 @@
   font-family: "Roboto", sans-serif;
 }
 
+html, body{
+  height: 100%;
+}
+
 body{
   margin: 0;
   padding: 0;
 }
 
 a{
-  color: #1565C0;
+  color: #1976D2;
   text-decoration: none;
 }
 
@@ -22,8 +26,25 @@ a:hover{
   text-decoration: underline;
 }
 
-mat-toolbar > a:hover{
-  text-decoration: none;
+mat-table{
+  width: 100%;
+  // border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+  mat-row, mat-header-row{
+    min-height: 40px;
+  }
+
+  mat-row:hover{
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  
+  .row-compact{
+    min-height: 22px;
+
+    img{
+      height: 22px;
+    }
+  }
 }
 
 .container{

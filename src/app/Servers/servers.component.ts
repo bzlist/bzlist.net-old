@@ -1,6 +1,8 @@
 import {Component, ViewChild, OnInit} from "@angular/core";
 import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
+import {CookieService} from "ngx-cookie-service";
+
 import {ApiService} from "../api.service";
 import {ServerDialog} from "../ServerDialog/serverDialog.component";
 import {Server, ServerHelper} from "../server";
@@ -19,12 +21,40 @@ export class ServersComponent implements OnInit{
   lastDBUpdateTimestamp: number;
 
   servers: Server[];
-  displayedColumns: string[] = ["players", "address", "country", "gameStyle", "title"];
   serverData: MatTableDataSource<Server>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  columns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
+  _displayedColumns = [0, 1, 3, 4, 5];
 
-  constructor(private apiService: ApiService, private dialog: MatDialog, private snackBar: MatSnackBar){
+  get displayedColumns(): string[]{
+    const columns: string[] = [];
+
+    for(let i = 0; i < this._displayedColumns.length; i++){
+      columns.push(this.columns[this._displayedColumns[i]]);
+    }
+
+    return columns;
+  }
+
+  totalPlayers = 0;
+  totalObservers = 0;
+
+  _compact = false;
+
+  set compact(compact: boolean){
+    this._compact = compact;
+    this.cookieService.set("compact", this._compact.toString());
+  }
+  get compact(): boolean{
+    return this._compact;
+  }
+
+  constructor(private apiService: ApiService,
+              private dialog: MatDialog,
+              private snackBar: MatSnackBar,
+              private cookieService: CookieService){
   }
 
   ngOnInit(): void{
@@ -35,7 +65,7 @@ export class ServersComponent implements OnInit{
     this.serverData.filterPredicate = (data: Server, filters: string) => {
       const matchFilter = [];
       const filterArray = filters.split(',');
-      const columns = [data.address, data.ip, data.title, data.country, data.protocol, data.owner, data.configuration.gameStyle];
+      const columns = [data.address, data.ip, data.title, data.country, data.countryCode, data.owner, data.configuration.gameStyle];
       
       filterArray.forEach(filter => {
         filter = filter.trim().toLocaleLowerCase();
@@ -50,27 +80,39 @@ export class ServersComponent implements OnInit{
     
     this.getServers();
 
+    this._compact = this.cookieService.get("compact") === "true" ? true : false;
+    if(this.cookieService.check("columns")){
+      this._displayedColumns = JSON.parse(this.cookieService.get("columns"));
+    }
+
     setInterval(() => this.updateTimestamps(), 10000);
   }
 
   getServers(): void{
-    this.openSnackBar("Refreshing...");
+    this.openSnackBar("Refreshing...", undefined, 10000);
 
     this.apiService.getServers().subscribe((data: Server[]) => {
       this.servers = data;
       this.serverData.data = this.servers;
 
+      this.totalPlayers = 0;
+
       let timestamp = 0;
-      for(let i: number = 0; i < this.servers.length; i++){
+      for(let i = 0; i < this.servers.length; i++){
+        this.servers[i] = ServerHelper.verbose(this.servers[i]);
+        for(let j = 0; j < this.servers[i].players.length; j++){
+          if(this.servers[i].players[j].team === "Observer"){
+            this.totalObservers++;
+          }else{
+            this.totalPlayers++;
+          }
+        }
+
         if(this.servers[i].timestamp > timestamp){
           timestamp = this.servers[i].timestamp;
         }
       }
       
-
-      for(let i = 0; i < this.servers.length; i++){
-        this.servers[i] = ServerHelper.verbose(this.servers[i]);
-      }
 
       this.lastDBUpdateTimestamp = timestamp;
       this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
@@ -82,7 +124,8 @@ export class ServersComponent implements OnInit{
 
   showServerDialog(server: Server): void{
     this.dialog.open(ServerDialog, {
-      minWidth: "700px",
+      width: "1000px",
+      minWidth: "500px",
       data: server
     });
   }
@@ -104,5 +147,15 @@ export class ServersComponent implements OnInit{
     snackBarRef.onAction().subscribe(snackBarRef.dismiss);
 
     return snackBarRef;
+  }
+
+  toggleColumn(index: number): void{
+    if(this._displayedColumns.includes(index)){
+      this._displayedColumns.splice(this._displayedColumns.indexOf(index), 1);
+    }else{
+      this._displayedColumns.splice(index, 0, index);
+    }
+
+    this.cookieService.set("columns", JSON.stringify(this._displayedColumns));
   }
 }

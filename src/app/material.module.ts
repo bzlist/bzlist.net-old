@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
-import {MatIconModule, MatToolbarModule, MatTooltipModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatChipsModule, MatInputModule, MatSnackBarModule} from "@angular/material";
+import {MatIconModule, MatToolbarModule, MatTooltipModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatInputModule, MatSnackBarModule, MatSlideToggleModule, MatMenuModule} from "@angular/material";
 
-const modules = [MatIconModule, MatToolbarModule, MatTooltipModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatChipsModule, MatInputModule, MatSnackBarModule];
+const modules = [MatIconModule, MatToolbarModule, MatTooltipModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatInputModule, MatSnackBarModule, MatSlideToggleModule, MatMenuModule];
 
 @NgModule({
   imports: modules,

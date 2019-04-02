@@ -1,6 +1,8 @@
 import {Component, Inject, ViewChild, OnInit} from "@angular/core";
 import {MatDialogRef, MAT_DIALOG_DATA, MatSort, MatTableDataSource} from "@angular/material";
 
+import {CookieService} from "ngx-cookie-service";
+
 import {Server, Player} from "../server";
 import {Time} from "../time";
 
@@ -16,7 +18,13 @@ export class ServerDialog implements OnInit{
 
   updated = "";
 
-  constructor(public dialogRef: MatDialogRef<ServerDialog>, @Inject(MAT_DIALOG_DATA) public server: Server){
+  get compact(): boolean{
+    return this.cookieService.get("compact") === "true" ? true : false;
+  }
+
+  constructor(private cookieService: CookieService,
+              public dialogRef: MatDialogRef<ServerDialog>,
+              @Inject(MAT_DIALOG_DATA) public server: Server){
   }
   
   ngOnInit(): void{

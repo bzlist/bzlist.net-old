@@ -1,7 +1,27 @@
+.info{
+  height: 16px;
+  padding: 8px;
+  margin-right: 8px;
+  color: #555;
+  background-color: #F5F5F5;
+  font-size: 14px;
+  font-weight: lighter;
+  border-radius: 20px;
+  display: inline-block;
+}
+
 .mat-column-team,
 .mat-column-winsLosses{
-  max-width: 80px;
+  max-width: 100px;
+
+  @media screen and (max-width: 768px){
+    max-width: 70px;
+  }
 }
 .mat-column-score{
-  max-width: 60px;
+  max-width: 80px;
+
+  @media screen and (max-width: 768px){
+    max-width: 60px;
+  }
 }

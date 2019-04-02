@@ -1,10 +1,40 @@
-mat-toolbar{
-  height: 56px;
-}
+mat-toolbar-row{
+  color: #555;
+  background-color: #FFF;
+  border-bottom: 1px solid #0000001f;
 
-mat-toolbar > *{
-  margin-left: 12px;
-}
-.spacer {
-  flex: 1 1 auto;
+  a:hover{
+    text-decoration: none;
+  }
+
+  #logo{
+    margin-left: 16px;
+    margin-right: 4px;
+    color: #1976D2;
+    font-size: 22px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 0;
+    }
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+  
+  nav{
+    margin-left: 32px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 8px;
+    }
+  }
+
+  .mat-button{
+    margin-left: 8px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 0;
+    }
+  }
 }

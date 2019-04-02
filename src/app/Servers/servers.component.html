@@ -1,12 +1,25 @@
 <div class="container">
   <h3 style="margin:0">{{servers?.length || 0}} Public Servers Online</h3>
-  <small>Last client update was {{lastClientUpdate}}. Last database update was {{lastDBUpdate}}</small><br><br>
-  <button mat-raised-button color="accent" (click)="getServers()">Refresh</button>
+  <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last client update was {{lastClientUpdate}}. Last fetched database update was {{lastDBUpdate}}</small>
+  <br><br>
+  <button mat-raised-button color="primary" (click)="getServers()">Refresh</button>
+  <button mat-button [matMenuTriggerFor]="menuColumns">Columns</button>
+  <mat-menu #menuColumns="matMenu">
+    <button mat-menu-item (click)="toggleColumn(0)">Players</button>
+    <button mat-menu-item (click)="toggleColumn(1)">Address</button>
+    <button mat-menu-item (click)="toggleColumn(2)">Onwer</button>
+    <button mat-menu-item (click)="toggleColumn(3)">Protocol</button>
+    <button mat-menu-item (click)="toggleColumn(4)">Country</button>
+    <button mat-menu-item (click)="toggleColumn(5)">Game Style</button>
+    <button mat-menu-item (click)="toggleColumn(6)">Title</button>
+  </mat-menu>
+  <br><br>
+  <mat-slide-toggle color="primary" [(ngModel)]="compact">Compact</mat-slide-toggle>
   <mat-form-field *ngIf="servers?.length > 0" class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
   </mat-form-field>
 </div>
-<mat-table *ngIf="servers?.length > 0" [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z4">
+<mat-table *ngIf="servers?.length > 0" [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
   <ng-container matColumnDef="players">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Players</mat-header-cell>
     <mat-cell *matCellDef="let server">{{server.players.length}}</mat-cell>
@@ -17,9 +30,21 @@
     <mat-cell *matCellDef="let server">{{server.address}}:{{server.port}}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="owner">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Owner</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.owner}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="protocol">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Protocol</mat-header-cell>
+    <mat-cell *matCellDef="let server">{{server.protocol}}</mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="country">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
-    <mat-cell *matCellDef="let server"><img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left"></mat-cell>
+    <mat-cell *matCellDef="let server">
+      <img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left" [class.row-compact]="compact">
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="gameStyle">
@@ -32,7 +57,7 @@
     <mat-cell *matCellDef="let server">{{server.title}}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showServerDialog(row)"></mat-row>
+  <mat-header-row [class.row-compact]="compact" *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row [class.row-compact]="compact" *matRowDef="let row; columns: displayedColumns;" (click)="showServerDialog(row)"></mat-row>
 </mat-table>
-<mat-paginator [pageSizeOptions]="[10, 20, 50, 100, 200]" [pageSize]="20" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 30, 50, 100, 200]" [pageSize]="30" showFirstLastButtons></mat-paginator>

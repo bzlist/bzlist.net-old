@@ -44,6 +44,7 @@ export interface Server{
   owner: string;
   protocol: string;
   country: string;
+  countryCode: string;
   timestamp: number;
   title: string;
   teams: Array<Team>;
