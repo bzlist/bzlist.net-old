@@ -120,6 +120,9 @@ export class ServersComponent implements OnInit{
 
       this.updateTimestamps();
       this.openSnackBar("Refreshed");
+    }, error => {
+      this.openSnackBar("Error fetching data", undefined, 10000);
+      console.error("Update servers error", error);
     });
   }
 
