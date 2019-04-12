@@ -1,8 +1,10 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
-import {Server} from "./server";
 import {Observable} from "rxjs";
+import {share} from "rxjs/operators";
+
+import {Server} from "./server";
 
 @Injectable({
   providedIn: "root"
@@ -13,6 +15,6 @@ export class ApiService{
   constructor(private http: HttpClient){}
 
   getServers(): Observable<Server[]>{
-    return this.http.get<Server[]>(this.API_ROOT_URL);
+    return this.http.get<Server[]>(this.API_ROOT_URL).pipe(share());
   }
 }
