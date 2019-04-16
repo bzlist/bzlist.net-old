@@ -1,3 +1,11 @@
+## Bleeding Edge
+
+### Additions
+- `webpack-bundle-analyzer` tool
+
+### Security
+- Ran `npm audit fix`
+
 ## 0.0.2 (2019-4-16)
 
 ### Additions
