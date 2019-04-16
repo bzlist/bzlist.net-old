@@ -3,7 +3,7 @@
   <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last client update was {{lastClientUpdate}}. Last fetched database update was {{lastDBUpdate}}</small>
   <br><br>
   <button mat-raised-button color="primary" (click)="getServers()">Refresh</button>
-  <button mat-button [matMenuTriggerFor]="menuColumns">Columns</button>
+  <button mat-button [matMenuTriggerFor]="menuColumns" (click)="detectChanges()">Columns</button>
   <mat-menu #menuColumns="matMenu">
     <button mat-menu-item (click)="toggleColumn(0)">Players</button>
     <button mat-menu-item (click)="toggleColumn(1)">Address</button>
