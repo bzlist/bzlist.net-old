@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, ChangeDetectorRef, ChangeDetectionStrategy} from "@angular/core";
+import {Component, ViewChild, OnInit} from "@angular/core";
 import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
 import {CookieService} from "ngx-cookie-service";
@@ -11,8 +11,7 @@ import {Time} from "../time";
 @Component({
   selector: "servers",
   templateUrl: "./servers.component.html",
-  styleUrls: ["./servers.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent implements OnInit{
   lastClientUpdate: string = "never";
@@ -55,15 +54,12 @@ export class ServersComponent implements OnInit{
   constructor(private apiService: ApiService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              private cookieService: CookieService,
-              private changeRef: ChangeDetectorRef){
+              private cookieService: CookieService){
   }
 
   ngOnInit(): void{
-    this.changeRef.detach();
-    
     this.serverData = new MatTableDataSource<Server>();
-    setTimeout(() => this.serverData.sort = this.sort);
+    setTimeout(() => this.serverData.sort = this.sort, 1);
     this.serverData.paginator = this.paginator;
 
     this.serverData.filterPredicate = (data: Server, filters: string) => {
@@ -124,8 +120,6 @@ export class ServersComponent implements OnInit{
 
       this.updateTimestamps();
       this.openSnackBar("Refreshed");
-
-      this.changeRef.detectChanges();
     }, error => {
       this.openSnackBar("Error fetching data", undefined, 10000);
       console.error("Update servers error", error);
