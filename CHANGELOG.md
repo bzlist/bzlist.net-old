@@ -3,6 +3,9 @@
 ### Additions
 - `webpack-bundle-analyzer` tool
 
+### Updated
+- `package.json`
+
 ### Security
 - Ran `npm audit fix`
 

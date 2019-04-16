@@ -1,16 +1,30 @@
 {
   "name": "bzlist-client",
   "version": "0.0.2",
+  "description": "BZList is an online service 🌐 providing BZFlag server and player information 📖.",
+  "homepage": "https://bzlist.github.io/client/",
+  "license": "GPL-3.0",
+  "keywords": ["bzlist", "bzflag", "bzflag servers"],
+  "author": "The Noah (https://github.com/The-Noah)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bzlist/client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bzlist/client/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href /client/ --stats-json",
+    "build": "ng build --base-href /client/",
+    "build:prod": "ng build --prod --base-href /client/",
+    "build:pwa": "npm run build:prod && sw-precache --config=precache-config.js",
+    "build:stats": "ng build --prod --base-href /client/ --stats-json",
+    "deploy": "ngh",
+    "stats": "webpack-bundle-analyzer ./dist/stats.json",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build-pwa": "npm run build && sw-precache --config=precache-config.js",
-    "deploy": "ngh",
-    "stats": "webpack-bundle-analyzer ./dist/stats.json"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
