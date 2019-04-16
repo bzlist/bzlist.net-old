@@ -54,6 +54,34 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "polyfills",
+                  "baseline": "40kb",
+                  "maximumWarning": "20kb",
+                  "maximumError": "50kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "vendor",
+                  "baseline": "900kb",
+                  "maximumWarning": "100kb",
+                  "maximumError": "200kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "styles",
+                  "baseline": "60kb",
+                  "maximumWarning": "20kb",
+                  "maximumError": "50kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "main",
+                  "baseline": "735kb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "100kb"
                 }
               ]
             }
