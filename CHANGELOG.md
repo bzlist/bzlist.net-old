@@ -6,6 +6,9 @@
 ### Updated
 - `package.json`
 
+### Bug Fixes
+- Server list sorting not always being correct
+
 ### Security
 - Ran `npm audit fix`
 

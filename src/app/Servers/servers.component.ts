@@ -59,7 +59,7 @@ export class ServersComponent implements OnInit{
 
   ngOnInit(): void{
     this.serverData = new MatTableDataSource<Server>();
-    setTimeout(() => this.serverData.sort = this.sort, 1);
+    setTimeout(() => this.serverData.sort = this.sort, 10);
     this.serverData.paginator = this.paginator;
 
     this.serverData.filterPredicate = (data: Server, filters: string) => {
