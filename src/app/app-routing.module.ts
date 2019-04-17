@@ -4,6 +4,7 @@ import {Routes, RouterModule} from "@angular/router";
 import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
 import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPartyLicensesPage.component";
+import {ServerPageComponent} from "./server-page/server-page.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: "3rdpartylicenses",
-    "component": ThirdPartyLicensesPageComponent
+    component: ThirdPartyLicensesPageComponent
+  },
+  {
+    path: "s/:address/:port",
+    component: ServerPageComponent
   }
 ];
 

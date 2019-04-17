@@ -1,0 +1,37 @@
+mat-toolbar-row .title{
+  margin-left: 16px;
+  font-weight: bolder;
+}
+
+.info{
+  height: 16px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  color: #333;
+  background-color: #F7F7F7;
+  font-size: 14px;
+  font-weight: lighter;
+  border-radius: 99px;
+  display: inline-block;
+}
+
+.mat-column-team,
+.mat-column-winsLosses{
+  max-width: 100px;
+
+  @media screen and (max-width: 768px){
+    max-width: 60px;
+  }
+}
+.mat-column-score{
+  max-width: 80px;
+
+  @media screen and (max-width: 768px){
+    max-width: 60px;
+  }
+}
+
+.table-raw tr td:first-child{
+  padding-right: 8px;
+  color: #555;
+}

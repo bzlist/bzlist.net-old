@@ -16,6 +16,7 @@ import {ServersComponent} from "./Servers/servers.component";
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
 import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
+import {ServerPageComponent} from "./server-page/server-page.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolba
     ThirdPartyLicensesPageComponent,
     ServersComponent,
     ServerDialog,
-    NavigationToolbarComponent
+    NavigationToolbarComponent,
+    ServerPageComponent
   ],
   entryComponents: [
     ServerDialog

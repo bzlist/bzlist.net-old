@@ -1,4 +1,5 @@
 import {Component, ViewChild, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
 import {CookieService} from "ngx-cookie-service";
@@ -24,7 +25,7 @@ export class ServersComponent implements OnInit{
   serverData: MatTableDataSource<Server>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+
   columns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
   _displayedColumns = [0, 1, 2, 4, 5, 6];
 
@@ -52,6 +53,7 @@ export class ServersComponent implements OnInit{
   }
 
   constructor(private apiService: ApiService,
+              private router: Router,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
               private cookieService: CookieService){
@@ -66,18 +68,18 @@ export class ServersComponent implements OnInit{
       const matchFilter = [];
       const filterArray = filters.split(',');
       const columns = [data.address, data.ip, data.title, data.country, data.countryCode, data.owner, data.configuration.gameStyle];
-      
+
       filterArray.forEach(filter => {
         filter = filter.trim().toLocaleLowerCase();
         const customFilter = [];
-        
+
         columns.forEach(column => customFilter.push(column.trim().toLocaleLowerCase().includes(filter)));
         matchFilter.push(customFilter.some(Boolean));
       });
 
       return matchFilter.every(Boolean);
     }
-    
+
     this.getServers();
 
     this._compact = this.cookieService.get("compact") === "true" ? true : false;
@@ -113,7 +115,7 @@ export class ServersComponent implements OnInit{
           timestamp = this.servers[i].timestamp;
         }
       }
-      
+
 
       this.lastDBUpdateTimestamp = timestamp;
       this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
@@ -127,11 +129,13 @@ export class ServersComponent implements OnInit{
   }
 
   showServerDialog(server: Server): void{
-    this.dialog.open(ServerDialog, {
-      width: "1000px",
-      minWidth: "500px",
-      data: server
-    });
+    this.router.navigate(["/s", server.address, server.port]);
+
+    // this.dialog.open(ServerDialog, {
+    //   width: "1000px",
+    //   minWidth: "500px",
+    //   data: server
+    // });
   }
 
   searchServers(filter: string): void{
