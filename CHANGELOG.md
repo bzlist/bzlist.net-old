@@ -4,6 +4,7 @@
 - `webpack-bundle-analyzer` tool
 - Server details on dedicated page
 - Real-time information
+- Page switching animation
 
 ### Updated
 - `package.json`

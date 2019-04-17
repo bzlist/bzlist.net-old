@@ -61,6 +61,12 @@ mat-table{
   }
 }
 
+router-outlet ~ * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .container{
   padding: 8px 24px;
 }
