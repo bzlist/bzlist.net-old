@@ -8,12 +8,15 @@ import {AppRoutingModule} from "./app-routing.module";
 
 import {CookieService} from "ngx-cookie-service";
 
+import {AngularFireModule} from "@angular/fire";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {firebase} from "../app/firebase";
+
 import {AppComponent} from "./app.component";
 import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
 import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPartyLicensesPage.component";
 import {ServersComponent} from "./Servers/servers.component";
-import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
 import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
@@ -25,12 +28,8 @@ import {ServerPageComponent} from "./server-page/server-page.component";
     HelpPageComponent,
     ThirdPartyLicensesPageComponent,
     ServersComponent,
-    ServerDialog,
     NavigationToolbarComponent,
     ServerPageComponent
-  ],
-  entryComponents: [
-    ServerDialog
   ],
   imports: [
     BrowserModule,
@@ -38,7 +37,9 @@ import {ServerPageComponent} from "./server-page/server-page.component";
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(firebase),
+    AngularFirestoreModule.enablePersistence()
   ],
   providers: [
     CookieService

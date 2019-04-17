@@ -2,7 +2,9 @@ import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {MatSort, MatTableDataSource} from "@angular/material";
 
-import {Subscription} from "rxjs";
+import {Subscription, Observable} from "rxjs";
+
+import {AngularFirestore} from "@angular/fire/firestore";
 
 import {CookieService} from "ngx-cookie-service";
 
@@ -23,6 +25,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   address: string;
   port: number;
 
+  serverDataSub: Subscription;
+
   server: Server;
   status: string = "";
   updated: string = "";
@@ -39,6 +43,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
+              private db: AngularFirestore,
               private cookieService: CookieService){
   }
 
@@ -47,7 +52,11 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.address = params["address"];
       this.port = +params["port"];
 
-      this.update();
+      // this.update();
+
+      this.serverDataSub = this.db.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
+        this.setData(data);
+      });
     });
 
     setTimeout(() => this.playerData.sort = this.playerSort);
@@ -55,32 +64,38 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     this.routeSub.unsubscribe();
+    this.serverDataSub.unsubscribe();
+  }
+
+  setData(server: Server): void{
+    this.observerCount = 0;
+    this.playerCount = 0;
+
+    if(server == null){
+      this.status = "Server not found";
+      this.playerData.data = null;
+
+      return;
+    }
+
+    this.server = ServerHelper.verbose(server);
+
+    this.playerData.data = this.server.players.map(player => {
+      if(player.team === "Observer"){
+        this.observerCount++;
+      }else{
+        this.playerCount++;
+      }
+
+      return this.addPlayerScore(player);
+    });
+
+    this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - this.server.timestamp))} ago (${Time.format(this.server.timestamp)})`;
   }
 
   update(): void{
     this.apiService.getServers().subscribe((servers: Server[]) => {
-      this.server = servers.find(server => server.address == this.address && server.port == this.port);
-
-      if(this.server == null){
-        this.status = "Server not found";
-        this.playerData.data = null;
-
-        return;
-      }
-
-      this.server = ServerHelper.verbose(this.server);
-
-      this.playerData.data = this.server.players.map(player => {
-        if(player.team === "Observer"){
-          this.observerCount++;
-        }else{
-          this.playerCount++;
-        }
-
-        return this.addPlayerScore(player);
-      });
-
-      this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - this.server.timestamp))} ago (${Time.format(this.server.timestamp)})`;
+      this.setData(servers.find(server => server.address == this.address && server.port == this.port))
     }, error => {
       this.status = "Error";
       console.error("API Error\n", error);

@@ -1,11 +1,12 @@
-import {Component, ViewChild, OnInit} from "@angular/core";
+import {Component, ViewChild, OnInit, OnDestroy} from "@angular/core";
 import {Router} from "@angular/router";
-import {MatTableDataSource, MatSort, MatDialog, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
+import {MatTableDataSource, MatSort, MatPaginator, MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
+import {Subscription} from "rxjs";
+import {AngularFirestore} from "@angular/fire/firestore";
 import {CookieService} from "ngx-cookie-service";
 
 import {ApiService} from "../api.service";
-import {ServerDialog} from "../ServerDialog/serverDialog.component";
 import {Server, ServerHelper} from "../server";
 import {Time} from "../time";
 
@@ -14,14 +15,15 @@ import {Time} from "../time";
   templateUrl: "./servers.component.html",
   styleUrls: ["./servers.component.scss"]
 })
-export class ServersComponent implements OnInit{
+export class ServersComponent implements OnInit, OnDestroy{
   lastClientUpdate: string = "never";
   lastClientUpdateTimestamp: number;
 
   lastDBUpdate: string = "never";
   lastDBUpdateTimestamp: number;
 
-  servers: Server[];
+  serverDataSub: Subscription;
+
   serverData: MatTableDataSource<Server>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -54,8 +56,8 @@ export class ServersComponent implements OnInit{
 
   constructor(private apiService: ApiService,
               private router: Router,
-              private dialog: MatDialog,
               private snackBar: MatSnackBar,
+              private db: AngularFirestore,
               private cookieService: CookieService){
   }
 
@@ -63,6 +65,12 @@ export class ServersComponent implements OnInit{
     this.serverData = new MatTableDataSource<Server>();
     setTimeout(() => this.serverData.sort = this.sort, 10);
     this.serverData.paginator = this.paginator;
+
+    this.serverDataSub = this.db.collection<Server>("servers", ref =>
+      ref.orderBy("playersCount", "desc")
+    ).valueChanges().subscribe((data: Server[]) => {
+      this.setServers(data);
+    });
 
     this.serverData.filterPredicate = (data: Server, filters: string) => {
       const matchFilter = [];
@@ -80,8 +88,6 @@ export class ServersComponent implements OnInit{
       return matchFilter.every(Boolean);
     }
 
-    this.getServers();
-
     this._compact = this.cookieService.get("compact") === "true" ? true : false;
     if(this.cookieService.check("columns")){
       this._displayedColumns = JSON.parse(this.cookieService.get("columns"));
@@ -90,52 +96,41 @@ export class ServersComponent implements OnInit{
     setInterval(() => this.updateTimestamps(), 10000);
   }
 
-  getServers(): void{
-    this.openSnackBar("Refreshing...", undefined, 10000);
+  ngOnDestroy(): void{
+    this.serverDataSub.unsubscribe();
+  }
 
-    this.apiService.getServers().subscribe((data: Server[]) => {
-      this.servers = data;
-      this.serverData.data = this.servers;
+  setServers(servers: Server[]): void{
+    this.serverData.data = servers;
 
-      this.totalPlayers = 0;
-      this.totalObservers = 0;
+    this.totalPlayers = 0;
+    this.totalObservers = 0;
 
-      let timestamp = 0;
-      for(let i = 0; i < this.servers.length; i++){
-        this.servers[i] = ServerHelper.verbose(this.servers[i]);
-        for(let j = 0; j < this.servers[i].players.length; j++){
-          if(this.servers[i].players[j].team === "Observer"){
-            this.totalObservers++;
-          }else{
-            this.totalPlayers++;
-          }
-        }
-
-        if(this.servers[i].timestamp > timestamp){
-          timestamp = this.servers[i].timestamp;
+    let timestamp = 0;
+    for(let i = 0; i < this.serverData.data.length; i++){
+      this.serverData.data[i] = ServerHelper.verbose(this.serverData.data[i]);
+      for(let j = 0; j < this.serverData.data[i].players.length; j++){
+        if(this.serverData.data[i].players[j].team === "Observer"){
+          this.totalObservers++;
+        }else{
+          this.totalPlayers++;
         }
       }
 
+      if(this.serverData.data[i].timestamp > timestamp){
+        timestamp = this.serverData.data[i].timestamp;
+      }
+    }
 
-      this.lastDBUpdateTimestamp = timestamp;
-      this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
 
-      this.updateTimestamps();
-      this.openSnackBar("Refreshed");
-    }, error => {
-      this.openSnackBar("Error fetching data", undefined, 10000);
-      console.error("Update servers error", error);
-    });
+    this.lastDBUpdateTimestamp = timestamp;
+    this.lastClientUpdateTimestamp = new Date().getTime() / 1000;
+
+    this.updateTimestamps();
   }
 
   showServerDialog(server: Server): void{
     this.router.navigate(["/s", server.address, server.port]);
-
-    // this.dialog.open(ServerDialog, {
-    //   width: "1000px",
-    //   minWidth: "500px",
-    //   data: server
-    // });
   }
 
   searchServers(filter: string): void{

@@ -3,9 +3,11 @@
 ### Additions
 - `webpack-bundle-analyzer` tool
 - Server details on dedicated page
+- Real-time information
 
 ### Updated
 - `package.json`
+- Firebase as backend/database
 
 ### Bug Fixes
 - Server list sorting not always being correct

@@ -8,40 +8,40 @@
 </mat-toolbar>
 <p *ngIf="status !== ''">Status: {{status}}</p>
 <div *ngIf="server != null" class="container">
-    <small *ngIf="updated != ''">Updated {{updated}}</small>
-    <h2>{{server.address}}:{{server.port}}</h2>
-    <span class="info">{{server.configuration.gameStyle}}</span>
-    <span class="info" *ngIf="server.configuration.superflags">Flags</span>
-    <span class="info" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>
-    <span class="info" *ngIf="server.configuration.noTeamKills">No TKs</span>
-    <span class="info">{{server.country}}</span>
-    <span class="info">{{server.ip}}</span>
-    <span class="info">{{server.protocol}}</span>
-    <br>
-    <p>Owned by {{server.owner}}</p>
-    <h4>{{playerCount}} Players and {{observerCount}} Observers Online</h4>
-    <mat-table *ngIf="server.players.length > 0" [dataSource]="playerData" matSort matSortActive="score" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
-      <ng-container matColumnDef="callsign">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Callsign</mat-header-cell>
-        <mat-cell *matCellDef="let player">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</mat-cell>
-      </ng-container>
+  <small *ngIf="updated != ''">Updated {{updated}}</small>
+  <h2>{{server.address}}:{{server.port}}</h2>
+  <span class="info">{{server.configuration.gameStyle}}</span>
+  <span class="info" *ngIf="server.configuration.superflags">Flags</span>
+  <span class="info" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>
+  <span class="info" *ngIf="server.configuration.noTeamKills">No TKs</span>
+  <span class="info">{{server.country}}</span>
+  <span class="info">{{server.ip}}</span>
+  <span class="info">{{server.protocol}}</span>
+  <br>
+  <p>Owned by {{server.owner}}</p>
+  <h4>{{playerCount}} Players and {{observerCount}} Observers Online</h4>
+  <mat-table *ngIf="server.players.length > 0" [dataSource]="playerData" matSort matSortActive="score" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
+    <ng-container matColumnDef="callsign">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Callsign</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="team">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
-        <mat-cell *matCellDef="let player">{{player.team}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="team">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Team</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.team}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="score">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Score</mat-header-cell>
-        <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.score : ""}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Score</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.score : ""}}</mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="winsLosses">
-        <mat-header-cell *matHeaderCellDef>Wins / Losses</mat-header-cell>
-        <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="winsLosses">
+      <mat-header-cell *matHeaderCellDef>Wins / Losses</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</mat-cell>
+    </ng-container>
 
-      <mat-header-row [class.row-compact]="compact" *matHeaderRowDef="playerCollumns"></mat-header-row>
-      <mat-row [class.row-compact]="compact" *matRowDef="let row; columns: playerCollumns;"></mat-row>
-    </mat-table>
+    <mat-header-row [class.row-compact]="compact" *matHeaderRowDef="playerCollumns"></mat-header-row>
+    <mat-row [class.row-compact]="compact" *matRowDef="let row; columns: playerCollumns;"></mat-row>
+  </mat-table>
 </div>
