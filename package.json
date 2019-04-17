@@ -23,7 +23,7 @@
     "build": "ng build --prod",
     "build:stats": "ng build --prod --stats-json",
     "build:gh-pages": "ng build --prod --base-href /client/",
-    "build:gh-pages-stats": "ng build --prod --base-href /client/ -- stats-json",
+    "build:gh-pages-stats": "ng build --prod --base-href /client/ --stats-json",
     "build:firebase": "ng build --prod",
     "build:firebase-stats": "ng build --prod --stats-json",
     "deploy:gh-pages": "ngh",
