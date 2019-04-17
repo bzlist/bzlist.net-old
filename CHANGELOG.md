@@ -16,6 +16,9 @@
 ### Security
 - Ran `npm audit fix`
 
+### Known Issues
+- Sorting tables no longer works
+
 ## 0.0.2 (2019-4-16)
 
 ### Additions
