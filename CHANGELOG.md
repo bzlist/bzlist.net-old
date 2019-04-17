@@ -2,6 +2,7 @@
 
 ### Additions
 - `webpack-bundle-analyzer` tool
+- Server details on dedicated page
 
 ### Updated
 - `package.json`
