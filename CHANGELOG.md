@@ -1,4 +1,4 @@
-## Bleeding Edge
+## 0.1.0 - Fire Update 🔥 (2019-4-17)
 
 ### Additions
 - `webpack-bundle-analyzer` tool
@@ -7,7 +7,7 @@
 - Page switching animation
 
 ### Updated
-- `package.json`
+- `package.json` to be more friendly and have more options
 - Firebase as backend/database
 
 ### Bug Fixes

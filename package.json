@@ -1,6 +1,6 @@
 {
   "name": "bzlist-client",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "BZList is an online service 🌐 providing BZFlag server and player information 📖.",
   "homepage": "https://bzlist.github.io/client/",
   "license": "GPL-3.0",
