@@ -15,6 +15,7 @@ import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPar
 import {ServersComponent} from "./Servers/servers.component";
 import {ServerDialog} from "./ServerDialog/serverDialog.component";
 import {MaterialModule} from "./material.module";
+import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MaterialModule} from "./material.module";
     HelpPageComponent,
     ThirdPartyLicensesPageComponent,
     ServersComponent,
-    ServerDialog
+    ServerDialog,
+    NavigationToolbarComponent
   ],
   entryComponents: [
     ServerDialog

@@ -1,0 +1,40 @@
+mat-toolbar-row{
+  color: #555;
+  background-color: #FFF;
+  border-bottom: 1px solid #0000001f;
+
+  a:hover{
+    text-decoration: none;
+  }
+
+  .spacer{
+    flex: 1 1 auto;
+  }
+
+  .mat-button{
+    margin-left: 8px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 0;
+    }
+  }
+
+  #logo{
+    margin-left: 16px;
+    margin-right: 4px;
+    color: #1976D2;
+    font-size: 22px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 0;
+    }
+  }
+
+  nav{
+    margin-left: 32px;
+
+    @media screen and (max-width: 768px){
+      margin-left: 8px;
+    }
+  }
+}
