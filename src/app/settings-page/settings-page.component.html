@@ -1,0 +1,17 @@
+<app-navigation-toolbar></app-navigation-toolbar>
+<div class="container">
+  <h1>Settings</h1>
+  <mat-checkbox color="primary" [(ngModel)]="settingsService.compact">Compact Tables</mat-checkbox>
+  <h2>Server List Columns</h2>
+  <ul style="list-style:none;padding:0">
+    <li *ngFor="let column of settingsService.serverColumns">
+      <mat-checkbox color="primary" [checked]="getServerColumn(column)" (change)="toggleServerColumn(column)">{{serverColumnName(column)}}</mat-checkbox>
+    </li>
+  </ul>
+  <h2>Players List Columns</h2>
+  <ul style="list-style:none;padding:0">
+    <li *ngFor="let column of settingsService.playerColumns">
+      <mat-checkbox color="primary" [checked]="getPlayerColumn(column)" (change)="togglePlayerColumn(column)">{{playerColumnName(column)}}</mat-checkbox>
+    </li>
+  </ul>
+</div>

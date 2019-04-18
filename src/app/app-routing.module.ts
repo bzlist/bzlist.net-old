@@ -5,6 +5,7 @@ import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
 import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPartyLicensesPage.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
+import {SettingsPageComponent} from "./settings-page/settings-page.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "s/:address/:port",
     component: ServerPageComponent
+  },
+  {
+    path: "settings",
+    component: SettingsPageComponent
   }
 ];
 

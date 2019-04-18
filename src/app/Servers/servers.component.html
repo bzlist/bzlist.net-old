@@ -2,18 +2,6 @@
   <h3 style="margin:0">{{serverData.data?.length || 0}} Public Servers Online</h3>
   <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last client update was {{lastClientUpdate}}. Last fetched database update was {{lastDBUpdate}}</small>
   <br><br>
-  <button mat-stroked-button [matMenuTriggerFor]="menuColumns">Columns</button>
-  <mat-menu #menuColumns="matMenu">
-    <button mat-menu-item (click)="toggleColumn(0)">Players</button>
-    <button mat-menu-item (click)="toggleColumn(1)">Address</button>
-    <button mat-menu-item (click)="toggleColumn(2)">Owner</button>
-    <button mat-menu-item (click)="toggleColumn(3)">Protocol</button>
-    <button mat-menu-item (click)="toggleColumn(4)">Country</button>
-    <button mat-menu-item (click)="toggleColumn(5)">Game Style</button>
-    <button mat-menu-item (click)="toggleColumn(6)">Title</button>
-  </mat-menu>
-  <br><br>
-  <mat-slide-toggle color="primary" [(ngModel)]="compact">Compact</mat-slide-toggle>
   <mat-form-field *ngIf="serverData.data?.length > 0" class="search">
     <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
   </mat-form-field>
@@ -42,7 +30,7 @@
   <ng-container matColumnDef="country">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
     <mat-cell *matCellDef="let server">
-      <img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left" [class.row-compact]="compact">
+      <img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left">
     </mat-cell>
   </ng-container>
 
@@ -56,7 +44,7 @@
     <mat-cell *matCellDef="let server">{{server.title}}</mat-cell>
   </ng-container>
 
-  <mat-header-row [class.row-compact]="compact" *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row [class.row-compact]="compact" *matRowDef="let row; columns: displayedColumns;" (click)="showServerDialog(row)"></mat-row>
+  <mat-header-row [class.row-compact]="settingsService.compact" *matHeaderRowDef="settingsService.displayedServerColumns"></mat-header-row>
+  <mat-row [class.row-compact]="settingsService.compact" *matRowDef="let row; columns: settingsService.displayedServerColumns;" (click)="showServerDialog(row)"></mat-row>
 </mat-table>
 <mat-paginator [pageSizeOptions]="[10, 30, 50, 100, 200]" [pageSize]="30" showFirstLastButtons></mat-paginator>

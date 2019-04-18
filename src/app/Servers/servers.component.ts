@@ -4,8 +4,8 @@ import {MatTableDataSource, MatSort, MatPaginator, MatSnackBar, MatSnackBarRef, 
 
 import {Subscription} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
-import {CookieService} from "ngx-cookie-service";
 
+import {SettingsService} from "../settings.service";
 import {ApiService} from "../api.service";
 import {Server, ServerHelper} from "../server";
 import {Time} from "../time";
@@ -28,37 +28,18 @@ export class ServersComponent implements OnInit, OnDestroy{
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  columns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
-  _displayedColumns = [0, 1, 2, 4, 5, 6];
-
   get displayedColumns(): string[]{
-    const columns: string[] = [];
-
-    for(let i = 0; i < this._displayedColumns.length; i++){
-      columns.push(this.columns[this._displayedColumns[i]]);
-    }
-
-    return columns;
+    return this.settingsService.displayedServerColumns;
   }
 
   totalPlayers = 0;
   totalObservers = 0;
 
-  _compact = false;
-
-  set compact(compact: boolean){
-    this._compact = compact;
-    this.cookieService.set("compact", this._compact.toString());
-  }
-  get compact(): boolean{
-    return this._compact;
-  }
-
   constructor(private apiService: ApiService,
               private router: Router,
               private snackBar: MatSnackBar,
               private db: AngularFirestore,
-              private cookieService: CookieService){
+              private settingsService: SettingsService){
   }
 
   ngOnInit(): void{
@@ -86,11 +67,6 @@ export class ServersComponent implements OnInit, OnDestroy{
       });
 
       return matchFilter.every(Boolean);
-    }
-
-    this._compact = this.cookieService.get("compact") === "true" ? true : false;
-    if(this.cookieService.check("columns")){
-      this._displayedColumns = JSON.parse(this.cookieService.get("columns"));
     }
 
     setInterval(() => this.updateTimestamps(), 10000);
@@ -150,15 +126,5 @@ export class ServersComponent implements OnInit, OnDestroy{
     snackBarRef.onAction().subscribe(snackBarRef.dismiss);
 
     return snackBarRef;
-  }
-
-  toggleColumn(index: number): void{
-    if(this._displayedColumns.includes(index)){
-      this._displayedColumns.splice(this._displayedColumns.indexOf(index), 1);
-    }else{
-      this._displayedColumns.splice(index, 0, index);
-    }
-
-    this.cookieService.set("columns", JSON.stringify(this._displayedColumns));
   }
 }

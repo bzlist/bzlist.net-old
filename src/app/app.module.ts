@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {AppRoutingModule} from "./app-routing.module";
 
 import {CookieService} from "ngx-cookie-service";
+import {SettingsService} from "./settings.service";
 
 import {AngularFireModule} from "@angular/fire";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
@@ -20,6 +21,7 @@ import {ServersComponent} from "./Servers/servers.component";
 import {MaterialModule} from "./material.module";
 import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
+import {SettingsPageComponent} from "./settings-page/settings-page.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {ServerPageComponent} from "./server-page/server-page.component";
     ThirdPartyLicensesPageComponent,
     ServersComponent,
     NavigationToolbarComponent,
-    ServerPageComponent
+    ServerPageComponent,
+    SettingsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import {ServerPageComponent} from "./server-page/server-page.component";
     AngularFirestoreModule.enablePersistence()
   ],
   providers: [
-    CookieService
+    CookieService,
+    SettingsService
   ],
   bootstrap: [AppComponent]
 })

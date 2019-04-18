@@ -41,7 +41,12 @@
       <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</mat-cell>
     </ng-container>
 
-    <mat-header-row [class.row-compact]="compact" *matHeaderRowDef="playerCollumns"></mat-header-row>
-    <mat-row [class.row-compact]="compact" *matRowDef="let row; columns: playerCollumns;"></mat-row>
+    <ng-container matColumnDef="tks">
+      <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Team Kills" matTooltipPosition="left">TKs</mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.team !== "Observer" ? player.tks : ""}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row [class.row-compact]="settingsService.compact" *matHeaderRowDef="settingsService.displayedPlayerColumns"></mat-header-row>
+    <mat-row [class.row-compact]="settingsService.compact" *matRowDef="let row; columns: settingsService.displayedPlayerColumns;"></mat-row>
   </mat-table>
 </div>

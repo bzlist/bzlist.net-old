@@ -1,3 +1,8 @@
+## Bleeding Edge
+
+### Additions
+- Settings page
+
 ## 0.1.0 - Fire Update 🔥 (2019-4-17)
 
 ### Additions

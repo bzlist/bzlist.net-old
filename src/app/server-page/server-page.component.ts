@@ -2,12 +2,11 @@ import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {MatSort, MatTableDataSource} from "@angular/material";
 
-import {Subscription, Observable} from "rxjs";
+import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {CookieService} from "ngx-cookie-service";
-
+import {SettingsService} from "../settings.service";
 import {ApiService} from "../api.service";
 import {Server, Player, ServerHelper} from "../server";
 import {Time} from "../time";
@@ -37,14 +36,10 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   playerCollumns: string[] = ["callsign", "team", "score", "winsLosses"];
   playerData = new MatTableDataSource<Player>();
 
-  get compact(): boolean{
-    return this.cookieService.get("compact") === "true" ? true : false;
-  }
-
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private db: AngularFirestore,
-              private cookieService: CookieService){
+              private settingsService: SettingsService){
   }
 
   ngOnInit(){

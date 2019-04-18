@@ -61,6 +61,10 @@ mat-table{
   }
 }
 
+mat-icon{
+  color: #555;
+}
+
 router-outlet ~ * {
   position: absolute;
   height: 100%;
