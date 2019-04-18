@@ -7,7 +7,6 @@ import {Subscription} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../settings.service";
-import {ApiService} from "../api.service";
 import {Server, Player, ServerHelper} from "../server";
 import {Time} from "../time";
 
@@ -36,8 +35,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   playerCollumns: string[] = ["callsign", "team", "score", "winsLosses"];
   playerData = new MatTableDataSource<Player>();
 
-  constructor(private apiService: ApiService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private db: AngularFirestore,
               private settingsService: SettingsService){
   }
@@ -46,8 +44,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     this.routeSub = this.route.params.subscribe(params => {
       this.address = params["address"];
       this.port = +params["port"];
-
-      // this.update();
 
       this.serverDataSub = this.db.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
         this.setData(data);
@@ -86,15 +82,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     });
 
     this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - this.server.timestamp))} ago (${Time.format(this.server.timestamp)})`;
-  }
-
-  update(): void{
-    this.apiService.getServers().subscribe((servers: Server[]) => {
-      this.setData(servers.find(server => server.address == this.address && server.port == this.port))
-    }, error => {
-      this.status = "Error";
-      console.error("API Error\n", error);
-    });
   }
 
   addPlayerScore(player: Player): Player{

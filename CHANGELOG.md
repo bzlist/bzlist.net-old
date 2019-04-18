@@ -3,6 +3,9 @@
 ### Additions
 - Settings page
 
+### Removed
+- Old API code
+
 ## 0.1.0 - Fire Update 🔥 (2019-4-17)
 
 ### Additions

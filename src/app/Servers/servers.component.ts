@@ -6,7 +6,6 @@ import {Subscription} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../settings.service";
-import {ApiService} from "../api.service";
 import {Server, ServerHelper} from "../server";
 import {Time} from "../time";
 
@@ -35,8 +34,7 @@ export class ServersComponent implements OnInit, OnDestroy{
   totalPlayers = 0;
   totalObservers = 0;
 
-  constructor(private apiService: ApiService,
-              private router: Router,
+  constructor(private router: Router,
               private snackBar: MatSnackBar,
               private db: AngularFirestore,
               private settingsService: SettingsService){
