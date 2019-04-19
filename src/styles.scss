@@ -118,7 +118,11 @@ router-outlet ~ * {
 
 .list-card > *{
   flex: 1 0 400px;
-  margin: 0 16px;
+  margin: 0 8px;
+
+  @media screen and (max-width: 768px){
+    flex: 1 0 300px;
+  }
 }
 
 .list-card > *:not(:last-child){
