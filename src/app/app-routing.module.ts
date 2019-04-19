@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: "settings",
     component: SettingsPageComponent
+  },
+  {
+    path: "**",
+    redirectTo: ""
   }
 ];
 
