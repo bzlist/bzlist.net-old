@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Router} from "@angular/router";
 import {MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 
@@ -85,10 +85,6 @@ export class ServersComponent implements OnInit, OnDestroy{
 
   showServerDetails(server: Server): void{
     this.router.navigate(["/s", server.address, server.port]);
-  }
-
-  searchServers(filter: string): void{
-    // this.serverData.filter = filter.trim().toLocaleLowerCase();
   }
 
   openSnackBar(message: string, action: string = "Dismiss", duration: number = 3000): MatSnackBarRef<SimpleSnackBar>{

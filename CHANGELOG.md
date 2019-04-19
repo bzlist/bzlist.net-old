@@ -10,6 +10,7 @@
 
 ### Removed
 - Old API code
+- Search box
 
 ## 0.1.0 - Fire Update 🔥 (2019-4-17)
 
