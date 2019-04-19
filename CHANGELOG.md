@@ -1,5 +1,8 @@
 ## Bleeding Edge
 
+### Additions
+- Hide GitHub button in navigation bar when on mobile
+
 ### Updated
 - Use ngsw instead of sw-precache
 

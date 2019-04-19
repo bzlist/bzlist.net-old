@@ -128,3 +128,9 @@ router-outlet ~ * {
 .list-card > *:not(:last-child){
   margin-bottom: 16px;
 }
+
+.mobile-hide{
+  @media screen and (max-width: 768px){
+    display: none !important;
+  }
+}
