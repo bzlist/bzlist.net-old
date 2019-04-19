@@ -1,7 +1,10 @@
 <app-navigation-toolbar></app-navigation-toolbar>
 <div class="container">
   <h1>Settings</h1>
-  <mat-checkbox color="primary" [(ngModel)]="settingsService.compact">Compact Tables</mat-checkbox>
+  <p>
+    <mat-checkbox color="primary" [(ngModel)]="darkMode">Dark Mode</mat-checkbox><br>
+    <mat-checkbox color="primary" [(ngModel)]="settingsService.compact">Compact Tables</mat-checkbox>
+  </p>
   <h2>Server List Columns</h2>
   <ul style="list-style:none;padding:0">
     <li *ngFor="let column of settingsService.serverColumns">

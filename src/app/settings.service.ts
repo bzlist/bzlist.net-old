@@ -7,7 +7,7 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class SettingsService{
   readonly serverColumns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
-  readonly serverColumnNames = ["Players", "Address", "Owner", "Protocol", "Country", "Game Style", "Title/Description"];
+  readonly serverColumnNames = ["Players", "Address", "Owner", "Protocol", "Country", "Game Style", "Title"];
 
   readonly playerColumns = ["callsign", "team", "score", "winsLosses", "tks"];
   readonly playerColumnNames = ["Callsign", "Team", "Score", "Wins / Losses", "Team Kills"];
@@ -25,6 +25,13 @@ export class SettingsService{
     }
 
     return JSON.parse(this.cookieService.get("playerColumns"));
+  }
+
+  get darkMode(): boolean{
+    return this.cookieService.get("darkMode") === "true" ? true : false;;
+  }
+  set darkMode(value: boolean){
+    this.cookieService.set("darkMode", value.toString());
   }
 
   get compact(): boolean{

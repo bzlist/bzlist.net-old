@@ -8,6 +8,24 @@ import {SettingsService} from "../settings.service";
   styleUrls: ["./settings-page.component.scss"]
 })
 export class SettingsPageComponent{
+  get darkMode(): boolean{
+    return this.settingsService.darkMode;
+  }
+  set darkMode(value: boolean){
+    this.settingsService.darkMode = value;
+
+    document.documentElement.classList.add("transition");
+    setTimeout(() => {
+      document.documentElement.classList.remove("transition");
+    }, 300);
+
+    if(value){
+      document.documentElement.setAttribute("data-theme", "dark");
+    }else{
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+
   constructor(public settingsService: SettingsService){
   }
 
