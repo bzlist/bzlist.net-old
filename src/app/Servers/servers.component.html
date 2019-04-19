@@ -1,50 +1,19 @@
 <div class="container">
-  <h3 style="margin:0">{{serverData.data?.length || 0}} Public Servers Online</h3>
-  <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last client update was {{lastClientUpdate}}. Last fetched database update was {{lastDBUpdate}}</small>
-  <br><br>
-  <mat-form-field *ngIf="serverData.data?.length > 0" class="search">
-    <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
-  </mat-form-field>
+  <div *ngIf="servers">
+    <h2 style="margin:0">{{servers.length}} Public Servers Online</h2>
+    <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last update was {{lastUpdate | timeAgo}}.</small>
+    <mat-form-field style="width:100%">
+      <input matInput (keyup)="searchServers($event.target.value)" placeholder="Search">
+    </mat-form-field>
+  </div>
 </div>
-<mat-table *ngIf="serverData.data?.length > 0" [dataSource]="serverData" matSort matSortActive="players" matSortDirection="desc" matSortDisableClear class="mat-elevation-z2">
-  <ng-container matColumnDef="players">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Players</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.playersCount}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="address">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.address}}:{{server.port}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="owner">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Owner</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.owner}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="protocol">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Protocol</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.protocol}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="country">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
-    <mat-cell *matCellDef="let server">
-      <img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.countryCode}}" matTooltip="{{server.country}}" matTooltipPosition="left">
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="gameStyle">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Game Style</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.configuration.gameStyle}}</mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="title">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
-    <mat-cell *matCellDef="let server">{{server.title}}</mat-cell>
-  </ng-container>
-
-  <mat-header-row [class.row-compact]="settingsService.compact" *matHeaderRowDef="settingsService.displayedServerColumns"></mat-header-row>
-  <mat-row [class.row-compact]="settingsService.compact" *matRowDef="let row; columns: settingsService.displayedServerColumns;" (click)="showServerDialog(row)"></mat-row>
-</mat-table>
-<mat-paginator [pageSizeOptions]="[10, 30, 50, 100, 200]" [pageSize]="30" showFirstLastButtons></mat-paginator>
+<div *ngIf="servers">
+  <app-servers-table *ngIf="!settingsService.gridView" [servers]="servers" (rowClick)="showServerDetails($event)"></app-servers-table>
+  <ul *ngIf="settingsService.gridView" class="list-nostyle list-card">
+    <app-server-card *ngFor="let server of servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
+  </ul>
+</div>
+<div *ngIf="!servers" class="spinner">
+  <div class="cube1"></div>
+  <div class="cube2"></div>
+</div>

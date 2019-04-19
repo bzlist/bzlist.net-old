@@ -1,43 +1,55 @@
-.search{
-  width: 100%;
-  margin-top: 4px;
+.spinner{
+  width: 64px;
+  height: 64px;
+  margin: 100px auto;
+  position: relative;
 }
 
-.mat-column-players,
-.mat-column-country{
-  max-width: 70px;
+.cube1, .cube2{
+  background-color: #1976D2;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: sk-cubemove 1.8s infinite ease-in-out;
+}
 
-  @media screen and (max-width: 768px){
-    max-width: 60px;
-  }
+.cube2{
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
 }
-.mat-column-players{
-  @media screen and (max-width: 768px){
-    padding-left: 8px;
-  }
-}
-.mat-column-address{
-  max-width: 300px;
-}
-.mat-column-owner{
-  max-width: 140px;
 
-  @media screen and (max-width: 768px){
-    max-width: 110px;
+@-webkit-keyframes sk-cubemove {
+  25%{
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  }
+  50%{
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  }
+  75%{
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  }
+  100%{
+    -webkit-transform: rotate(-360deg);
   }
 }
-.mat-column-protocol{
-  max-width: 90px;
 
-  @media screen and (max-width: 768px){
-    max-width: 75px;
-  }
-}
-.mat-column-gameStyle{
-  max-width: 140px;
-}
-.mat-column-title{
-  @media screen and (max-width: 768px){
-    padding-right: 8px;
+@keyframes sk-cubemove {
+  25% {
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  } 50% {
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  } 50.1% {
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  } 75% {
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  } 100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
   }
 }

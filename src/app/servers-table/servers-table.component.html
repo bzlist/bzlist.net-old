@@ -1,0 +1,20 @@
+<app-table>
+  <tr [class.row-compact]="settingsService.compact">
+    <th *ngIf="hasColumn('players')">Players</th>
+    <th *ngIf="hasColumn('address')">Address</th>
+    <th *ngIf="hasColumn('owner')">Owner</th>
+    <th *ngIf="hasColumn('protocol')">Protocol</th>
+    <th *ngIf="hasColumn('country')">Country</th>
+    <th *ngIf="hasColumn('gameStyle')">Game Style</th>
+    <th *ngIf="hasColumn('title')">Title</th>
+  </tr>
+  <tr *ngFor="let server of servers" [class.row-compact]="settingsService.compact" (click)="rowClicked(server)">
+    <td *ngIf="hasColumn('players')">{{server.players.length}}</td>
+    <td *ngIf="hasColumn('address')">{{server.address}}:{{server.port}}</td>
+    <td *ngIf="hasColumn('owner')">{{server.owner}}</td>
+    <td *ngIf="hasColumn('protocol')">{{server.protocol}}</td>
+    <td *ngIf="hasColumn('country')"><img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.country}}" matTooltip="{{server.country}}" matTooltipPosition="left"></td>
+    <td *ngIf="hasColumn('gameStyle')">{{server.configuration.gameStyle}}</td>
+    <td *ngIf="hasColumn('title')">{{server.title}}</td>
+  </tr>
+</app-table>

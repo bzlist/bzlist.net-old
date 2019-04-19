@@ -3,6 +3,10 @@
 ### Additions
 - Settings page
 - Dark theme/mode
+- Grid view
+
+### Updated
+- Major update to how tables look
 
 ### Removed
 - Old API code

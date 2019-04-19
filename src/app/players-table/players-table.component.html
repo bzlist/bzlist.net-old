@@ -1,0 +1,16 @@
+<app-table>
+  <tr [class.row-compact]="settingsService.compact">
+    <th *ngIf="hasColumn('callsign')">Callsign</th>
+    <th *ngIf="hasColumn('team')">Team</th>
+    <th *ngIf="hasColumn('score')">Score</th>
+    <th *ngIf="hasColumn('winsLosses')">Wins / Losses</th>
+    <th *ngIf="hasColumn('tks')">Team Kills</th>
+  </tr>
+  <tr *ngFor="let player of players" [class.row-compact]="settingsService.compact" (click)="rowClicked(server)">
+    <td *ngIf="hasColumn('callsign')">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</td>
+    <td *ngIf="hasColumn('team')">{{player.team}}</td>
+    <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : ""}}</td>
+    <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</td>
+    <td *ngIf="hasColumn('tks')">{{player.team !== "Observer" ? player.tks : ""}}</td>
+  </tr>
+</app-table>

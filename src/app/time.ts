@@ -13,9 +13,9 @@ export class Time{
     let time: string = "this minute";
 
     if(allowSeconds){
-      let time: string = Math.floor(seconds) + " seconds ago";
+      time = Math.floor(seconds) + " seconds ago";
     }
-  
+
     if(seconds >=  86400){
       time = Math.floor(seconds / 86400) + " days ago";
     }else if(seconds >= 3600){
@@ -23,7 +23,7 @@ export class Time{
     }else if(seconds >= 60){
       time = Math.floor(seconds / 60) + " minutes ago";
     }
-  
+
     return time;
   }
 }

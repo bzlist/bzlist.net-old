@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {AppRoutingModule} from "./app-routing.module";
 
@@ -22,6 +22,12 @@ import {MaterialModule} from "./material.module";
 import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
 import {SettingsPageComponent} from "./settings-page/settings-page.component";
+import {ServerCardComponent} from "./server-card/server-card.component";
+import {TimeAgoPipe} from "./time-ago.pipe";
+import {CardComponent} from "./card/card.component";
+import {ServersTableComponent} from "./servers-table/servers-table.component";
+import {TableComponent} from "./table/table.component";
+import {PlayersTableComponent} from "./players-table/players-table.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import {SettingsPageComponent} from "./settings-page/settings-page.component";
     ServersComponent,
     NavigationToolbarComponent,
     ServerPageComponent,
-    SettingsPageComponent
+    SettingsPageComponent,
+    ServerCardComponent,
+    TimeAgoPipe,
+    CardComponent,
+    ServersTableComponent,
+    TableComponent,
+    PlayersTableComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +56,7 @@ import {SettingsPageComponent} from "./settings-page/settings-page.component";
     AngularFireModule.initializeApp(firebase),
     AngularFirestoreModule.enablePersistence()
   ],
-  providers: [
-    CookieService,
-    SettingsService
-  ],
+  providers: [CookieService, SettingsService],
   bootstrap: [AppComponent]
 })
-export class AppModule{
-}
+export class AppModule {}

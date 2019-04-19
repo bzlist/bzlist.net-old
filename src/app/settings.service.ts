@@ -41,6 +41,13 @@ export class SettingsService{
     this.cookieService.set("compact", value.toString());
   }
 
+  get gridView(): boolean{
+    return this.cookieService.get("gridView") === "true" ? true : false;
+  }
+  set gridView(value: boolean){
+    this.cookieService.set("gridView", value.toString());
+  }
+
   constructor(private cookieService: CookieService){
   }
 

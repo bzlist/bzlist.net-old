@@ -8,7 +8,6 @@ import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../settings.service";
 import {Server, Player, ServerHelper} from "../server";
-import {Time} from "../time";
 
 @Component({
   selector: "app-server-page",
@@ -27,7 +26,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   server: Server;
   status: string = "";
-  updated: string = "";
 
   playerCount: number = 0;
   observerCount: number = 0;
@@ -80,8 +78,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
       return this.addPlayerScore(player);
     });
-
-    this.updated = `${Time.autoFormatTime(Math.floor(new Date().getTime() / 1000 - this.server.timestamp))} ago (${Time.format(this.server.timestamp)})`;
   }
 
   addPlayerScore(player: Player): Player{
