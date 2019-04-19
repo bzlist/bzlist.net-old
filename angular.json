@@ -83,7 +83,8 @@
                   "maximumWarning": "100kb",
                   "maximumError": "200kb"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -117,7 +118,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ]
           }
         },

@@ -2,29 +2,30 @@
   "name": "BZList",
   "short_name": "BZList",
   "discription": "BZFlag server and player information",
-  "start_url": "/client/",
+  "scope": "/",
+  "start_url": "/",
   "theme_color": "#1976D2",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "any",
   "icons": [
     {
-      "src": "/client/assets/images/icon/32.png",
+      "src": "/assets/images/icon/32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/client/assets/images/icon/64.png",
+      "src": "/assets/images/icon/64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "/client/assets/images/icon/128.png",
+      "src": "/assets/images/icon/128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "/client/assets/images/icon/512.png",
+      "src": "/assets/images/icon/512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

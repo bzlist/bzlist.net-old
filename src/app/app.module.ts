@@ -3,6 +3,8 @@ import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
+import {environment} from "../environments/environment";
+
 import {AppRoutingModule} from "./app-routing.module";
 
 import {CookieService} from "ngx-cookie-service";
@@ -27,6 +29,7 @@ import {CardComponent} from "./card/card.component";
 import {ServersTableComponent} from "./servers-table/servers-table.component";
 import {TableComponent} from "./table/table.component";
 import {PlayersTableComponent} from "./players-table/players-table.component";
+import {ServiceWorkerModule} from "@angular/service-worker";
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import {PlayersTableComponent} from "./players-table/players-table.component";
     MaterialModule,
     FormsModule,
     AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production})
   ],
   providers: [CookieService, SettingsService],
   bootstrap: [AppComponent]

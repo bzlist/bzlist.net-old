@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {SwUpdate} from "@angular/service-worker";
 
 import {SettingsService} from "./settings.service";
 
@@ -11,7 +12,12 @@ import {fadeAnimation} from "./animations";
   animations: [fadeAnimation]
 })
 export class AppComponent{
-  constructor(private settingsService: SettingsService){
+  constructor(private swUpdate: SwUpdate,
+              private settingsService: SettingsService){
+    swUpdate.available.subscribe(event => {
+      swUpdate.activateUpdate().then(document.location.reload);
+    });
+
     this.setDarkMode(this.settingsService.darkMode);
   }
 

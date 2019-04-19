@@ -1,3 +1,8 @@
+## Bleeding Edge
+
+### Updated
+- Use ngsw instead of sw-precache
+
 ## 0.2.0 - UX + Dark Mode 🌑 (2019-4-18)
 
 ### Additions
