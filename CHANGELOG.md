@@ -2,6 +2,7 @@
 
 ### Additions
 - Settings page
+- Dark theme/mode
 
 ### Removed
 - Old API code
