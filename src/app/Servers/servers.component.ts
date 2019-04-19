@@ -27,6 +27,9 @@ export class ServersComponent implements OnInit, OnDestroy{
               private snackBar: MatSnackBar,
               private db: AngularFirestore,
               private settingsService: SettingsService){
+    if(window.innerWidth <= 768){
+      settingsService.gridView = true;
+    }
   }
 
   ngOnInit(): void{

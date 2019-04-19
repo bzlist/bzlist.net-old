@@ -2,6 +2,7 @@
 
 ### Additions
 - Hide GitHub button in navigation bar when on mobile
+- Use grid view by on mobile
 
 ### Updated
 - Use ngsw instead of sw-precache
