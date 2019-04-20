@@ -1,6 +1,5 @@
 table{
   width: 100%;
-  padding: 0 12px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   border-collapse: collapse;
 }
@@ -17,6 +16,10 @@ tr:hover{
 
 td, th{
   padding: 0 6px;
+
+  @media screen and (max-width: 768px){
+    padding: 0 4px;
+  }
 }
 
 td{
@@ -33,11 +36,19 @@ th{
 td:first-child,
 th:first-child{
   padding-left: 24px;
+
+  @media screen and (max-width: 768px){
+    padding: 0 12px;
+  }
 }
 
 td:last-child,
 th:last-child{
   padding-right: 24px;
+
+  @media screen and (max-width: 768px){
+    padding: 0 8px;
+  }
 }
 
 .row-compact,

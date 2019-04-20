@@ -5,12 +5,8 @@
   <p>
     <span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;
     <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.superflags">Flags</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.noTeamKills">No Team Kills</span>&nbsp;
   </p>
-  <h2>Configuration</h2>
-  <app-table style="width:310px">
+  <app-table style="max-width:350px">
     <tr>
       <th>IP Address</th>
       <td>{{server.ip}}</td>
@@ -26,6 +22,18 @@
     <tr>
       <th>Max Players</th>
       <td>{{server.configuration.maxPlayers}}</td>
+    </tr>
+    <tr>
+      <th>Flags</th>
+      <td><span [outerHTML]="server.configuration.superflags | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>Antidote Flags</th>
+      <td><span [outerHTML]="server.configuration.antidoteFlags | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>No Team Kills</th>
+      <td><span [outerHTML]="server.configuration.noTeamKills | booleanYesNo"></span></td>
     </tr>
     <tr>
       <th>Jumping</th>
@@ -63,9 +71,11 @@
       <th>Max Team Score</th>
       <td><span [outerHTML]="server.configuration.maxTeamScore | numberZeroNo"></span></td>
     </tr>
-  </app-table><br><br>
-  <h2>{{playerCount}} Players and {{observerCount}} Observers Online</h2>
-  <app-players-table *ngIf="server.players.length > 0" [players]="server.players"></app-players-table>
+  </app-table>
+  <div style="margin-top:18px">
+    <h2>{{playerCount}} Players and {{observerCount}} Observers Online</h2>
+    <app-players-table *ngIf="server.players.length > 0" [players]="server.players"></app-players-table>
+  </div>
 </div>
 <div *ngIf="badAddress" class="container">
   <h1>Server <i>{{address}}:{{port}}</i> is not in the database</h1>
