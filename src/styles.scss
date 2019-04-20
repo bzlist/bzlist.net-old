@@ -103,6 +103,13 @@ router-outlet ~ * {
   border-radius: 99px;
 }
 
+.card{
+  padding: 16px 24px;
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
 .list-nostyle{
   margin: 0;
   padding: 0;

@@ -25,7 +25,6 @@ import {ServerPageComponent} from "./server-page/server-page.component";
 import {SettingsPageComponent} from "./settings-page/settings-page.component";
 import {ServerCardComponent} from "./server-card/server-card.component";
 import {TimeAgoPipe} from "./time-ago.pipe";
-import {CardComponent} from "./card/card.component";
 import {ServersTableComponent} from "./servers-table/servers-table.component";
 import {TableComponent} from "./table/table.component";
 import {PlayersTableComponent} from "./players-table/players-table.component";
@@ -43,7 +42,6 @@ import {ServiceWorkerModule} from "@angular/service-worker";
     SettingsPageComponent,
     ServerCardComponent,
     TimeAgoPipe,
-    CardComponent,
     ServersTableComponent,
     TableComponent,
     PlayersTableComponent
