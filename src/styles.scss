@@ -15,6 +15,7 @@ html{
   --color-text-lighter: #555;
   --color-text-light: #777;
   --color-border: #DDD;
+  --color-button: #EEE;
 }
 
 html[data-theme="dark"]{
@@ -25,6 +26,7 @@ html[data-theme="dark"]{
   --color-text-lighter: #AAA;
   --color-text-light: #888;
   --color-border: #555;
+  --color-button: #444;
 }
 
 html.transition,
@@ -108,6 +110,20 @@ router-outlet ~ * {
   display: block;
   border: 1px solid var(--color-border);
   border-radius: 8px;
+}
+
+.btn{
+  padding: 8px 16px;
+  background: transparent;
+  font-size: .9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .2s ease-in-out;
+}
+
+.btn:hover{
+  background-color: var(--color-button);
 }
 
 .list-nostyle{
