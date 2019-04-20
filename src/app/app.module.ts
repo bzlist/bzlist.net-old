@@ -18,7 +18,6 @@ import {firebase} from "../app/firebase";
 import {AppComponent} from "./app.component";
 import {HomePageComponent} from "./HomePage/homePage.component";
 import {HelpPageComponent} from "./HelpPage/helpPage.component";
-import {ThirdPartyLicensesPageComponent} from "./ThirdPartyLicensesPage/thirdPartyLicensesPage.component";
 import {ServersComponent} from "./Servers/servers.component";
 import {MaterialModule} from "./material.module";
 import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
@@ -31,14 +30,13 @@ import {TableComponent} from "./table/table.component";
 import {PlayersTableComponent} from "./players-table/players-table.component";
 import {BooleanYesNoPipe} from "./boolean-yes-no.pipe";
 import {NumberZeroNoPipe} from "./number-zero-no.pipe";
-import { VerboseGameStylePipe } from './verbose-game-style.pipe';
+import {VerboseGameStylePipe} from "./verbose-game-style.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     HelpPageComponent,
-    ThirdPartyLicensesPageComponent,
     ServersComponent,
     NavigationToolbarComponent,
     ServerPageComponent,

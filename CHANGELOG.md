@@ -1,3 +1,8 @@
+## Bleeding Edge
+
+### Removed
+- Dedicated 3rd party licenses page
+
 ## 0.2.1 (2019-4-20)
 
 ### Additions
