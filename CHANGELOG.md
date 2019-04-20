@@ -1,8 +1,8 @@
-## Bleeding Edge
+## 0.2.1 (2019-4-20)
 
 ### Additions
 - Hide GitHub button in navigation bar when on mobile
-- Use grid view by on mobile
+- Use grid view on mobile
 
 ### Updated
 - Use ngsw instead of sw-precache
