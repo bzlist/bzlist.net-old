@@ -1,24 +1,73 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <button mat-icon-button routerLink="/">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-    <span *ngIf="server != null" class="title">{{server.title}}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<p *ngIf="status !== ''">Status: {{status}}</p>
-<div *ngIf="server != null" class="container">
-  <small>Updated {{server.timestamp | timeAgo}}</small>
-  <h2>{{server.address}}:{{server.port}}</h2>
-  <div>
-    <span class="badge">{{server.country}}</span>&nbsp;
-    <span class="badge">{{server.ip}}</span>&nbsp;
-    <span class="badge">{{server.configuration.gameStyle}}</span>&nbsp;
+<app-navigation-toolbar></app-navigation-toolbar>
+<div *ngIf="server" class="container">
+  <h1>{{server.title}}</h1>
+  <small><b>{{server.address}}:{{server.port}}</b> • owned by <b>{{server.owner}}</b> • updated {{server.timestamp | timeAgo}}</small>
+  <p>
+    <span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;
+    <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;
     <span class="badge" *ngIf="server.configuration.superflags">Flags</span>&nbsp;
     <span class="badge" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.noTeamKills">No TKs</span>&nbsp;
-  </div>
-  <p>Owned by {{server.owner}}</p>
-  <h4>{{playerCount}} Players and {{observerCount}} Observers Online</h4>
+    <span class="badge" *ngIf="server.configuration.noTeamKills">No Team Kills</span>&nbsp;
+  </p>
+  <h2>Configuration</h2>
+  <app-table style="width:310px">
+    <tr>
+      <th>IP Address</th>
+      <td>{{server.ip}}</td>
+    </tr>
+    <tr>
+      <th>Protocol</th>
+      <td>{{server.protocol}}</td>
+    </tr>
+    <tr>
+      <th>Max shots</th>
+      <td>{{server.configuration.maxShots}}</td>
+    </tr>
+    <tr>
+      <th>Max Players</th>
+      <td>{{server.configuration.maxPlayers}}</td>
+    </tr>
+    <tr>
+      <th>Jumping</th>
+      <td><span [outerHTML]="server.configuration.jumping | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>Ricochet</th>
+      <td><span [outerHTML]="server.configuration.ricochet | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>Drop Bad Flags</th>
+      <td><span [outerHTML]="server.configuration.shaking | booleanYesNo"></span></td>
+    </tr>
+    <tr *ngIf="server.configuration.shaking">
+      <th>Drop Bad Flags After</th>
+      <td>{{server.configuration.dropBadFlags.wins}} wins or {{server.configuration.dropBadFlags.time}} seconds</td>
+    </tr>
+    <tr>
+      <th>Inertia</th>
+      <td><span [outerHTML]="server.configuration.inertia | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>Handicap</th>
+      <td><span [outerHTML]="server.configuration.handicap | booleanYesNo"></span></td>
+    </tr>
+    <tr>
+      <th>Time Limit</th>
+      <td><span [outerHTML]="server.configuration.timeLimit | numberZeroNo"></span></td>
+    </tr>
+    <tr>
+      <th>Max Player Score</th>
+      <td><span [outerHTML]="server.configuration.maxPlayerScore | numberZeroNo"></span></td>
+    </tr>
+    <tr>
+      <th>Max Team Score</th>
+      <td><span [outerHTML]="server.configuration.maxTeamScore | numberZeroNo"></span></td>
+    </tr>
+  </app-table><br><br>
+  <h2>{{playerCount}} Players and {{observerCount}} Observers Online</h2>
   <app-players-table *ngIf="server.players.length > 0" [players]="server.players"></app-players-table>
+</div>
+<div *ngIf="badAddress" class="container">
+  <h1>Server <i>{{address}}:{{port}}</i> is not in the database</h1>
+  <a routerLink="/">Home</a>
 </div>

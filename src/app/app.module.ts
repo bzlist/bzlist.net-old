@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ServiceWorkerModule} from "@angular/service-worker";
 
 import {environment} from "../environments/environment";
 
@@ -28,7 +29,9 @@ import {TimeAgoPipe} from "./time-ago.pipe";
 import {ServersTableComponent} from "./servers-table/servers-table.component";
 import {TableComponent} from "./table/table.component";
 import {PlayersTableComponent} from "./players-table/players-table.component";
-import {ServiceWorkerModule} from "@angular/service-worker";
+import {BooleanYesNoPipe} from "./boolean-yes-no.pipe";
+import {NumberZeroNoPipe} from "./number-zero-no.pipe";
+import { VerboseGameStylePipe } from './verbose-game-style.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {ServiceWorkerModule} from "@angular/service-worker";
     TimeAgoPipe,
     ServersTableComponent,
     TableComponent,
-    PlayersTableComponent
+    PlayersTableComponent,
+    BooleanYesNoPipe,
+    NumberZeroNoPipe,
+    VerboseGameStylePipe
   ],
   imports: [
     BrowserModule,

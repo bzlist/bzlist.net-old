@@ -51,28 +51,3 @@ export interface Server{
   players: Array<Player>;
   configuration: Configuration;
 }
-
-export class ServerHelper{
-  static verbose(server: Server): Server{
-    server.configuration.gameStyle = this.verboseGameStyle(server);
-    return server;
-  }
-
-  static verboseGameStyle(server: Server): string{
-    switch(server.configuration.gameStyle){
-      case "CTF":
-        return "Capture The Flag";
-      case "FFA":
-        return "Free For All";
-      case "OFFA":
-        return "Open Free For All";
-      case "Rabbit":
-        break;
-      default:
-        console.log("Unable to verbose gameStyle: ", server.configuration.gameStyle);
-        break;
-    }
-
-    return server.configuration.gameStyle;
-  }
-}

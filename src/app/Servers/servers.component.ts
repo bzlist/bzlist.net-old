@@ -6,7 +6,7 @@ import {Subscription} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../settings.service";
-import {Server, ServerHelper} from "../server";
+import {Server,} from "../server";
 
 @Component({
   selector: "servers",
@@ -66,8 +66,6 @@ export class ServersComponent implements OnInit, OnDestroy{
 
     let timestamp = 0;
     for(let i = 0; i < servers.length; i++){
-      servers[i] = ServerHelper.verbose(servers[i]);
-
       for(let j = 0; j < servers[i].players.length; j++){
         if(servers[i].players[j].team === "Observer"){
           this.totalObservers++;

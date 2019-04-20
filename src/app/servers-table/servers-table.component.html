@@ -14,7 +14,7 @@
     <td *ngIf="hasColumn('owner')">{{server.owner}}</td>
     <td *ngIf="hasColumn('protocol')">{{server.protocol}}</td>
     <td *ngIf="hasColumn('country')"><img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" alt="{{server.country}}" matTooltip="{{server.country}}" matTooltipPosition="left"></td>
-    <td *ngIf="hasColumn('gameStyle')">{{server.configuration.gameStyle}}</td>
+    <td *ngIf="hasColumn('gameStyle')">{{server.configuration.gameStyle | verboseGameStyle}}</td>
     <td *ngIf="hasColumn('title')">{{server.title}}</td>
   </tr>
 </app-table>

@@ -1,27 +1,4 @@
-mat-toolbar-row .title{
-  margin-left: 16px;
-}
-
-.mat-column-team,
-.mat-column-winsLosses{
-  max-width: 100px;
-
-  @media screen and (max-width: 768px){
-    max-width: 70px;
-  }
-}
-.mat-column-score{
-  max-width: 70px;
-
-  @media screen and (max-width: 768px){
-    max-width: 60px;
-  }
-}
-.mat-column-tks{
-  max-width: 40px;
-}
-
-.table-raw tr td:first-child{
-  padding-right: 8px;
-  color: #555;
+.badge > img{
+  position: relative;
+  top: 4px;
 }

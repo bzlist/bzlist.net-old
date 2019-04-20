@@ -1,13 +1,12 @@
 import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {MatSort, MatTableDataSource} from "@angular/material";
 
 import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../settings.service";
-import {Server, Player, ServerHelper} from "../server";
+import {Server, Player} from "../server";
 
 @Component({
   selector: "app-server-page",
@@ -15,23 +14,17 @@ import {Server, Player, ServerHelper} from "../server";
   styleUrls: ["./server-page.component.scss"]
 })
 export class ServerPageComponent implements OnInit, OnDestroy{
-  @ViewChild(MatSort) playerSort: MatSort;
-
   routeSub: Subscription;
+  serverDataSub: Subscription;
 
   address: string;
   port: number;
 
-  serverDataSub: Subscription;
-
   server: Server;
-  status: string = "";
+  badAddress = false;
 
-  playerCount: number = 0;
-  observerCount: number = 0;
-
-  playerCollumns: string[] = ["callsign", "team", "score", "winsLosses"];
-  playerData = new MatTableDataSource<Player>();
+  playerCount = 0;
+  observerCount = 0;
 
   constructor(private route: ActivatedRoute,
               private db: AngularFirestore,
@@ -47,8 +40,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
         this.setData(data);
       });
     });
-
-    setTimeout(() => this.playerData.sort = this.playerSort);
   }
 
   ngOnDestroy(){
@@ -57,19 +48,17 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   }
 
   setData(server: Server): void{
-    this.observerCount = 0;
-    this.playerCount = 0;
-
     if(server == null){
-      this.status = "Server not found";
-      this.playerData.data = null;
-
+      this.badAddress = true;
       return;
     }
 
-    this.server = ServerHelper.verbose(server);
+    this.server = server;
 
-    this.playerData.data = this.server.players.map(player => {
+    this.playerCount = 0;
+    this.observerCount = 0;
+
+    this.server.players = this.server.players.map(player => {
       if(player.team === "Observer"){
         this.observerCount++;
       }else{
