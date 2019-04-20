@@ -2,10 +2,10 @@
   <h3>{{server.title}}</h3>
   {{server.address}}:{{server.port}} <small>{{server.owner}}</small><br>
   <p>
-    <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.superflags">Flags</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>&nbsp;
-    <span class="badge" *ngIf="server.configuration.noTeamKills">No TKs</span>&nbsp;
+    <span><span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;</span>
+    <span *ngIf="server.configuration.superflags"><span class="badge">Flags</span>&nbsp;</span>
+    <span *ngIf="server.configuration.antidoteFlags"><span class="badge">Antidote Flags</span>&nbsp;</span>
+    <span *ngIf="server.configuration.noTeamKills"><span class="badge">No TKs</span>&nbsp;</span>
   </p>
   <hr>
   <small>

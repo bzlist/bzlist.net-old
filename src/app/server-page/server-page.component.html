@@ -3,8 +3,8 @@
   <h1>{{server.title}}</h1>
   <small><b>{{server.address}}:{{server.port}}</b> • owned by <b>{{server.owner}}</b> • updated {{server.timestamp | timeAgo}}</small>
   <p>
-    <span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;
-    <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;
+    <span><span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;</span>
+    <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>
   </p>
   <app-table style="max-width:350px">
     <tr>
