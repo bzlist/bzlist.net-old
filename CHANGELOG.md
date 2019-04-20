@@ -9,6 +9,7 @@
 - Badges look
 - Improved and responsive server details page
 - Help page
+- Home page
 
 ## 0.2.0 - UX + Dark Mode 🌑 (2019-4-18)
 
