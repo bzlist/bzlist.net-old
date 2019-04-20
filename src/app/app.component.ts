@@ -1,9 +1,9 @@
 import {Component} from "@angular/core";
 import {SwUpdate} from "@angular/service-worker";
 
-import {SettingsService} from "./settings.service";
-
 import {fadeAnimation} from "./animations";
+
+import {SettingsService} from "./services/settings.service";
 
 @Component({
   selector: "app-root",

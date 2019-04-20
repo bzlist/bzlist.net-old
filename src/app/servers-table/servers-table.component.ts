@@ -1,8 +1,8 @@
 import {Component, Input, Output, EventEmitter} from "@angular/core";
 
-import {SettingsService} from "../settings.service";
+import {SettingsService} from "../services/settings.service";
 
-import {Server} from "../server";
+import {Server} from "../models/server.model";
 
 @Component({
   selector: "app-servers-table",

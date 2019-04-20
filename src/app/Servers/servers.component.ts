@@ -5,8 +5,8 @@ import {MatSnackBar, MatSnackBarRef, SimpleSnackBar} from "@angular/material";
 import {Subscription} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {SettingsService} from "../settings.service";
-import {Server,} from "../server";
+import {SettingsService} from "../services/settings.service";
+import {Server} from "../models/server.model";
 
 @Component({
   selector: "servers",

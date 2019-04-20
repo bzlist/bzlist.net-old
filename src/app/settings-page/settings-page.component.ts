@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 
-import {SettingsService} from "../settings.service";
+import {SettingsService} from "../services/settings.service";
 
 @Component({
   selector: "app-settings-page",

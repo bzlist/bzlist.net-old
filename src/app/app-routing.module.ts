@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 
-import {HomePageComponent} from "./HomePage/homePage.component";
-import {HelpPageComponent} from "./HelpPage/helpPage.component";
+import {HomePageComponent} from "./home-page/home-page.component";
+import {HelpPageComponent} from "./help-page/help-page.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
 import {SettingsPageComponent} from "./settings-page/settings-page.component";
 

@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 
-import {Server} from "../server";
+import {Server} from "../models/server.model";
 
 @Component({
   selector: "app-server-card",

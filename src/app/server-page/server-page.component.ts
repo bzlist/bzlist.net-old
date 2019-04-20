@@ -5,8 +5,8 @@ import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {SettingsService} from "../settings.service";
-import {Server, Player} from "../server";
+import {SettingsService} from "../services/settings.service";
+import {Server, Player} from "../models/server.model";
 
 @Component({
   selector: "app-server-page",
