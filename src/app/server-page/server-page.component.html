@@ -11,12 +11,12 @@
   <small>Updated {{server.timestamp | timeAgo}}</small>
   <h2>{{server.address}}:{{server.port}}</h2>
   <div>
-    <span class="badge">{{server.country}}</span>
-    <span class="badge">{{server.ip}}</span>
-    <span class="badge">{{server.configuration.gameStyle}}</span>
-    <span class="badge" *ngIf="server.configuration.superflags">Flags</span>
-    <span class="badge" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>
-    <span class="badge" *ngIf="server.configuration.noTeamKills">No TKs</span>
+    <span class="badge">{{server.country}}</span>&nbsp;
+    <span class="badge">{{server.ip}}</span>&nbsp;
+    <span class="badge">{{server.configuration.gameStyle}}</span>&nbsp;
+    <span class="badge" *ngIf="server.configuration.superflags">Flags</span>&nbsp;
+    <span class="badge" *ngIf="server.configuration.antidoteFlags">Antidote Flags</span>&nbsp;
+    <span class="badge" *ngIf="server.configuration.noTeamKills">No TKs</span>&nbsp;
   </div>
   <p>Owned by {{server.owner}}</p>
   <h4>{{playerCount}} Players and {{observerCount}} Observers Online</h4>

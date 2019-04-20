@@ -14,6 +14,7 @@ html{
   --color-text: #333;
   --color-text-lighter: #555;
   --color-text-light: #777;
+  --color-badge: #BBB;
   --color-border: #DDD;
   --color-button: #EEE;
 }
@@ -25,6 +26,7 @@ html[data-theme="dark"]{
   --color-text: #DDD;
   --color-text-lighter: #AAA;
   --color-text-light: #888;
+  --color-badge: #888;
   --color-border: #555;
   --color-button: #444;
 }
@@ -97,12 +99,14 @@ router-outlet ~ * {
 }
 
 .badge{
-  padding: 4px 8px;
-  margin: 0 4px;
-  background-color: var(--color-border);
-  font-size: 14px;
-  font-weight: lighter;
-  border-radius: 99px;
+  padding: 3px 7px;
+  color: var(--bg);
+  background-color: var(--color-badge);
+  font-size: .75rem;
+  font-weight: bolder;
+  text-align: center;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
 .card{
