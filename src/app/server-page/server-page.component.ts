@@ -1,5 +1,6 @@
 import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
@@ -27,6 +28,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   observerCount = 0;
 
   constructor(private route: ActivatedRoute,
+              private title: Title,
               private db: AngularFirestore,
               private settingsService: SettingsService){
   }
@@ -54,6 +56,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     }
 
     this.server = server;
+
+    this.title.setTitle(this.server.title + " - BZList");
 
     this.playerCount = 0;
     this.observerCount = 0;

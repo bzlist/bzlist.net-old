@@ -2,6 +2,7 @@
 
 ### Additions
 - Meta tags
+- Change title for help and server pages
 
 ### Updated
 - Improved responsiveness
