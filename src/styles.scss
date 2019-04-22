@@ -100,7 +100,7 @@ router-outlet ~ * {
 }
 
 .badge{
-  padding: 3px 7px;
+  padding: 3px 6px;
   color: var(--bg);
   background-color: var(--color-badge);
   font-size: .75rem;
@@ -147,14 +147,13 @@ router-outlet ~ * {
 .list-card > *{
   flex: 1 0 400px;
   margin: 0 8px;
+  margin-bottom: 16px;
 
   @media screen and (max-width: 768px){
     flex: 1 0 300px;
+    margin: 0 4px;
+    margin-bottom: 8px;
   }
-}
-
-.list-card > *:not(:last-child){
-  margin-bottom: 16px;
 }
 
 .mobile-hide{

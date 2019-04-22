@@ -1,5 +1,8 @@
 ## Bleeding Edge
 
+### Updated
+- Improved responsiveness
+
 ### Removed
 - Dedicated 3rd party licenses page
 
