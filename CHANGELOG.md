@@ -3,6 +3,7 @@
 ### Additions
 - Meta tags
 - Change title for help and server pages
+- Hide server list table column settings when using grid view
 
 ### Updated
 - Improved responsiveness
