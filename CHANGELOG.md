@@ -1,5 +1,8 @@
 ## Bleeding Edge
 
+### Additions
+- Meta tags
+
 ### Updated
 - Improved responsiveness
 - Light and dark theme colors
