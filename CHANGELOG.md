@@ -2,6 +2,7 @@
 
 ### Updated
 - Improved responsiveness
+- Light and dark theme colors
 
 ### Removed
 - Dedicated 3rd party licenses page
