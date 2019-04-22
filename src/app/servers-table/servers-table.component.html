@@ -1,5 +1,5 @@
 <app-table>
-  <tr [class.row-compact]="settingsService.compact">
+  <tr>
     <th *ngIf="hasColumn('players')">Players</th>
     <th *ngIf="hasColumn('address')">Address</th>
     <th *ngIf="hasColumn('owner')">Owner</th>
@@ -8,7 +8,7 @@
     <th *ngIf="hasColumn('gameStyle')">Game Style</th>
     <th *ngIf="hasColumn('title')">Title</th>
   </tr>
-  <tr *ngFor="let server of servers" [class.row-compact]="settingsService.compact" (click)="rowClicked(server)">
+  <tr *ngFor="let server of servers" (click)="rowClicked(server)">
     <td *ngIf="hasColumn('players')">{{server.players.length}}</td>
     <td *ngIf="hasColumn('address')">{{server.address}}:{{server.port}}</td>
     <td *ngIf="hasColumn('owner')">{{server.owner}}</td>

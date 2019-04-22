@@ -7,6 +7,7 @@
 ### Updated
 - Improved responsiveness
 - Light and dark theme colors
+- Handle tables being compact automatically
 
 ### Removed
 - Dedicated 3rd party licenses page
