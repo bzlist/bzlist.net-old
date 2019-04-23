@@ -2,7 +2,7 @@
 
 ### Additions
 - Meta tags
-- Change title for help and server pages
+- Change title on different pages
 - Hide server list table column settings when using grid view
 
 ### Updated

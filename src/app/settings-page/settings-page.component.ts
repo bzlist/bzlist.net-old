@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+import {Title} from "@angular/platform-browser";
 
 import {SettingsService} from "../services/settings.service";
 
@@ -7,7 +8,7 @@ import {SettingsService} from "../services/settings.service";
   templateUrl: "./settings-page.component.html",
   styleUrls: ["./settings-page.component.scss"]
 })
-export class SettingsPageComponent{
+export class SettingsPageComponent implements OnInit{
   get darkMode(): boolean{
     return this.settingsService.darkMode;
   }
@@ -26,7 +27,12 @@ export class SettingsPageComponent{
     }
   }
 
-  constructor(public settingsService: SettingsService){
+  constructor(private title: Title,
+              public settingsService: SettingsService){
+  }
+
+  ngOnInit(){
+    this.title.setTitle("Settings - BZList");
   }
 
   serverColumnName(column: string): string{
