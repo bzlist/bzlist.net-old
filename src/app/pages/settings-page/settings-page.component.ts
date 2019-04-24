@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Title} from "@angular/platform-browser";
 
-import {SettingsService} from "../services/settings.service";
+import {SettingsService} from "../../services/settings.service";
 
 @Component({
   selector: "app-settings-page",

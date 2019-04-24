@@ -1,8 +1,8 @@
 import {Component, Input} from "@angular/core";
 
-import {SettingsService} from "../services/settings.service";
+import {SettingsService} from "../../services/settings.service";
 
-import {Player} from "../models/server.model";
+import {Player} from "../../models/server.model";
 
 @Component({
   selector: "app-players-table",

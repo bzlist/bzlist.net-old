@@ -15,7 +15,7 @@ import {MaterialModule} from "./material.module";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AngularFireAuthModule} from "@angular/fire/auth";
-import {firebase} from "./firebase";
+import {firebase} from "./firebase.config";
 
 // services
 import {SettingsService} from "./services/settings.service";
@@ -29,22 +29,23 @@ import {VerboseGameStylePipe} from "./pipes/verbose-game-style.pipe";
 
 // components
 import {AppComponent} from "./app.component";
-import {ServersComponent} from "./servers/servers.component";
-import {NavigationToolbarComponent} from "./navigation-toolbar/navigation-toolbar.component";
-import {ServerCardComponent} from "./server-card/server-card.component";
-import {ServersTableComponent} from "./servers-table/servers-table.component";
-import {TableComponent} from "./table/table.component";
-import {PlayersTableComponent} from "./players-table/players-table.component";
+import {ServersComponent} from "./components/servers/servers.component";
+import {NavigationToolbarComponent} from "./components/navigation-toolbar/navigation-toolbar.component";
+import {ServerCardComponent} from "./components/server-card/server-card.component";
+import {ServersTableComponent} from "./components/servers-table/servers-table.component";
+import {TableComponent} from "./components/table/table.component";
+import {PlayersTableComponent} from "./components/players-table/players-table.component";
 
 // pages
-import {ServerPageComponent} from "./server-page/server-page.component";
-import {SettingsPageComponent} from "./settings-page/settings-page.component";
-import {HomePageComponent} from "./home-page/home-page.component";
-import {HelpPageComponent} from "./help-page/help-page.component";
+import {ServerPageComponent} from "./pages/server-page/server-page.component";
+import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
+import {HomePageComponent} from "./pages/home-page/home-page.component";
+import {HelpPageComponent} from "./pages/help-page/help-page.component";
 import {AccountPageComponent} from "./pages/account-page/account-page.component";
 
 @NgModule({
   declarations: [
+    // components
     AppComponent,
     ServersComponent,
     NavigationToolbarComponent,
@@ -52,11 +53,13 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     ServersTableComponent,
     TableComponent,
     PlayersTableComponent,
+    // pages
     HomePageComponent,
     HelpPageComponent,
     ServerPageComponent,
     SettingsPageComponent,
     AccountPageComponent,
+    // pipes
     TimeAgoPipe,
     BooleanYesNoPipe,
     NumberZeroNoPipe,

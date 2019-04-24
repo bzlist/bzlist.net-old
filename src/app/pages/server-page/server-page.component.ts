@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 
@@ -6,8 +6,8 @@ import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {SettingsService} from "../services/settings.service";
-import {Server, Player} from "../models/server.model";
+import {SettingsService} from "../../services/settings.service";
+import {Server, Player} from "../../models/server.model";
 
 @Component({
   selector: "app-server-page",
