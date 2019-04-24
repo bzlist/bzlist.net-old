@@ -1,8 +1,13 @@
 .header{
-  padding: 32px 0;
-  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  padding: 64px 0;
 
-  h1{
+  @media screen and (max-width: 768px){
+    width: 90%;
+  }
+
+  .headline{
     color: #1976D2;
     font-size: 3rem;
 
@@ -11,15 +16,7 @@
     }
   }
 
-  p{
+  .tagline{
     font-size: 1.3rem;
-
-    @media screen and (max-width: 768px){
-      font-size: .9rem;
-    }
   }
-}
-
-.footer{
-  background-color: var(--bg-light);
 }

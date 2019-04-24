@@ -11,6 +11,7 @@
 - Light and dark theme colors
 - Handle tables being compact automatically
 - Store settings in local storage instead of cookies
+- Home page
 
 ### Removed
 - Dedicated 3rd party licenses page

@@ -82,11 +82,11 @@ mat-icon{
   color: var(--color-text-lighter);
 }
 
-router-outlet ~ *{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
+// router-outlet ~ *{
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+// }
 
 .container{
   padding: 8px 24px;

@@ -1,4 +1,3 @@
-<app-navigation-toolbar></app-navigation-toolbar>
 <div class="container">
   <div *ngIf="auth.user | async as user; else login">
     <h2>Signed in as {{user.username || user.email}}</h2>
