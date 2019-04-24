@@ -1,0 +1,20 @@
+<app-navigation-toolbar></app-navigation-toolbar>
+<div class="container">
+  <div *ngIf="auth.user | async as user; else login">
+    <h2>Signed in as {{user.username || user.email}}</h2>
+    <a *ngIf="user.bzid" href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{user.bzid}}" target="_blank">View Profile</a>
+    <p>
+      <button mat-stroked-button (click)="auth.signOut()">Sign Out</button>&nbsp;
+      <a *ngIf="!user.bzid" mat-stroked-button (click)="auth.bzflagSignin()">Connect to BZFlag</a>
+      <a *ngIf="user.bzid" mat-stroked-button (click)="auth.disconnectBZFlag()">Disconnect from BZFlag</a>
+    </p>
+  </div>
+  <ng-template #login>
+    <h2>Sign in to get started</h2>
+    <p>
+      <button mat-stroked-button (click)="auth.googleSignin()"><i class="fab fa-google"></i>&nbsp; Sign In with Google</button>&nbsp;
+      <button mat-stroked-button (click)="auth.githubSignin()"><i class="fab fa-github"></i>&nbsp; Sign In with GitHub</button>
+    </p>
+  </ng-template>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</div>

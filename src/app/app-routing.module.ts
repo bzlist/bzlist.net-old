@@ -5,6 +5,7 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {HelpPageComponent} from "./help-page/help-page.component";
 import {ServerPageComponent} from "./server-page/server-page.component";
 import {SettingsPageComponent} from "./settings-page/settings-page.component";
+import {AccountPageComponent} from "./pages/account-page/account-page.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: "settings",
     component: SettingsPageComponent
+  },
+  {
+    path: "account",
+    component: AccountPageComponent
   },
   {
     path: "**",

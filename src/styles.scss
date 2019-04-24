@@ -58,8 +58,9 @@ a{
   text-decoration: none;
 }
 
-a:hover{
-  text-decoration: underline;
+a:hover,
+button:hover{
+  color: #328CE7;
 }
 
 hr{
@@ -71,10 +72,6 @@ mat-toolbar-row{
   color: var(--color-text);
   background-color: var(--bg);
   border-bottom: 1px solid --var(--color-text-light);
-
-  a:hover{
-    text-decoration: none;
-  }
 
   .spacer{
     flex: 1 1 auto;
@@ -154,16 +151,25 @@ router-outlet ~ *{
   }
 }
 
-.mobile-hide{
-  @media screen and (max-width: 768px){
-    display: none !important;
-  }
-}
-
 .yes{
   color: #46A046;
 }
 
 .no{
   color: #D1332E;
+}
+
+
+@media screen and (max-width: 768px){
+  .mobile-hide{
+    display: none !important;
+  }
+
+  h1{
+    font-size: 1.3rem;
+  }
+
+  h2{
+    font-size: 1.1rem;
+  }
 }

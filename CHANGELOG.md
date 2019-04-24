@@ -4,6 +4,7 @@
 - Meta tags
 - Change title on different pages
 - Hide server list table column settings when using grid view
+- User accounts
 
 ### Updated
 - Improved responsiveness
