@@ -14,7 +14,6 @@ interface User{
   email: string;
   username?: string;
   bzid?: string;
-  settings?: object[];
 }
 
 @Injectable({

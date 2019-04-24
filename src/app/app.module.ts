@@ -18,7 +18,6 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 import {firebase} from "./firebase";
 
 // services
-import {CookieService} from "ngx-cookie-service";
 import {SettingsService} from "./services/settings.service";
 import {AuthService} from "./services/auth.service";
 
@@ -75,7 +74,7 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule
   ],
-  providers: [CookieService, SettingsService, AuthService],
+  providers: [SettingsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
