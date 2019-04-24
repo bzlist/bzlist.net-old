@@ -74,7 +74,7 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     MaterialModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule.enablePersistence({experimentalTabSynchronization: true}),
     AngularFireAuthModule
   ],
   providers: [SettingsService, AuthService],
