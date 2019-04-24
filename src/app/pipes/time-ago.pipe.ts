@@ -5,7 +5,8 @@ const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
 
 @Pipe({
-  name: "timeAgo"
+  name: "timeAgo",
+  pure: false
 })
 export class TimeAgoPipe implements PipeTransform{
   transform(value: number, args?: any): string{
