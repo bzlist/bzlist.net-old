@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from "@angular/core";
 
 import {SettingsService} from "../../services/settings.service";
 
@@ -7,7 +7,8 @@ import {Server} from "../../models/server.model";
 @Component({
   selector: "app-servers-table",
   templateUrl: "./servers-table.component.html",
-  styleUrls: ["./servers-table.component.scss"]
+  styleUrls: ["./servers-table.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ServersTableComponent{
   @Input() servers: Server[];
