@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
+import {environment} from "../../environments/environment";
+
 import {Observable, of} from "rxjs";
 import {switchMap} from "rxjs/operators";
 
@@ -12,8 +14,8 @@ import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestor
 interface User{
   uid: string;
   email: string;
-  username?: string;
-  bzid?: string;
+  username?: any;
+  bzid?: any;
 }
 
 @Injectable({
@@ -59,9 +61,7 @@ export class AuthService{
   }
 
   bzflagSignin(){
-    // window.location = "https://my.bzflag.org/weblogin.php?action=weblogin&url=https%3A%2F%2Fbzlist.net%2Faccount%3Fusername%3D%25USERNAME%25%26token%3D%25TOKEN%25"; // production
-    // window.location = "https://my.bzflag.org/weblogin.php?action=weblogin&url=https%3A%2F%2Fdev.bzlist.net%2Faccount%3Fusername%3D%25USERNAME%25%26token%3D%25TOKEN%25"; // bleeding edge
-    window.location = "https://my.bzflag.org/weblogin.php?action=weblogin&url=http%3A%2F%2Flocalhost%3A4200%2Faccount%3Fusername%3D%25USERNAME%25%26token%3D%25TOKEN%25"; // dev
+    window.location.href = environment.bzWebLoginURL;
   }
 
   connectBZFlag(username: string, token: string){
@@ -88,13 +88,12 @@ export class AuthService{
     })
   }
 
-  updateUserData(user){
+  private updateUserData(user){
     this.userDoc = this.afs.doc<User>(`users/${user.uid}`);
 
     const data = {
       uid: user.uid,
-      email: user.email,
-      settings: user.settings
+      email: user.email
     };
 
     return this.userDoc.set(data, {merge: true});
