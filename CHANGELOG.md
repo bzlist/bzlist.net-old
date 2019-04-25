@@ -1,3 +1,8 @@
+## Unreleased
+
+### Updated
+- Loading screen
+
 ## 0.3.0 - User accounts 👨‍💼 (2019-4-23)
 
 ### Additions
