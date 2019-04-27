@@ -1,16 +1,16 @@
 <div class="container">
-  <div *ngIf="servers">
-    <h2>{{servers.length}} Public Servers Online</h2>
-    <small>{{totalPlayers}} players and {{totalObservers}} observers online. Last update was {{lastUpdate | timeAgo}}.</small>
+  <div *ngIf="serversService.servers">
+    <h2>{{serversService.servers.length}} Public Servers Online</h2>
+    <small>{{serversService.totalPlayers}} players and {{serversService.totalObservers}} observers online. Last update was {{serversService.lastUpdate | timeAgo}}.</small>
   </div>
 </div>
-<div *ngIf="servers">
-  <app-servers-table *ngIf="!settingsService.gridView" [servers]="servers" (rowClick)="showServerDetails($event)"></app-servers-table>
+<div *ngIf="serversService.servers">
+  <app-servers-table *ngIf="!settingsService.gridView" (rowClick)="showServerDetails($event)"></app-servers-table>
   <ul *ngIf="settingsService.gridView" class="list-nostyle list-card">
-    <app-server-card *ngFor="let server of servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
+    <app-server-card *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
   </ul>
 </div>
-<div *ngIf="!servers" class="spinner">
+<div *ngIf="!serversService.servers" class="spinner">
   <div class="cube1"></div>
   <div class="cube2"></div>
 </div>

@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from "@angular/core";
 
 import {SettingsService} from "../../services/settings.service";
+import {ServersService} from "../../services/servers.service";
 
 import {Server} from "../../models/server.model";
 
@@ -11,10 +12,11 @@ import {Server} from "../../models/server.model";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ServersTableComponent{
-  @Input() servers: Server[];
+  // @Input() servers: Server[];
   @Output() rowClick = new EventEmitter<Server>();
 
-  constructor(public settingsService: SettingsService){
+  constructor(public settingsService: SettingsService,
+              private serversService: ServersService){
   }
 
   rowClicked(server: Server): void{
