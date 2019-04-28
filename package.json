@@ -20,8 +20,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
-    "build:stats": "ng build --prod --stats-json",
+    "build": "ng build",
+    "build:prod": "ng build --prod",
+    "build:stats": "ng build --stats-json",
     "build:gh-pages": "ng build --prod --base-href /client/",
     "build:gh-pages-stats": "ng build --prod --base-href /client/ --stats-json",
     "deploy:gh-pages": "ngh",
