@@ -7,7 +7,7 @@ import {environment} from "../../environments/environment";
 import {Observable, of} from "rxjs";
 import {switchMap} from "rxjs/operators";
 
-import * as firebase from "firebase/app";
+import {auth, firestore} from "firebase/app";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 
@@ -53,13 +53,13 @@ export class AuthService{
   }
 
   async googleSignin(){
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
   async githubSignin(){
-    const provider = new firebase.auth.GithubAuthProvider();
+    const provider = new auth.GithubAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
@@ -91,8 +91,8 @@ export class AuthService{
 
   disconnectBZFlag(){
     this.userDoc.update({
-      username: firebase.firestore.FieldValue.delete(),
-      bzid: firebase.firestore.FieldValue.delete()
+      username: firestore.FieldValue.delete(),
+      bzid: firestore.FieldValue.delete()
     })
   }
 
