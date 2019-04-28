@@ -4,7 +4,6 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatButtonModule,
-  MatSnackBarModule,
   MatCheckboxModule
 } from "@angular/material";
 
@@ -13,7 +12,6 @@ const modules = [
   MatToolbarModule,
   MatTooltipModule,
   MatButtonModule,
-  MatSnackBarModule,
   MatCheckboxModule
 ];
 

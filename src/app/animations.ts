@@ -1,5 +1,6 @@
 import {trigger, animate, transition, style, query} from "@angular/animations";
 
+// simple fade in-out animation
 export const fadeAnimation = trigger("fadeAnimation", [
   transition("* => *", [
     query(":enter", [style({opacity: 0})], {optional: true}),

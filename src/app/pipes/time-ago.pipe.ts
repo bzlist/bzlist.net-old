@@ -1,5 +1,6 @@
 import {Pipe, PipeTransform} from "@angular/core";
 
+// time constants
 const MINUTE = 60;
 const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
@@ -14,6 +15,7 @@ export class TimeAgoPipe implements PipeTransform{
       return "never";
     }
 
+    // convert from timestamp to time ago
     value = new Date().getTime() / 1000 - value;
 
     let time: string = "just now";

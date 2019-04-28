@@ -5,6 +5,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class VerboseGameStylePipe implements PipeTransform{
   transform(value: string, args?: any): string{
+    // turn the short abbreviation string to the verbose version
     switch(value){
       case "CTF":
         return "Capture The Flag";
@@ -13,7 +14,7 @@ export class VerboseGameStylePipe implements PipeTransform{
       case "OFFA":
         return "Open Free For All";
       case "Rabbit":
-        break;
+        return "Rabbit Chase";
       default:
         break;
     }

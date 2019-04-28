@@ -9,26 +9,29 @@ import {SettingsService} from "../../services/settings.service";
   styleUrls: ["./settings-page.component.scss"]
 })
 export class SettingsPageComponent implements OnInit{
+  constructor(private title: Title,
+              public settingsService: SettingsService){
+  }
+
   get darkMode(): boolean{
     return this.settingsService.darkMode;
   }
+  
   set darkMode(value: boolean){
     this.settingsService.darkMode = value;
 
+    // and transition to document
     document.documentElement.classList.add("transition");
     setTimeout(() => {
       document.documentElement.classList.remove("transition");
     }, 300);
 
+    // set data-theme
     if(value){
       document.documentElement.setAttribute("data-theme", "dark");
     }else{
       document.documentElement.setAttribute("data-theme", "light");
     }
-  }
-
-  constructor(private title: Title,
-              public settingsService: SettingsService){
   }
 
   ngOnInit(){

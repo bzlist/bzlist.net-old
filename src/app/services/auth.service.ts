@@ -11,6 +11,7 @@ import * as firebase from "firebase/app";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 
+// user data structure
 interface User{
   uid: string;
   email: string;
@@ -22,6 +23,7 @@ interface User{
   providedIn: "root"
 })
 export class AuthService{
+  // user data
   user: Observable<User>;
   private userDoc: AngularFirestoreDocument<User>;
 
@@ -33,6 +35,7 @@ export class AuthService{
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user){
+          // get the document for the authed user
           this.userDoc = this.afs.doc<User>(`users/${user.uid}`);
           return this.userDoc.valueChanges();
         }else{
@@ -41,6 +44,7 @@ export class AuthService{
       })
     );
 
+    // get route query params when connecting to bzflag
     this.route.queryParams.subscribe(params => {
       if(params.username && params.token){
         this.connectBZFlag(params.username, params.token);
@@ -64,9 +68,12 @@ export class AuthService{
     window.location.href = environment.bzWebLoginURL;
   }
 
+  // connect to bzflag account and make sure token is valid
   connectBZFlag(username: string, token: string){
+    // make request to cloud function
     this.http.get(`https://us-central1-bzlist-api.cloudfunctions.net/checkToken?callsign=${encodeURI(username)}&token=${token}`).subscribe((data: any) => {
       if(data.ok){
+        // if the token is valid update the user information
         this.userDoc.update({
           username,
           bzid: data.bzid
@@ -77,6 +84,7 @@ export class AuthService{
         console.error("Unknown BZFlag check token error");
       }
 
+      // remove the query params
       this.router.navigate([]);
     });
   }

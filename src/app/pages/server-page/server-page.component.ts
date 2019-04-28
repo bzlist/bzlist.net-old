@@ -29,26 +29,31 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   constructor(private route: ActivatedRoute,
               private title: Title,
-              private db: AngularFirestore,
+              private afs: AngularFirestore,
               private settingsService: SettingsService){
   }
 
   ngOnInit(){
+    // get the route params
     this.routeSub = this.route.params.subscribe(params => {
+      // get the address and port
       this.address = params["address"];
       this.port = +params["port"];
 
-      this.serverDataSub = this.db.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
+      // subscrive the the server data
+      this.serverDataSub = this.afs.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
         this.setData(data);
       });
     });
   }
 
   ngOnDestroy(){
+    // clean up subscriptions
     this.routeSub.unsubscribe();
     this.serverDataSub.unsubscribe();
   }
 
+  // sets the server data and metadata
   setData(server: Server): void{
     if(server == null){
       this.badAddress = true;
@@ -73,6 +78,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     });
   }
 
+  // adds score value to a player
   addPlayerScore(player: Player): Player{
     player.score = player.wins - player.losses;
     return player;
