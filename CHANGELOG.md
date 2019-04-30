@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.1 (2019-4-30)
 
 ### Additions
 - Server side rendering
