@@ -51,8 +51,10 @@ These are the most useful commands defined in `package.json`:
 - `npm run build:prod` - runs the TypeScript compiler with optimizations and asset copier once and outputs it into `dist/browser`.
 - `npm run build:stats && npm run stats` - builds the app and generates stats into `dist` and opens the stats in your browser.
 - `npm run build:gh-pages` - the same as `build:prod` and adds the prefix `client` for use with GitHub Pages.
-- `npm run build:ssr` - builds with server-side rendering
-- `npm run deploy:gh-page` - deploys to GitHub Pages
-- `npm run deploy:firebase` - deploys `dist/browser` to Firebase Hosting and functions to Firebase Functions
+- `npm run build:ssr` - builds with server-side rendering.
+- `npm run deploy:gh-page` - deploys to GitHub Pages.
+- `npm run deploy:firebase` - deploys `dist/browser` to Firebase Hosting and functions to Firebase Functions.
+- `npm run deploy:firebase:hosting` - deploys `dist/browser` to Firebase Hosting.
+- `npm run deploy:firebase:ssr` - deploys `dist/browser` to Firebase Hosting and SSR function.
 
 If you deploy with server-side renderering you must delete `dist/browser/index.html` after compiling the `ssr` function.
