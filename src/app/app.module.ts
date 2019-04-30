@@ -20,6 +20,7 @@ import {firebase} from "./firebase.config";
 // services
 import {SettingsService} from "./services/settings.service";
 import {AuthService} from "./services/auth.service";
+import {SeoService} from "./services/seo.service";
 
 // pipes
 import {TimeAgoPipe} from "./pipes/time-ago.pipe";
@@ -66,7 +67,7 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     VerboseGameStylePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: "bzlist"}),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -77,7 +78,11 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     AngularFirestoreModule.enablePersistence({experimentalTabSynchronization: true}),
     AngularFireAuthModule
   ],
-  providers: [SettingsService, AuthService],
+  providers: [
+    SettingsService,
+    AuthService,
+    SeoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

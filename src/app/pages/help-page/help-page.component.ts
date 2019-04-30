@@ -1,15 +1,19 @@
 import {Component, OnInit} from "@angular/core";
-import {Title} from "@angular/platform-browser";
+
+import {SeoService} from "../../services/seo.service";
 
 @Component({
   selector: "help-page",
   templateUrl: "./help-page.component.html"
 })
 export class HelpPageComponent implements OnInit{
-  constructor(private title: Title){
+  constructor(private seo: SeoService){
   }
 
   ngOnInit(){
-    this.title.setTitle("Help - BZList");
+    this.seo.generateTags({
+      title: "Help - BZList",
+      description: "Help information for BZList"
+    });
   }
 }

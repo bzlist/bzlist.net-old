@@ -21,7 +21,10 @@ export class AppComponent{
     });
 
     // automatically set dark mode at startup
-    this.setDarkMode(this.settingsService.darkMode);
+    try{
+      this.setDarkMode(this.settingsService.darkMode);
+    }catch(err){
+    }
   }
 
   setDarkMode(value: boolean): void{

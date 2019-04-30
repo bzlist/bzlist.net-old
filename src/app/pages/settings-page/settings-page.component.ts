@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {Title} from "@angular/platform-browser";
 
 import {SettingsService} from "../../services/settings.service";
+import {SeoService} from "../../services/seo.service";
 
 @Component({
   selector: "app-settings-page",
@@ -9,12 +9,16 @@ import {SettingsService} from "../../services/settings.service";
   styleUrls: ["./settings-page.component.scss"]
 })
 export class SettingsPageComponent implements OnInit{
-  constructor(private title: Title,
-              public settingsService: SettingsService){
+  constructor(public settingsService: SettingsService,
+              public seo: SeoService){
   }
 
   get darkMode(): boolean{
-    return this.settingsService.darkMode;
+    try{
+      return this.settingsService.darkMode;
+    }catch(err){
+      return false;
+    }
   }
   
   set darkMode(value: boolean){
@@ -35,7 +39,10 @@ export class SettingsPageComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.title.setTitle("Settings - BZList");
+    this.seo.generateTags({
+      title: "Settings - BZList",
+      description: "Change various settings to customize your experience"
+    });
   }
 
   serverColumnName(column: string): string{

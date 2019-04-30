@@ -1,5 +1,9 @@
 ## Unreleased
 
+### Additions
+- Server side rendering
+- Open Graph and Twitter meta tags
+
 ### Updated
 - Loading screen
 

@@ -15,8 +15,29 @@ export class SettingsService{
   readonly playerColumns = ["callsign", "team", "score", "winsLosses", "tks"];
   readonly playerColumnNames = ["Callsign", "Team", "Score", "Wins / Losses", "Team Kills"];
 
+  getItem(key: string){
+    try{
+      return localStorage.getItem(key);
+    }catch(err){
+    }
+  }
+
+  setItem(key: string, value: string){
+    try{
+      return localStorage.setItem(key, value);
+    }catch(err){
+    }
+  }
+
+  removeItem(key: string){
+    try{
+      return localStorage.removeItem(key);
+    }catch(err){
+    }
+  }
+
   private getList(key: string, defaults: string[] = []): string[]{
-    const data = localStorage.getItem(`${SettingsService.prefix}${key}`);
+    const data = this.getItem(`${SettingsService.prefix}${key}`);
     if(!data){
       return defaults;
     }
@@ -26,22 +47,22 @@ export class SettingsService{
 
   private setList(key: string, value: string[], defaults: string[] = []): void{
     if(JSON.stringify(value) === JSON.stringify(defaults)){
-      return localStorage.removeItem(`${SettingsService.prefix}${key}`);
+      return this.removeItem(`${SettingsService.prefix}${key}`);
     }
 
-    localStorage.setItem(`${SettingsService.prefix}${key}`, JSON.stringify(value));
+    this.setItem(`${SettingsService.prefix}${key}`, JSON.stringify(value));
   }
 
   private getBool(key: string): boolean{
-    return localStorage.getItem(`${SettingsService.prefix}${key}`) === "true" ? true : false;
+    return this.getItem(`${SettingsService.prefix}${key}`) === "true" ? true : false;
   }
 
   private setBool(key: string, value: boolean): void{
     if(!value){
-      return localStorage.removeItem(`${SettingsService.prefix}${key}`);
+      return this.removeItem(`${SettingsService.prefix}${key}`);
     }
 
-    localStorage.setItem(`${SettingsService.prefix}${key}`, value.toString());
+    this.setItem(`${SettingsService.prefix}${key}`, value.toString());
   }
 
   get displayedServerColumns(): string[]{

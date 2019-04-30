@@ -1,12 +1,14 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {Title} from "@angular/platform-browser";
+// import {Title} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "../../services/settings.service";
+import {SeoService} from "../../services/seo.service";
+
 import {Server, Player} from "../../models/server.model";
 
 @Component({
@@ -28,9 +30,10 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   observerCount = 0;
 
   constructor(private route: ActivatedRoute,
-              private title: Title,
+              // private title: Title,
               private afs: AngularFirestore,
-              private settingsService: SettingsService){
+              private settingsService: SettingsService,
+              private seo: SeoService){
   }
 
   ngOnInit(){
@@ -55,14 +58,25 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   // sets the server data and metadata
   setData(server: Server): void{
-    if(server == null){
+    this.server = server;
+
+    if(this.server == null){
       this.badAddress = true;
+
+      this.seo.generateTags({
+        title: "Unknown Server - BZList",
+        description: `${this.address}:${this.port} is not in the database`
+      });
+
       return;
     }
 
-    this.server = server;
+    this.seo.generateTags({
+      title: `${this.server.title} - BZList`,
+      description: `${this.server.title} is hosted at ${this.server.address}:${this.server.port} and owned by ${this.server.owner}`
+    });
 
-    this.title.setTitle(this.server.title + " - BZList");
+    // this.title.setTitle(this.server.title + " - BZList");
 
     this.playerCount = 0;
     this.observerCount = 0;

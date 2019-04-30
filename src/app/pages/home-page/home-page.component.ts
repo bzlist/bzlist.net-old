@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Title} from "@angular/platform-browser";
+
+import {SeoService} from "../../services/seo.service";
 
 @Component({
   selector: "home-page",
@@ -7,10 +8,13 @@ import {Title} from "@angular/platform-browser";
   styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit{
-  constructor(private title: Title){
+  constructor(private seo: SeoService){
   }
 
   ngOnInit(){
-    this.title.setTitle("BZList");
+    this.seo.generateTags({
+      title: "BZList",
+      description: "BZList is an online service providing real-tile BZFlag server information."
+    });
   }
 }

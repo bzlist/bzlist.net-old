@@ -16,8 +16,11 @@ export class ServersComponent{
               private settingsService: SettingsService,
               public serversService: ServersService){
     // if the window width is smaller then the mobile threshold then use grid view
-    if(window.innerWidth <= 768){
+    try{
+      if(window.innerWidth <= 768){
       this.settingsService.gridView = true;
+      }
+    }catch(err){
     }
   }
 
