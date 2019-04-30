@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit{
   ngOnInit(){
     this.seo.generateTags({
       title: "BZList",
-      description: "BZList is an online service providing real-tile BZFlag server information."
+      description: "BZList is an online service providing real-time BZFlag server information."
     });
   }
 }
