@@ -8,7 +8,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/bzlist/client.svg)
 [![Website](https://img.shields.io/website/https/bzlist.net.svg)](https://bzlist.net)
 
-Firebase + Angular = *(kind)* real-time server stats for BZFlag.
+Firebase + Angular = *(kind of)* real-time server stats for BZFlag.
 
 The changelog can be found [here](CHANGELOG.md) and the offical site at [bzlist.net](https://bzlist.net).
 
