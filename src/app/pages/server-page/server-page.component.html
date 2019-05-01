@@ -7,6 +7,10 @@
   </p>
   <app-table style="max-width:350px">
     <tr>
+      <th>Online</th>
+      <td><span [outerHTML]="server.online | booleanYesNo"></span></td>
+    </tr>
+    <tr>
       <th>IP Address</th>
       <td>{{server.ip}}</td>
     </tr>

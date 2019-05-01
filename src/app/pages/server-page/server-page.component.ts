@@ -73,7 +73,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
     this.seo.generateTags({
       title: `${this.server.title} - BZList`,
-      description: `${this.server.title} is hosted at ${this.server.address}:${this.server.port} and owned by ${this.server.owner}`
+      description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
 
     // this.title.setTitle(this.server.title + " - BZList");

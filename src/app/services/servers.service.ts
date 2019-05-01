@@ -17,7 +17,7 @@ export class ServersService{
 
   constructor(private afs: AngularFirestore){
     this.afs.collection<Server>("servers", ref =>
-      ref.orderBy("playersCount", "desc").orderBy("title")
+      ref.where("online", "==", true).orderBy("playersCount", "desc").orderBy("title")
     ).valueChanges().subscribe((data: Server[]) => {
       this.setServers(data);
     });

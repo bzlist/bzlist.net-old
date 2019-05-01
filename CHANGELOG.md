@@ -1,3 +1,8 @@
+## Unreleased
+
+### Additions
+- Server online/offline status
+
 ## 0.3.1 (2019-4-30)
 
 ### Additions

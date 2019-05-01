@@ -47,6 +47,7 @@ export interface Server{
   countryCode: string;
   timestamp: number;
   title: string;
+  online: boolean;
   teams: Array<Team>;
   players: Array<Player>;
   configuration: Configuration;
