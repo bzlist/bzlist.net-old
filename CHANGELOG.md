@@ -3,6 +3,10 @@
 ### Additions
 - Server online/offline status
 
+### Updated
+- Footer
+- Various slight tweaks to look
+
 ## 0.3.1 (2019-4-30)
 
 ### Additions

@@ -68,6 +68,10 @@ hr{
   border-top: 1px solid var(--color-grey-lighter);
 }
 
+hr.small{
+  width: 30%;
+}
+
 mat-toolbar-row{
   color: var(--color-text);
   background-color: var(--bg);
@@ -89,9 +93,13 @@ mat-icon{
 // }
 
 .container{
-  padding: 8px 24px;
+  padding: 12px 32px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px){
+    padding: 8px 16px;
+  }
 }
 
 .badge{
@@ -166,16 +174,20 @@ p.note{
   border-radius: 6px;
 }
 
+.center{
+  text-align: center;
+}
+
 @media screen and (max-width: 768px){
   .mobile-hide{
     display: none !important;
   }
 
   h1{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   h2{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }
