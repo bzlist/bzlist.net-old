@@ -1,7 +1,8 @@
 <div class="container">
+  <p class="note">Accounts current do nothing, however that will be changed in the near future.</p>
   <div *ngIf="auth.user | async as user; else login">
     <h2>Signed in as {{user.username || user.email}}</h2>
-    <a *ngIf="user.bzid" href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{user.bzid}}" target="_blank">View Profile</a>
+    <a *ngIf="user.bzid" href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{user.bzid}}" target="_blank">View BZFlag Profile</a>
     <p>
       <button mat-stroked-button (click)="auth.signOut()">Sign Out</button>&nbsp;
       <a *ngIf="!user.bzid" mat-stroked-button (click)="auth.bzflagSignin()">Connect to BZFlag</a>

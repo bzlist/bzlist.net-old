@@ -159,6 +159,12 @@ mat-icon{
   color: #D1332E;
 }
 
+p.note{
+  padding: 12px 16px;
+  color: var(--color-text-headings);
+  border: solid 1px #1976D2;
+  border-radius: 6px;
+}
 
 @media screen and (max-width: 768px){
   .mobile-hide{
