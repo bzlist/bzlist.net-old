@@ -6,6 +6,7 @@
 ### Updated
 - Footer
 - Various slight tweaks to look
+- Linting configuration
 
 ## 0.3.1 (2019-4-30)
 
