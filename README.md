@@ -57,4 +57,4 @@ These are the most useful commands defined in `package.json`:
 - `npm run deploy:firebase:hosting` - deploys `dist/browser` to Firebase Hosting.
 - `npm run deploy:firebase:ssr` - deploys `dist/browser` to Firebase Hosting and SSR function.
 
-If you deploy with server-side renderering you must delete `dist/browser/index.html` after compiling the `ssr` function.
+*Note: If you deploy with server-side renderering you must delete `dist/browser/index.html` after compiling the `ssr` function and before deploying to hosting.*
