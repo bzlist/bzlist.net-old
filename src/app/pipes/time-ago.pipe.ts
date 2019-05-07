@@ -50,14 +50,14 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy{
     this.removeTimer();
   }
 
-  private removeTimer(){
-		if(this.timer){
-			window.clearTimeout(this.timer);
-			this.timer = null;
-		}
+  private removeTimer(): void{
+    if(this.timer){
+      window.clearTimeout(this.timer);
+      this.timer = null;
+    }
   }
 
-  private getSecondsUntilUpdate(seconds: number){
+  private getSecondsUntilUpdate(seconds: number): number{
     if(seconds < MINUTE){
       // less than 1 min, update every 10 seconds
       return 10;
@@ -67,9 +67,9 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy{
     }else if(seconds < DAY){
       // less then a day, update every 5 minutes
       return MINUTE * 5;
-    }else{
-      // update every hour
-      return HOUR;
     }
+
+    // update every hour
+    return HOUR;
   }
 }
