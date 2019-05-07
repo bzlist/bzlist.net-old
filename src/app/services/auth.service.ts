@@ -93,7 +93,7 @@ export class AuthService{
     this.userDoc.update({
       username: firestore.FieldValue.delete(),
       bzid: firestore.FieldValue.delete()
-    })
+    });
   }
 
   private updateUserData(user){

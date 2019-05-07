@@ -17,7 +17,7 @@ export class AppComponent{
     // if there is a service worker update available automatically update
     swUpdate.available.subscribe(event => {
       // once updated refresh the page
-      swUpdate.activateUpdate().then(document.location.reload);
+      swUpdate.activateUpdate().then(() => window.location.reload());
     });
 
     // automatically set dark mode at startup

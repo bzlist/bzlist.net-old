@@ -3,7 +3,7 @@ import {Component, OnInit} from "@angular/core";
 import {SeoService} from "../../services/seo.service";
 
 @Component({
-  selector: "home-page",
+  selector: "app-home-page",
   templateUrl: "./home-page.component.html",
   styleUrls: ["./home-page.component.scss"]
 })

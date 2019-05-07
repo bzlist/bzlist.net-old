@@ -16,7 +16,7 @@ export class SeoService {
       image: "https://bzlist.net/assets/images/icon/512.png",
       slug: "",
       ...tags
-    }
+    };
 
     this.titleService.setTitle(tags.title);
 

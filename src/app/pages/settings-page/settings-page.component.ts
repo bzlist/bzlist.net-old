@@ -20,7 +20,7 @@ export class SettingsPageComponent implements OnInit{
       return false;
     }
   }
-  
+
   set darkMode(value: boolean){
     this.settingsService.darkMode = value;
 

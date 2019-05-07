@@ -18,7 +18,7 @@ export class TimeAgoPipe implements PipeTransform{
     // convert from timestamp to time ago
     value = new Date().getTime() / 1000 - value;
 
-    let time: string = "just now";
+    let time = "just now";
 
     if(value >= DAY * 2){
       time = `${Math.floor(value / DAY)} days ago`;

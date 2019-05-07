@@ -10,7 +10,7 @@ export class Time{
   }
 
   static autoFormatTime(seconds: number, allowSeconds: boolean = false): string{
-    let time: string = "this minute";
+    let time = "this minute";
 
     if(allowSeconds){
       time = Math.floor(seconds) + " seconds ago";

@@ -3,7 +3,7 @@ import {Component, OnInit} from "@angular/core";
 import {SeoService} from "../../services/seo.service";
 
 @Component({
-  selector: "help-page",
+  selector: "app-help-page",
   templateUrl: "./help-page.component.html"
 })
 export class HelpPageComponent implements OnInit{
