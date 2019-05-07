@@ -1,5 +1,10 @@
 *Note: this is an outline and does not contain every change.*
 
+## Unreleased
+
+### Additions
+- time-ago pipe auto update
+
 ## HOTFIX: 0.3.21 (2019-5-7)
 
 - Fix component name `servers` (now `app-servers`) in home page.
