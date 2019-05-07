@@ -1,6 +1,6 @@
 *Note: this is an outline and does not contain every change.*
 
-## Unreleased
+## 0.3.2 (2019-5-7)
 
 ### Additions
 - Server online/offline status

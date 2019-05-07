@@ -1,7 +1,7 @@
 {
   "name": "bzlist-client",
-  "version": "0.3.1",
-  "description": "BZList is an online service providing BZFlag server and player information.",
+  "version": "0.3.2",
+  "description": "BZList is an online service providing real-time BZFlag server information.",
   "homepage": "https://bzlist.net",
   "license": "GPL-3.0",
   "keywords": [
