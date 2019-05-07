@@ -1,3 +1,5 @@
+*Note: this is an outline and does not contain every change.*
+
 ## Unreleased
 
 ### Additions
