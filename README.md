@@ -53,8 +53,8 @@ These are the most useful commands defined in `package.json`:
 - `npm run build:gh-pages` - the same as `build:prod` and adds the prefix `client` for use with GitHub Pages.
 - `npm run build:ssr` - builds with server-side rendering.
 - `npm run deploy:gh-page` - deploys to GitHub Pages.
-- `npm run deploy:firebase` - deploys `dist/browser` to Firebase Hosting and functions to Firebase Functions.
+- `npm run deploy:firebase` - deploys everything configured to Firebase.
 - `npm run deploy:firebase:hosting` - deploys `dist/browser` to Firebase Hosting.
-- `npm run deploy:firebase:ssr` - deploys `dist/browser` to Firebase Hosting and SSR function.
+- `npm run deploy:firebase:ssr` - deploys the SSR function to Firebase and deletes `dist/browser/index.html`.
 
-*Note: If you deploy with server-side renderering you must delete `dist/browser/index.html` after compiling the `ssr` function and before deploying to hosting.*
+*Note: If you deploy with server-side renderering you must delete `dist/browser/index.html` after compiling the `ssr` function and before deploying to hosting. This is done automatically with `npm run deploy:firebase:ssr`.*
