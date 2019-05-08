@@ -1,4 +1,5 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Inject, PLATFORM_ID} from "@angular/core";
+import {isPlatformBrowser} from "@angular/common";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
@@ -15,12 +16,16 @@ export class ServersService{
   totalPlayers = 0;
   totalObservers = 0;
 
-  constructor(private afs: AngularFirestore){
-    this.afs.collection<Server>("servers", ref =>
-      ref.where("online", "==", true).orderBy("playersCount", "desc").orderBy("title")
-    ).valueChanges().subscribe((data: Server[]) => {
-      this.setServers(data);
-    });
+  constructor(@Inject(PLATFORM_ID) platformId: string,
+              private afs: AngularFirestore){
+    // only get data if being rendered in a browser
+    if(isPlatformBrowser(platformId)){
+      this.afs.collection<Server>("servers", ref =>
+        ref.where("online", "==", true).orderBy("playersCount", "desc").orderBy("title")
+      ).valueChanges().subscribe((data: Server[]) => {
+        this.setServers(data);
+      });
+    }
   }
 
   get servers(): Server[]{
