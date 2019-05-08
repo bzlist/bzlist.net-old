@@ -1,7 +1,19 @@
 language: node_js
 node_js:
-- "8"
+  - "8"
 dist: trusty
+sudo: false
+notifications:
+  email: false
+  irc: "chat.freenode.net#bzlist"
+cache:
+  directories:
+     - ./node_modules
+     - ./functions/node_modules
+install:
+  - npm install
+  - npm --prefix functions install
 script:
-- npm run lint
-- npm run build:ssr
+  - npm run lint
+  - npm run build:ssr
+  - npm --prefix functions run build
