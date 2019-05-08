@@ -4,6 +4,7 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/bzlist/client.svg)
 [![GitHub issues](https://img.shields.io/github/issues/bzlist/client.svg)](https://github.com/bzlist/client/issues)
 [![Website](https://img.shields.io/website/https/bzlist.net.svg)](https://bzlist.net)
+[![Build Status](https://travis-ci.org/bzlist/client.svg?branch=master)](https://travis-ci.org/bzlist/client)
 
 Firebase + Angular = *(kind of)* real-time server stats for BZFlag.
 
