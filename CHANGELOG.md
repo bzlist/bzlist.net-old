@@ -3,6 +3,7 @@
 ## Unreleased
 
 - time-ago pipe auto update
+- Travis CI configuration
 
 ## HOTFIX: 0.3.21 (2019-5-7)
 
