@@ -4,14 +4,14 @@
 @import "theme.scss";
 
 *{
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 html{
   --bg: #FFF;
-  --color-grey: #BFBFBF;
-  --color-grey-lighter: #E6E6E6;
-  --color-grey-light: #F2F2F2;
+  --bg-one: #AFAFAF;
+  --bg-two: #BFBFBF;
+  --bg-three: #DFDFDF;
   --color-text-headings: #111;
   --color-text: #333;
   --color-text-lighter: #555;
@@ -19,10 +19,10 @@ html{
 }
 
 html[data-theme="dark"]{
-  --bg: #000;
-  --color-grey: #666;
-  --color-grey-lighter: #404040;
-  --color-grey-light: #0D0D0D;
+  --bg: #222;
+  --bg-one: #6F6F6F;
+  --bg-two: #5F5F5F;
+  --bg-three: #4F4F4F;
   --color-text-headings: #EEE;
   --color-text: #CCC;
   --color-text-lighter: #AAA;
@@ -65,7 +65,7 @@ button:hover{
 
 hr{
   border: none;
-  border-top: 1px solid var(--color-grey-lighter);
+  border-top: 1px solid var(--bg-two);
 }
 
 hr.small{
@@ -86,12 +86,6 @@ mat-icon{
   color: var(--color-text-lighter);
 }
 
-// router-outlet ~ *{
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-// }
-
 .container{
   padding: 12px 32px;
   display: flex;
@@ -105,9 +99,8 @@ mat-icon{
 .badge{
   padding: 3px 6px;
   color: var(--bg);
-  background-color: var(--color-grey);
+  background-image: linear-gradient(var(--bg-two), var(--bg-one));
   font-size: .75rem;
-  font-weight: bolder;
   text-align: center;
   border-radius: 4px;
   white-space: nowrap;
@@ -116,7 +109,7 @@ mat-icon{
 .card{
   padding: 16px 24px;
   display: block;
-  border: 1px solid var(--color-grey-lighter);
+  border: 1px solid var(--bg-three);
   border-radius: 8px;
 }
 
@@ -131,7 +124,7 @@ mat-icon{
 }
 
 .btn:hover{
-  background-color: var(--color-grey-lighter);
+  background-color: var(--bg-two);
 }
 
 .list-nostyle{

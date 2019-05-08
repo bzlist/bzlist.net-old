@@ -1,6 +1,6 @@
 <div class="card">
   <h3>{{server.title}}</h3>
-  {{server.address}}:{{server.port}} <small>{{server.owner}}</small><br>
+  {{server.address}}:{{server.port}} • {{server.owner}}<br>
   <p>
     <span><span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;</span>
     <span *ngIf="server.configuration.superflags"><span class="badge">Flags</span>&nbsp;</span>
