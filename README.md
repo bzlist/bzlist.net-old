@@ -13,19 +13,11 @@ The changelog can be found [here](CHANGELOG.md) and the offical site at [bzlist.
 ## Get started
 
 ### Clone the repository
-
-(Optional) make a dedicated directory for BZList.
-
-```sh
-mkdir bzlist
-cd bzlist
-```
-
 Clone the repository.
 
 ```sh
-git clone https://github.com/bzlist/client.git
-cd client
+git clone https://github.com/bzlist/bzlist.net.git
+cd bzlist.net
 ```
 
 ### Install npm packages
