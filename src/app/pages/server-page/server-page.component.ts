@@ -1,6 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-// import {Title} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
@@ -30,7 +29,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   observerCount = 0;
 
   constructor(private route: ActivatedRoute,
-              // private title: Title,
               private afs: AngularFirestore,
               private settingsService: SettingsService,
               private seo: SeoService){
@@ -75,8 +73,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       title: `${this.server.title} - BZList`,
       description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
-
-    // this.title.setTitle(this.server.title + " - BZList");
 
     this.playerCount = 0;
     this.observerCount = 0;
