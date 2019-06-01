@@ -9,8 +9,17 @@ import {SeoService} from "../../services/seo.service";
   styleUrls: ["./settings-page.component.scss"]
 })
 export class SettingsPageComponent implements OnInit{
+  mobile: boolean = false;
+
   constructor(public settingsService: SettingsService,
               public seo: SeoService){
+    // check if the window width is smaller then the mobile threshold
+    try{
+      if(window.innerWidth <= 768){
+        this.mobile = true;
+      }
+    }catch(err){
+    }
   }
 
   get darkMode(): boolean{
