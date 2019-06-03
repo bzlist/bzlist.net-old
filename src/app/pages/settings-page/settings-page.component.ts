@@ -9,7 +9,7 @@ import {SeoService} from "../../services/seo.service";
   styleUrls: ["./settings-page.component.scss"]
 })
 export class SettingsPageComponent implements OnInit{
-  mobile: boolean = false;
+  mobile = false;
 
   constructor(public settingsService: SettingsService,
               public seo: SeoService){

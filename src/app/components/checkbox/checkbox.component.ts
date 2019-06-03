@@ -8,8 +8,8 @@ import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeD
   encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent{
-  private _checked: boolean = false;
-  private _disabled: boolean = false;
+  private _checked = false;
+  private _disabled = false;
 
   @Output() checkedChange = new EventEmitter<boolean>();
 
