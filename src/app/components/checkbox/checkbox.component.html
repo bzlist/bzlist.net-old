@@ -1,0 +1,10 @@
+<label class="checkbox" [attr.checked]="checked" [attr.disabled]="disabled" (click)="toggle()">
+  <div class="checkbox-inner-container">
+    <span class="checkox-background">
+      <svg xml:space="preserve" class="checkmark" focusable="false" version="1.1" viewBox="0 0 24 24">
+        <path d="M4.1,12.7 9,17.6 20.3,6.3" fill="none" stroke="white" stroke-width="2"></path>
+      </svg>
+    </span>
+  </div>
+  <span class="checkbox-label"><ng-content></ng-content></span>
+</label>

@@ -1,22 +1,22 @@
 <div class="container">
   <h1>Settings</h1>
   <p>
-    <mat-checkbox color="primary" [(ngModel)]="darkMode">Dark Theme</mat-checkbox><br>
-    <mat-checkbox color="primary" [(ngModel)]="settingsService.compact">Compact Tables</mat-checkbox><br>
-    <mat-checkbox color="primary" [(ngModel)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</mat-checkbox>
+    <app-checkbox [(checked)]="darkMode">Dark Theme</app-checkbox><br>
+    <app-checkbox [(checked)]="settingsService.compact">Compact Tables</app-checkbox><br>
+    <app-checkbox [(checked)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</app-checkbox>
   </p>
   <div *ngIf="!settingsService.gridView">
     <h2>Server List Columns</h2>
     <ul style="list-style:none;padding:0">
       <li *ngFor="let column of settingsService.serverColumns">
-        <mat-checkbox color="primary" [checked]="getServerColumn(column)" (change)="toggleServerColumn(column)">{{serverColumnName(column)}}</mat-checkbox>
+        <app-checkbox [checked]="getServerColumn(column)" (checkedChange)="toggleServerColumn(column)">{{serverColumnName(column)}}</app-checkbox>
       </li>
     </ul>
   </div>
   <h2>Players List Columns</h2>
   <ul style="list-style:none;padding:0">
     <li *ngFor="let column of settingsService.playerColumns">
-      <mat-checkbox color="primary" [checked]="getPlayerColumn(column)" (change)="togglePlayerColumn(column)">{{playerColumnName(column)}}</mat-checkbox>
+      <app-checkbox [checked]="getPlayerColumn(column)" (checkedChange)="togglePlayerColumn(column)">{{playerColumnName(column)}}</app-checkbox>
     </li>
   </ul>
 </div>

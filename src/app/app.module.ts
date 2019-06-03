@@ -36,6 +36,7 @@ import {ServerCardComponent} from "./components/server-card/server-card.componen
 import {ServersTableComponent} from "./components/servers-table/servers-table.component";
 import {TableComponent} from "./components/table/table.component";
 import {PlayersTableComponent} from "./components/players-table/players-table.component";
+import {CheckboxComponent} from "./components/checkbox/checkbox.component";
 
 // pages
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
@@ -54,6 +55,7 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     ServersTableComponent,
     TableComponent,
     PlayersTableComponent,
+    CheckboxComponent,
     // pages
     HomePageComponent,
     HelpPageComponent,
@@ -78,11 +80,7 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     AngularFirestoreModule.enablePersistence({experimentalTabSynchronization: true}),
     AngularFireAuthModule
   ],
-  providers: [
-    SettingsService,
-    AuthService,
-    SeoService
-  ],
+  providers: [SettingsService, AuthService, SeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
