@@ -34,9 +34,10 @@ import {ServersComponent} from "./components/servers/servers.component";
 import {NavigationToolbarComponent} from "./components/navigation-toolbar/navigation-toolbar.component";
 import {ServerCardComponent} from "./components/server-card/server-card.component";
 import {ServersTableComponent} from "./components/servers-table/servers-table.component";
-import {TableComponent} from "./components/table/table.component";
 import {PlayersTableComponent} from "./components/players-table/players-table.component";
-import {CheckboxComponent} from "./components/checkbox/checkbox.component";
+// ui
+import {TableComponent} from "./components/ui/table/table.component";
+import {CheckboxComponent} from "./components/ui/checkbox/checkbox.component";
 
 // pages
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
