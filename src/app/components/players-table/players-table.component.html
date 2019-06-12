@@ -7,7 +7,7 @@
     <th *ngIf="hasColumn('tks')">Team Kills</th>
   </tr>
   <tr *ngFor="let player of players" (click)="rowClicked(server)">
-    <td *ngIf="hasColumn('callsign')">{{player.callsign}} {{player.motto != undefined && player.motto != "" ? "(" + player.motto + ")" : ""}}</td>
+    <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="player.motto">({{player.motto}})</i></td>
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
     <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : ""}}</td>
     <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</td>
