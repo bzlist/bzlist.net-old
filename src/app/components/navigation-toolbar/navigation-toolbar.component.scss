@@ -7,11 +7,10 @@ mat-toolbar-row{
     }
   }
 
-  #logo{
+  .logo{
+    height: 16px;
     margin-left: 16px;
-    margin-right: 4px;
-    color: #1976D2;
-    font-size: 22px;
+    margin-right: 6px;
 
     @media screen and (max-width: 768px){
       margin-left: 0;
