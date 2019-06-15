@@ -1,10 +1,12 @@
-*Note: this is an outline and does not contain every change.*
+*Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
-## Unreleased
+## 0.3.3 (2019-6-15)
 
 - time-ago pipe auto update
-- Travis CI configuration
+- Travis CI build checking
 - Custom checkboxes
+- Updated look
+- Removed Angular Material
 
 ## HOTFIX: 0.3.21 (2019-5-7)
 
