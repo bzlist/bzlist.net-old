@@ -1,10 +1,10 @@
 mat-toolbar-row{
-  .mat-button, .mat-icon-button{
-    margin-left: 8px;
+  color: var(--color-text);
+  background-color: var(--bg);
+  border-bottom: 1px solid --var(--color-text-light);
 
-    @media screen and (max-width: 768px){
-      margin-left: 0;
-    }
+  .spacer{
+    flex: 1 1 auto;
   }
 
   .logo{

@@ -8,11 +8,11 @@
 @import "theme.scss";
 
 *{
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 html{
-  --bg: #FFF;
+  --bg: #F5F5F5;
   --bg-one: #AFAFAF;
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
@@ -25,7 +25,7 @@ html{
 }
 
 html[data-theme="dark"]{
-  --bg: #222;
+  --bg: #151515;
   --bg-one: #6F6F6F;
   --bg-two: #5F5F5F;
   --bg-three: #4F4F4F;
@@ -66,8 +66,7 @@ a{
   text-decoration: none;
 }
 
-a:hover/*,
-button:hover*/{
+a:hover{
   color: #328CE7;
 }
 
@@ -78,20 +77,6 @@ hr{
 
 hr.small{
   width: 30%;
-}
-
-mat-toolbar-row{
-  color: var(--color-text);
-  background-color: var(--bg);
-  border-bottom: 1px solid --var(--color-text-light);
-
-  .spacer{
-    flex: 1 1 auto;
-  }
-}
-
-mat-icon{
-  color: var(--color-text-lighter);
 }
 
 .icon{
