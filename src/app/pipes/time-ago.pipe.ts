@@ -22,14 +22,14 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy{
     const timeToUpdate = Number.isNaN(value) ? 1000 : this.getSecondsUntilUpdate(value) * 1000;
 
     this.timer = this.ngZone.runOutsideAngular(() => {
-			if(!window){
-				return null;
+      if(!window){
+        return null;
       }
 
       return window.setTimeout(() => {
         this.ngZone.run(() => this.changeDetectorRef.markForCheck());
       }, timeToUpdate);
-		});
+    });
 
     let time = "just now";
 
