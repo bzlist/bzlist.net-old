@@ -9,7 +9,6 @@ import {environment} from "../environments/environment";
 
 // modules
 import {AppRoutingModule} from "./app-routing.module";
-import {MaterialModule} from "./material.module";
 
 // firebase
 import {AngularFireModule} from "@angular/fire";
@@ -75,7 +74,6 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MaterialModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     AngularFireModule.initializeApp(firebase),
     AngularFirestoreModule.enablePersistence({experimentalTabSynchronization: true}),
