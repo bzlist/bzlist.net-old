@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@font-face{
+  font-family: "Segoe MDL2";
+  src: url(/assets/fonts/SegMDL2.ttf) format("truetype");
+}
 
 @import "theme.scss";
 
@@ -12,6 +16,8 @@ html{
   --bg-one: #AFAFAF;
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
+  --color-hover: rgba(0, 0, 0, .05);
+  --color-hover-dark: rgba(0, 0, 0, .1);
   --color-text-headings: #111;
   --color-text: #333;
   --color-text-lighter: #555;
@@ -23,6 +29,8 @@ html[data-theme="dark"]{
   --bg-one: #6F6F6F;
   --bg-two: #5F5F5F;
   --bg-three: #4F4F4F;
+  --color-hover: rgba(255, 255, 255, .05);
+  --color-hover-dark: rgba(255, 255, 255, .1);
   --color-text-headings: #EEE;
   --color-text: #CCC;
   --color-text-lighter: #AAA;
@@ -58,8 +66,8 @@ a{
   text-decoration: none;
 }
 
-a:hover,
-button:hover{
+a:hover/*,
+button:hover*/{
   color: #328CE7;
 }
 
@@ -84,6 +92,10 @@ mat-toolbar-row{
 
 mat-icon{
   color: var(--color-text-lighter);
+}
+
+.icon{
+  font-family: "Segoe MDL2";
 }
 
 .container{
@@ -114,17 +126,28 @@ mat-icon{
 }
 
 .btn{
-  padding: 8px 16px;
+  margin: 0 2px;
+  padding: 0 12px;
+  color: var(--color-text-headings);
   background: transparent;
   font-size: .9rem;
+  line-height: 36px;
+  display: inline-block;
   border: none;
   border-radius: 4px;
+  outline: none;
   cursor: pointer;
+  user-select: none;
   transition: background-color .2s ease-in-out;
 }
 
 .btn:hover{
-  background-color: var(--bg-two);
+  color: var(--color-text-headings);
+  background-color: var(--color-hover);
+}
+
+.outline{
+  border: 1px solid var(--color-hover-dark);
 }
 
 .list-nostyle{
