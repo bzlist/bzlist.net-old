@@ -84,12 +84,12 @@ hr.small{
 }
 
 .container{
-  padding: 12px 32px;
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 768px){
-    padding: 8px 16px;
+    padding: 16px 18px;
   }
 }
 
