@@ -12,7 +12,7 @@ const DAY = HOUR * 24;
 export class TimeAgoPipe implements PipeTransform, OnDestroy{
   private timer: number;
 
-  constructor(private changeDectectorRef: ChangeDetectorRef,
+  constructor(private changeDetectorRef: ChangeDetectorRef,
               private ngZone: NgZone){
   }
 
@@ -20,6 +20,16 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy{
     // convert from timestamp to time ago
     value = new Date().getTime() / 1000 - value;
     const timeToUpdate = Number.isNaN(value) ? 1000 : this.getSecondsUntilUpdate(value) * 1000;
+
+    this.timer = this.ngZone.runOutsideAngular(() => {
+			if(!window){
+				return null;
+      }
+
+      return window.setTimeout(() => {
+        this.ngZone.run(() => this.changeDetectorRef.markForCheck());
+      }, timeToUpdate);
+		});
 
     let time = "just now";
 
@@ -40,8 +50,6 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy{
     }else if (value >= MINUTE){
       time = "a minute ago";
     }
-
-    console.log(`time-ago.pipe: ${time}`);
 
     return time;
   }
