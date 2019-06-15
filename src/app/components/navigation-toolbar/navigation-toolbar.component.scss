@@ -14,4 +14,13 @@
     margin-left: 16px;
     margin-right: 8px;
   }
+
+  @media screen and (max-width: 768px){
+    padding: 0 8px;
+
+    .logo{
+      height: 14px;
+      margin-left: 0;
+    }
+  }
 }
