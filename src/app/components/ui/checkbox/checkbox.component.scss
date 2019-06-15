@@ -15,7 +15,7 @@
     vertical-align: middle;
     white-space: nowrap;
     flex-shrink: 0;
-    border: 1px solid var(--color-text-lighter);
+    border: 1px solid var(--color-text-light);
     border-radius: 2px;
   }
   
@@ -40,10 +40,6 @@
 
   &[disabled=true] .checkbox-inner-container{
     border-color: var(--color-text-light);
-  }
-
-  &:hover .checkbox-inner-container{
-    border-color: var(--color-text-lighter);
   }
 
   &[checked=true] .checkbox-inner-container{
