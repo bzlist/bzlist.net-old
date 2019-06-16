@@ -1,5 +1,6 @@
 <app-navigation-toolbar></app-navigation-toolbar>
-<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+<!-- <main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''"> -->
+<main>
   <router-outlet #o="outlet"></router-outlet>
 </main>
 <footer class="container center">
