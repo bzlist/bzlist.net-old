@@ -1,5 +1,5 @@
 <div *ngIf="server" class="container">
-  <h1>{{server.title}}</h1>
+  <h1><a class="btn icon" style="position:relative;margin-right:8px;top:-4px" routerLink="/">&#xE830;</a>{{server.title}}</h1>
   <small><b>{{server.address}}:{{server.port}}</b> • owned by <b>{{server.owner}}</b> • updated {{server.timestamp | timeAgo}}</small>
   <p>
     <span><span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;</span>
