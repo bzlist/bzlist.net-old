@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
+@import "variables.scss";
+
 @font-face{
   font-family: "Segoe MDL2";
   src: url(/assets/fonts/SegMDL2.ttf) format("truetype");
@@ -10,7 +12,7 @@
 }
 
 html{
-  --bg: #F5F5F5;
+  --bg: #F7F7F7;
   --bg-one: #AFAFAF;
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
@@ -23,7 +25,7 @@ html{
 }
 
 html[data-theme="dark"]{
-  --bg: #151515;
+  --bg: #222;
   --bg-one: #6F6F6F;
   --bg-two: #5F5F5F;
   --bg-three: #4F4F4F;
@@ -54,18 +56,18 @@ body{
   background-color: var(--bg);
 }
 
-h1,h2,h3{
+h1, h2, h3{
   margin: 0;
   color: var(--color-text-headings);
 }
 
 a{
-  color: #1976D2;
+  color: $color-primary;
   text-decoration: none;
 }
 
 a:hover{
-  color: #328CE7;
+  color: lighten($color-primary, 15%);
 }
 
 hr{
@@ -79,6 +81,7 @@ hr.small{
 
 .icon{
   font-family: "Segoe MDL2";
+  font-weight: normal;
 }
 
 .container{
@@ -86,7 +89,7 @@ hr.small{
   display: flex;
   flex-direction: column;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $breakpoint-mobile){
     padding: 16px 18px;
   }
 }
@@ -97,15 +100,17 @@ hr.small{
   background-image: linear-gradient(var(--bg-two), var(--bg-one));
   font-size: .75rem;
   text-align: center;
-  border-radius: 4px;
+  border-radius: $border-radius/2;
   white-space: nowrap;
 }
 
 .card{
   padding: 16px 24px;
+  background-color: rgba(255, 255, 255, .05);
   display: block;
   border: 1px solid var(--color-hover-dark);
-  border-radius: 8px;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
 }
 
 .btn{
@@ -117,7 +122,7 @@ hr.small{
   line-height: 36px;
   display: inline-block;
   border: none;
-  border-radius: 4px;
+  border-radius: $border-radius;
   outline: none;
   cursor: pointer;
   user-select: none;
@@ -169,15 +174,15 @@ hr.small{
 p.note{
   padding: 12px 16px;
   color: var(--color-text-headings);
-  border: solid 1px #1976D2;
-  border-radius: 6px;
+  border: solid 1px $color-primary;
+  border-radius: $border-radius;
 }
 
 .center{
   text-align: center;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: $breakpoint-mobile){
   .mobile-hide{
     display: none !important;
   }

@@ -1,3 +1,5 @@
+@import "../../../../variables.scss";
+
 .checkbox{
   cursor: pointer;
   align-items: baseline;
@@ -16,7 +18,7 @@
     white-space: nowrap;
     flex-shrink: 0;
     border: 1px solid var(--color-text-light);
-    border-radius: 2px;
+    border-radius: $border-radius/2;
   }
   
   .checkbox-background{
@@ -43,12 +45,12 @@
   }
 
   &[checked=true] .checkbox-inner-container{
-    border-color: #1976D2;
+    border-color: $color-primary;
   }
 
   &[checked=true] .checkmark{
     opacity: 1;
-    background-color: #1976D2;
+    background-color: $color-primary;
   }
 
   &[checked=false] .checkmark{
