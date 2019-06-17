@@ -12,7 +12,7 @@ import {Server} from "../../models/server.model";
   styleUrls: ["./servers.component.scss"]
 })
 export class ServersComponent implements AfterViewInit{
-  ready: boolean = false;
+  ready = false;
 
   constructor(private router: Router,
               private settingsService: SettingsService,
