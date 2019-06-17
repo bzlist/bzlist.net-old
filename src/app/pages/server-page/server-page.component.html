@@ -1,22 +1,33 @@
 <div *ngIf="server" class="container">
   <h1><a class="btn icon" style="position:relative;margin-right:8px;top:-4px" routerLink="/">&#xE830;</a>{{server.title}}</h1>
-  <small><b>{{server.address}}:{{server.port}}</b> • owned by <b>{{server.owner}}</b> • updated {{server.timestamp | timeAgo}}</small>
-  <p>
-    <span><span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;</span>
-    <span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>
-  </p>
+  <span style="margin-bottom:12px">
+    <span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;
+    <small>updated {{server.timestamp | timeAgo}}</small>
+  </span>
   <app-table style="max-width:350px">
     <tr>
       <th>Online</th>
       <td><span [outerHTML]="server.online | booleanYesNo"></span></td>
     </tr>
     <tr>
+      <th>Server</th>
+      <td>{{server.address}}:{{server.port}}</td>
+    </tr>
+    <tr>
       <th>IP Address</th>
       <td>{{server.ip}}</td>
     </tr>
     <tr>
+      <th>Owner</th>
+      <td>{{server.owner}}</td>
+    </tr>
+    <tr>
       <th>Protocol</th>
       <td>{{server.protocol}}</td>
+    </tr>
+    <tr>
+      <th>Game Style</th>
+      <td>{{server.configuration.gameStyle | verboseGameStyle}}</td>
     </tr>
     <tr>
       <th>Max shots</th>
