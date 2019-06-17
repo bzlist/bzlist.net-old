@@ -1,9 +1,11 @@
+@import "../../../variables.scss";
+
 .header{
   width: 70%;
   margin: 0 auto;
   padding: 64px 0;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $breakpoint-mobile){
     width: 90%;
   }
 
@@ -11,8 +13,8 @@
     color: #1976D2;
     font-size: 3rem;
 
-    @media screen and (max-width: 768px){
-      font-size: 1.9rem;
+    @media screen and (max-width: $breakpoint-mobile){
+      font-size: 2.2rem;
     }
   }
 
