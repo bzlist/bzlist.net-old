@@ -26,4 +26,8 @@ export class ServersTableComponent{
   hasColumn(column: string): boolean{
     return this.settingsService.displayedServerColumns.includes(column);
   }
+
+  trackByTimestamp(index: number, item: Server): number{
+    return item.timestamp;
+  }
 }
