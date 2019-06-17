@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, AfterViewInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 import {SettingsService} from "../../services/settings.service";
@@ -11,7 +11,9 @@ import {Server} from "../../models/server.model";
   templateUrl: "./servers.component.html",
   styleUrls: ["./servers.component.scss"]
 })
-export class ServersComponent{
+export class ServersComponent implements AfterViewInit{
+  private ready: boolean = false;
+
   constructor(private router: Router,
               private settingsService: SettingsService,
               public serversService: ServersService){
@@ -22,6 +24,10 @@ export class ServersComponent{
       }
     }catch(err){
     }
+  }
+
+  ngAfterViewInit(): void{
+    setTimeout(() => this.ready = true);
   }
 
   showServerDetails(server: Server): void{
