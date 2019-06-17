@@ -36,14 +36,6 @@
     vertical-align: middle;
   }
 
-  &[disabled=true] .checkbox-label{
-    color: var(--color-text-light);
-  }
-
-  &[disabled=true] .checkbox-inner-container{
-    border-color: var(--color-text-light);
-  }
-
   &[checked=true] .checkbox-inner-container{
     border-color: $color-primary;
   }
@@ -55,5 +47,17 @@
 
   &[checked=false] .checkmark{
     opacity: 0;
+  }
+
+  &[disabled=true] .checkbox-label{
+    color: var(--color-text-light);
+  }
+
+  &[disabled=true] .checkbox-inner-container{
+    border-color: var(--color-text-light);
+  }
+
+  &[disabled=true] .checkmark{
+    background-color: var(--color-text-light);
   }
 }
