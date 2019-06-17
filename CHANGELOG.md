@@ -1,5 +1,14 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
+## 0.3.4 (2019-6-17)
+
+- Fixed bold text being blurry
+- Removed animation when switching pages
+- Add back button to server page
+- Increased headline font size on mobile
+- Disabled checkboxes are now grey
+- Improved server list performance
+
 ## 0.3.3 (2019-6-15)
 
 - time-ago pipe auto update
