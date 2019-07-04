@@ -41,7 +41,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.address = params["address"];
       this.port = +params["port"];
 
-      // subscrive the the server data
+      // subscribe the the server data
       this.serverDataSub = this.afs.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
         this.setData(data);
       });
