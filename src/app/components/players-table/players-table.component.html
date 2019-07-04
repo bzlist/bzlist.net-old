@@ -9,8 +9,8 @@
   <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="player.motto">({{player.motto}})</i></td>
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
-    <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : ""}}</td>
-    <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : ""}}</td>
-    <td *ngIf="hasColumn('tks')">{{player.team !== "Observer" ? player.tks : ""}}</td>
+    <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : "N/A"}}</td>
+    <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : "N/A"}}</td>
+    <td *ngIf="hasColumn('tks')">{{player.team !== "Observer" ? player.tks : "N/A"}}</td>
   </tr>
 </app-table>
