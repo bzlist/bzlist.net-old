@@ -6,7 +6,7 @@
     <th *ngIf="hasColumn('winsLosses')">Wins / Losses</th>
     <th *ngIf="hasColumn('tks')">Team Kills</th>
   </tr>
-  <tr *ngFor="let player of players" (click)="rowClicked(server)">
+  <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="player.motto">({{player.motto}})</i></td>
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
     <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : ""}}</td>
