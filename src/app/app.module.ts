@@ -37,6 +37,7 @@ import {PlayersTableComponent} from "./components/players-table/players-table.co
 // ui
 import {TableComponent} from "./components/ui/table/table.component";
 import {CheckboxComponent} from "./components/ui/checkbox/checkbox.component";
+import {SpinnerComponent} from "./components/ui/spinner/spinner.component";
 
 // pages
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
@@ -44,6 +45,7 @@ import {SettingsPageComponent} from "./pages/settings-page/settings-page.compone
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {HelpPageComponent} from "./pages/help-page/help-page.component";
 import {AccountPageComponent} from "./pages/account-page/account-page.component";
+import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page.component";
 
 @NgModule({
   declarations: [
@@ -56,12 +58,14 @@ import {AccountPageComponent} from "./pages/account-page/account-page.component"
     TableComponent,
     PlayersTableComponent,
     CheckboxComponent,
+    SpinnerComponent,
     // pages
     HomePageComponent,
     HelpPageComponent,
     ServerPageComponent,
     SettingsPageComponent,
     AccountPageComponent,
+    PlayerListPageComponent,
     // pipes
     TimeAgoPipe,
     BooleanYesNoPipe,

@@ -8,7 +8,4 @@
     <app-server-card *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
   </ul>
 </div>
-<div *ngIf="!ready || !serversService.servers" class="spinner">
-  <div class="cube1"></div>
-  <div class="cube2"></div>
-</div>
+<app-spinner [show]="!ready || !serversService.servers"></app-spinner>

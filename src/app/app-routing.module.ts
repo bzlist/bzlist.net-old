@@ -6,6 +6,7 @@ import {HelpPageComponent} from "./pages/help-page/help-page.component";
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
 import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
 import {AccountPageComponent} from "./pages/account-page/account-page.component";
+import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "account",
     component: AccountPageComponent
+  },
+  {
+    path: "players",
+    component: PlayerListPageComponent
   },
   {
     path: "**",
