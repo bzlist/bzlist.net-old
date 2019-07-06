@@ -1,11 +1,11 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {SettingsService} from "../../services/settings.service";
 import {SeoService} from "../../services/seo.service";
 
 import {Server, Player} from "../../models/server.model";
@@ -30,8 +30,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   constructor(private route: ActivatedRoute,
               private afs: AngularFirestore,
-              private settingsService: SettingsService,
-              private seo: SeoService){
+              private seo: SeoService,
+              private sanitizer: DomSanitizer){
   }
 
   ngOnInit(){
@@ -92,5 +92,9 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   addPlayerScore(player: Player): Player{
     player.score = player.wins - player.losses;
     return player;
+  }
+
+  sanitize(url: string){
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }

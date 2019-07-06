@@ -4,6 +4,9 @@
     <span class="badge"><img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt=""> {{server.country}}</span>&nbsp;
     <small>updated {{server.timestamp | timeAgo}}</small>
   </span>
+  <p>
+    <a class="btn outline bg-primary" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port)" title="Requires BZFlag Launcher">Play Now</a>
+  </p>
   <app-table style="max-width:350px">
     <tr>
       <th>Online</th>

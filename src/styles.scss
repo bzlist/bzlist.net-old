@@ -138,6 +138,11 @@ hr.small{
   border: 1px solid var(--color-hover-dark);
 }
 
+.bg-primary{
+  background-color: lighten($color-primary, 5);
+  color: #FFF;
+}
+
 .list-nostyle{
   margin: 0;
   padding: 0;
