@@ -18,11 +18,13 @@ import {Server, Player} from "../../models/server.model";
 export class ServerPageComponent implements OnInit, OnDestroy{
   routeSub: Subscription;
   serverDataSub: Subscription;
+  playerDataSub: Subscription;
 
   address: string;
   port: number;
 
   server: Server;
+  players: Player[];
   badAddress = false;
 
   playerCount = 0;
@@ -45,6 +47,13 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.serverDataSub = this.afs.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
         this.setData(data);
       });
+
+      // subscribe the the player data
+      this.playerDataSub = this.afs.collection<Player>("players", ref =>
+        ref.where("server", "==", `${this.address}:${this.port}`).orderBy("callsign", "asc")
+      ).valueChanges().subscribe((data: Player[]) => {
+        this.setPlayers(data);
+      });
     });
   }
 
@@ -52,6 +61,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     // clean up subscriptions
     this.routeSub.unsubscribe();
     this.serverDataSub.unsubscribe();
+    this.playerDataSub.unsubscribe();
   }
 
   // sets the server data and metadata
@@ -73,25 +83,24 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       title: `${this.server.title} - BZList`,
       description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
+  }
 
+  // set player data
+  private setPlayers(players: Player[]): void{
     this.playerCount = 0;
     this.observerCount = 0;
 
-    this.server.players = this.server.players.map(player => {
-      if(player.team === "Observer"){
+    for(let i = 0; i < players.length; i++){
+      players[i].score = players[i].wins - players[i].losses;
+
+      if(players[i].team === "Observer"){
         this.observerCount++;
       }else{
         this.playerCount++;
       }
+    }
 
-      return this.addPlayerScore(player);
-    });
-  }
-
-  // adds score value to a player
-  addPlayerScore(player: Player): Player{
-    player.score = player.wins - player.losses;
-    return player;
+    this.players = players;
   }
 
   sanitize(url: string){

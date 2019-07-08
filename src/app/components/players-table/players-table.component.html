@@ -1,7 +1,7 @@
 <app-table>
   <tr>
     <th *ngIf="hasColumn('callsign')">Callsign</th>
-    <th *ngIf="players[0] && players[0].server">Server</th>
+    <th *ngIf="showServerColumn">Server</th>
     <th *ngIf="hasColumn('team')">Team</th>
     <th *ngIf="hasColumn('score')">Score</th>
     <th *ngIf="hasColumn('winsLosses')">Wins / Losses</th>
@@ -9,7 +9,7 @@
   </tr>
   <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="player.motto">({{player.motto}})</i></td>
-    <td *ngIf="player.server">{{player.server}}</td>
+    <td *ngIf="showServerColumn"><a [routerLink]="getServerLink(player.server)">{{player.server}}</a></td>
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
     <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : "N/A"}}</td>
     <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : "N/A"}}</td>

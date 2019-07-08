@@ -2,5 +2,5 @@
   <h2>{{playersService.players.length}} Players Online</h2>
   <small>{{playersService.totalPlayers}} players and {{playersService.totalObservers}} observers online. Last update was {{playersService.lastUpdate | timeAgo}}.</small>
 </div>
-<app-players-table *ngIf="playersService.players" [players]="playersService.players"></app-players-table>
+<app-players-table *ngIf="playersService.players" [players]="playersService.players" [showServerColumn]="true"></app-players-table>
 <app-spinner [show]="!playersService.players"></app-spinner>

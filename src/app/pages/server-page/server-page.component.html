@@ -89,9 +89,12 @@
       <td><span [outerHTML]="server.configuration.maxTeamScore | numberZeroNo"></span></td>
     </tr>
   </app-table>
-  <div style="margin-top:18px">
+  <div *ngIf="players" style="margin-top:18px">
     <h2>{{playerCount}} Players and {{observerCount}} Observers Online</h2>
-    <app-players-table *ngIf="server.players.length > 0" [players]="server.players"></app-players-table>
+    <app-players-table [players]="players"></app-players-table>
+  </div>
+  <div *ngIf="!players" style="margin-top:18px">
+    <h2>No Players Online</h2>
   </div>
 </div>
 <div *ngIf="badAddress" class="container">

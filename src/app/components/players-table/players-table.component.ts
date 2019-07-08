@@ -12,8 +12,14 @@ import {Player} from "../../models/server.model";
 })
 export class PlayersTableComponent{
   @Input() players: Player[];
+  @Input() showServerColumn = false;
 
   constructor(public settingsService: SettingsService){
+  }
+
+  getServerLink(server: string){
+    const address = server.split(":");
+    return `/s/${address[0]}/${address[1]}`;
   }
 
   hasColumn(column: string): boolean{
