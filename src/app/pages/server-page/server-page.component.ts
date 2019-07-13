@@ -30,6 +30,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   playerCount = 0;
   observerCount = 0;
 
+  selectTeam = false;
+
   constructor(private route: ActivatedRoute,
               private afs: AngularFirestore,
               private seo: SeoService,

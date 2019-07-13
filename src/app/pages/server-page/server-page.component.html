@@ -5,7 +5,17 @@
     <small>updated {{server.timestamp | timeAgo}}</small>
   </span>
   <p class="mobile-hide">
-    <a class="btn outline bg-primary" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port)" title="Requires BZFlag Launcher">Play Now</a>
+    <button *ngIf="!selectTeam" class="btn outline bg-primary" (click)="selectTeam = true" title="Requires BZFlag Launcher">Play Now</button>
+    <span *ngIf="selectTeam">
+      <h3>Select Team</h3>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' rogue')">Rogue</a>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' red')">Red</a>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' green')">Green</a>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' blue')">Blue</a>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' purple')">Purple</a>
+      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' observer')">Observer</a>
+      <button class="btn outline" (click)="selectTeam = false">Cancel</button>
+    </span>
   </p>
   <app-table style="max-width:350px">
     <tr>
