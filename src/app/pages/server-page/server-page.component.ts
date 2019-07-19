@@ -105,6 +105,11 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     this.players = players;
   }
 
+  joinTeam(team: string){
+    window.location.href = `bzflag-launcher:${this.server.address}:${this.server.port} ${team}`;
+    this.selectTeam = false;
+  }
+
   sanitize(url: string){
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }

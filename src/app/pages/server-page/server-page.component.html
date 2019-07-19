@@ -8,12 +8,12 @@
     <button *ngIf="!selectTeam" class="btn outline bg-primary" (click)="selectTeam = true" title="Requires BZFlag Launcher">Play Now</button>
     <span *ngIf="selectTeam">
       <h3>Select Team</h3>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' rogue')">Rogue</a>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' red')">Red</a>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' green')">Green</a>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' blue')">Blue</a>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' purple')">Purple</a>
-      <a class="btn outline" [href]="sanitize('bzflag-launcher:'+server.address+':'+server.port+' observer')">Observer</a>
+      <button class="btn outline" (click)="joinTeam('rogue')">Rogue</button>
+      <button class="btn outline" (click)="joinTeam('red')">Red</button>
+      <button class="btn outline" (click)="joinTeam('green')">Green</button>
+      <button class="btn outline" (click)="joinTeam('blue')">Blue</button>
+      <button class="btn outline" (click)="joinTeam('purple')">Purple</button>
+      <button class="btn outline" (click)="joinTeam('observer')">Observer</button>
       <button class="btn outline" (click)="selectTeam = false">Cancel</button>
     </span>
   </p>
