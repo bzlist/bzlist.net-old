@@ -39,7 +39,7 @@ export class SettingsService{
   private getList(key: string, defaults: string[] = []): string[]{
     const data = this.getItem(`${SettingsService.prefix}${key}`);
     if(!data){
-      return defaults;
+      return [...defaults];
     }
 
     return JSON.parse(data);
