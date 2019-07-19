@@ -58,8 +58,8 @@
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "40kb",
-                  "maximumWarning": "20kb",
+                  "baseline": "115kb",
+                  "maximumWarning": "30kb",
                   "maximumError": "50kb"
                 },
                 {
@@ -72,16 +72,16 @@
                 {
                   "type": "bundle",
                   "name": "styles",
-                  "baseline": "60kb",
-                  "maximumWarning": "20kb",
-                  "maximumError": "50kb"
+                  "baseline": "3kb",
+                  "maximumWarning": "5kb",
+                  "maximumError": "10kb"
                 },
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1.05mb",
-                  "maximumWarning": "100kb",
-                  "maximumError": "200kb"
+                  "baseline": "950kb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "150kb"
                 }
               ],
               "serviceWorker": true
