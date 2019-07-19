@@ -5,7 +5,7 @@
     <th *ngIf="hasColumn('team')">Team</th>
     <th *ngIf="hasColumn('score')">Score</th>
     <th *ngIf="hasColumn('winsLosses')">Wins / Losses</th>
-    <th *ngIf="hasColumn('tks')">Team Kills</th>
+    <th *ngIf="showTkColumn && hasColumn('tks')">Team Kills</th>
   </tr>
   <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="player.motto">({{player.motto}})</i></td>
@@ -13,6 +13,6 @@
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
     <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : "N/A"}}</td>
     <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : "N/A"}}</td>
-    <td *ngIf="hasColumn('tks')">{{player.team !== "Observer" ? player.tks : "N/A"}}</td>
+    <td *ngIf="showTkColumn && hasColumn('tks')">{{player.team !== "Observer" ? player.tks : "N/A"}}</td>
   </tr>
 </app-table>

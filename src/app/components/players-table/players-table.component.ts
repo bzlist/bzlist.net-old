@@ -13,6 +13,7 @@ import {Player} from "../../models/server.model";
 export class PlayersTableComponent{
   @Input() players: Player[];
   @Input() showServerColumn = false;
+  @Input() showTkColumn = true;
 
   constructor(public settingsService: SettingsService){
   }
