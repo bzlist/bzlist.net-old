@@ -7,14 +7,15 @@
   <p class="mobile-hide">
     <button *ngIf="!selectTeam" class="btn outline bg-primary" (click)="selectTeam = true" title="Requires BZFlag Launcher">Play Now</button>
     <span *ngIf="selectTeam">
-      <h3>Select Team</h3>
+      <h3>Select Team</h3><br>
       <button class="btn outline" (click)="joinTeam('rogue')">Rogue</button>
       <button class="btn outline" (click)="joinTeam('red')">Red</button>
       <button class="btn outline" (click)="joinTeam('green')">Green</button>
       <button class="btn outline" (click)="joinTeam('blue')">Blue</button>
       <button class="btn outline" (click)="joinTeam('purple')">Purple</button>
       <button class="btn outline" (click)="joinTeam('observer')">Observer</button>
-      <button class="btn outline" (click)="selectTeam = false">Cancel</button>
+      <button class="btn outline" (click)="selectTeam = false">Cancel</button><br>
+      <small><i>requires <a href="https://github.com/The-Noah/bzflag-launcher" target="_blank">BZFlag Launcher</a></i></small>
     </span>
   </p>
   <app-table style="max-width:350px">
