@@ -80,7 +80,7 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     FormsModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule.enablePersistence({experimentalTabSynchronization: true}),
+    AngularFirestoreModule.enablePersistence({synchronizeTabs: true}),
     AngularFireAuthModule
   ],
   providers: [SettingsService, AuthService, SeoService],
