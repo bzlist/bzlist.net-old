@@ -100,7 +100,7 @@
     </tr>
   </app-table>
   <div *ngIf="players" style="margin-top:18px">
-    <h2>{{playerCount}} Players and {{observerCount}} Observers Online</h2>
+    <h2>{{playerCount + " Player" | autoPlural}} and {{observerCount + " Observer" | autoPlural}} Online</h2>
     <app-players-table [players]="players" [showTkColumn]="!server.configuration.noTeamKills"></app-players-table>
   </div>
   <div *ngIf="!players" style="margin-top:18px">

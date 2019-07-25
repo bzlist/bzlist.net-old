@@ -26,6 +26,7 @@ import {TimeAgoPipe} from "./pipes/time-ago.pipe";
 import {BooleanYesNoPipe} from "./pipes/boolean-yes-no.pipe";
 import {NumberZeroNoPipe} from "./pipes/number-zero-no.pipe";
 import {VerboseGameStylePipe} from "./pipes/verbose-game-style.pipe";
+import {AutoPluralPipe} from "./pipes/auto-plural.pipe";
 
 // components
 import {AppComponent} from "./app.component";
@@ -70,7 +71,8 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     TimeAgoPipe,
     BooleanYesNoPipe,
     NumberZeroNoPipe,
-    VerboseGameStylePipe
+    VerboseGameStylePipe,
+    AutoPluralPipe
   ],
   imports: [
     BrowserModule.withServerTransition({appId: "bzlist"}),
