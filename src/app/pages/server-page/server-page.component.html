@@ -13,9 +13,8 @@
       <button class="btn outline" (click)="joinTeam('green')">Green</button>
       <button class="btn outline" (click)="joinTeam('blue')">Blue</button>
       <button class="btn outline" (click)="joinTeam('purple')">Purple</button>
-      <button class="btn outline" (click)="joinTeam('observer')">Observer</button>
-      <button class="btn outline" (click)="selectTeam = false">Cancel</button><br>
-      <small><i>requires <a href="https://github.com/The-Noah/bzflag-launcher" target="_blank">BZFlag Launcher</a></i></small>
+      <button class="btn outline" (click)="joinTeam('observer')">Observer</button><br>
+      <small><i><a style="cursor:pointer" (click)="selectTeam = false">Cancel</a>. requires <a href="https://github.com/The-Noah/bzflag-launcher" target="_blank">BZFlag Launcher</a></i></small>
     </span>
   </p>
   <app-table style="max-width:350px">
