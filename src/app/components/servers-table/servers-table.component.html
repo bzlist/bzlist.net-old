@@ -9,7 +9,7 @@
     <th *ngIf="hasColumn('title')">Title</th>
   </tr>
   <tr *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" (click)="rowClicked(server)">
-    <td *ngIf="hasColumn('players')">{{server.players.length}}</td>
+    <td *ngIf="hasColumn('players')">{{server.playersCount}}</td>
     <td *ngIf="hasColumn('address')">{{server.address}}:{{server.port}}</td>
     <td *ngIf="hasColumn('owner')">{{server.owner}}</td>
     <td *ngIf="hasColumn('protocol')">{{server.protocol}}</td>
