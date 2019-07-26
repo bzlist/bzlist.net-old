@@ -51,6 +51,6 @@ export interface Server{
   title: string;
   online: boolean;
   teams: Array<Team>;
-  players: Array<string>;
+  playersCount: number;
   configuration: Configuration;
 }

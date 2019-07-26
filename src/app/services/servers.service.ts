@@ -36,7 +36,7 @@ export class ServersService{
 
     let timestamp = 0;
     for(let i = 0; i < servers.length; i++){
-      this.playerCount += servers[i].players.length;
+      this.playerCount += servers[i].playersCount;
 
       if(servers[i].timestamp > timestamp){
         timestamp = servers[i].timestamp;
