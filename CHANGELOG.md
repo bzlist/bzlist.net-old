@@ -1,5 +1,15 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
+## 0.4.0 - Players are here! 🦸‍ (2019-8-28)
+
+- Add button to launch BZFlag and join server
+- Add dedicated players page
+- Don't show player tk column on no tk servers
+- Updated to Angular 8 with Ivy (improved performance)
+- Add setting to toffle player motto
+- Add a few FAQ Q&As
+- Performance improvments
+
 ## 0.3.4 (2019-6-17)
 
 - Fixed bold text being blurry
