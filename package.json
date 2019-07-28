@@ -1,5 +1,5 @@
 {
-  "name": "bzlist-client",
+  "name": "bzlist.net",
   "version": "0.4.0",
   "description": "BZList is an online service providing real-time BZFlag server information.",
   "homepage": "https://bzlist.net",
@@ -25,7 +25,7 @@
     "build:stats": "ng build --stats-json",
     "build:gh-pages": "ng build --prod --base-href /bzlist.net/",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run bzlist-client:server:production",
+    "build:client-and-server-bundles": "ng build --prod && ng run bzlist.net:server:production",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "deploy:gh-pages": "ngh",
     "deploy:firebase": "firebase deploy",
