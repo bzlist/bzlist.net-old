@@ -1,9 +1,14 @@
 <div class="container">
   <h1>Settings</h1>
   <p>
-    <app-checkbox [(checked)]="darkMode">Dark Theme</app-checkbox><br>
     <app-checkbox [(checked)]="settingsService.compact">Compact Tables</app-checkbox><br>
     <app-checkbox [(checked)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</app-checkbox>
+  </p>
+  <h2>Theme</h2>
+  <p>
+    <app-checkbox [(checked)]="lightTheme" [disabled]="lightTheme">Light</app-checkbox><br>
+    <app-checkbox [(checked)]="darkTheme" [disabled]="darkTheme">Dark</app-checkbox><br>
+    <app-checkbox [(checked)]="midnightTheme" [disabled]="midnightTheme">Midnight</app-checkbox>
   </p>
   <div *ngIf="!settingsService.gridView">
     <h2>Server List Columns</h2>

@@ -22,23 +22,8 @@ export class AppComponent{
 
     // automatically set dark mode at startup
     try{
-      this.setDarkMode(this.settingsService.darkMode);
+      document.documentElement.setAttribute("data-theme", this.settingsService.theme);
     }catch(err){
-    }
-  }
-
-  setDarkMode(value: boolean): void{
-    // and transition to document
-    document.documentElement.classList.add("transition");
-    setTimeout(() => {
-      document.documentElement.classList.remove("transition");
-    }, 300);
-
-    // set data-theme
-    if(value){
-      document.documentElement.setAttribute("data-theme", "dark");
-    }else{
-      document.documentElement.setAttribute("data-theme", "light");
     }
   }
 }

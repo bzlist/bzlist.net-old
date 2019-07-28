@@ -32,6 +32,19 @@ html[data-theme="dark"]{
   --color-hover: rgba(255, 255, 255, .05);
   --color-hover-dark: rgba(255, 255, 255, .1);
   --color-text-headings: #EEE;
+  --color-text: #DDD;
+  --color-text-lighter: #BBB;
+  --color-text-light: #999;
+}
+
+html[data-theme="midnight"]{
+  --bg: #000;
+  --bg-one: #4F4F4F;
+  --bg-two: #3F3F3F;
+  --bg-three: #2F2F2F;
+  --color-hover: rgba(255, 255, 255, .1);
+  --color-hover-dark: rgba(255, 255, 255, .2);
+  --color-text-headings: #DDD;
   --color-text: #CCC;
   --color-text-lighter: #AAA;
   --color-text-light: #888;

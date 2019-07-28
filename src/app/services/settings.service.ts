@@ -72,11 +72,11 @@ export class SettingsService{
     return this.getList("playerColumns", SettingsService.playerColumnsDefault);
   }
 
-  get darkMode(): boolean{
-    return this.getBool("darkMode");
+  get theme(): string{
+    return this.getItem("theme");
   }
-  set darkMode(value: boolean){
-    this.setBool("darkMode", value);
+  set theme(value: string){
+    this.setItem("theme", value);
   }
 
   get compact(): boolean{

@@ -22,29 +22,25 @@ export class SettingsPageComponent implements OnInit{
     }
   }
 
-  get darkMode(): boolean{
-    try{
-      return this.settingsService.darkMode;
-    }catch(err){
-      return false;
-    }
+  get lightTheme(): boolean{
+    return this.settingsService.theme != "dark" && this.settingsService.theme != "midnight";
+  }
+  set lightTheme(value: boolean){
+    this.setTheme(value ? "light" : "dark");
   }
 
-  set darkMode(value: boolean){
-    this.settingsService.darkMode = value;
+  get darkTheme(): boolean{
+    return this.settingsService.theme == "dark";
+  }
+  set darkTheme(value: boolean){
+    this.setTheme(value ? "dark" : "light");
+  }
 
-    // and transition to document
-    document.documentElement.classList.add("transition");
-    setTimeout(() => {
-      document.documentElement.classList.remove("transition");
-    }, 300);
-
-    // set data-theme
-    if(value){
-      document.documentElement.setAttribute("data-theme", "dark");
-    }else{
-      document.documentElement.setAttribute("data-theme", "light");
-    }
+  get midnightTheme(): boolean{
+    return this.settingsService.theme == "midnight";
+  }
+  set midnightTheme(value: boolean){
+    this.setTheme(value ? "midnight" : "light");
   }
 
   ngOnInit(){
@@ -76,5 +72,22 @@ export class SettingsPageComponent implements OnInit{
 
   togglePlayerColumn(column: string): void{
     this.settingsService.toggleDisplayedPlayerColumn(column);
+  }
+
+  private setTheme(value: string): void{
+    this.settingsService.theme = value;
+
+    // and transition to document
+    document.documentElement.classList.add("transition");
+    setTimeout(() => {
+      document.documentElement.classList.remove("transition");
+    }, 100);
+
+    // set data-theme
+    if(value){
+      document.documentElement.setAttribute("data-theme", value);
+    }else{
+      document.documentElement.setAttribute("data-theme", value);
+    }
   }
 }
