@@ -1,6 +1,7 @@
 interface Team{
   name: string;
   players: number;
+  maxPlayers: number;
   wins: number;
   losses: number;
 }

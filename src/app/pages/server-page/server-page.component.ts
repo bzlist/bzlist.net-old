@@ -1,6 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {DomSanitizer} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
@@ -34,8 +33,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   constructor(private route: ActivatedRoute,
               private afs: AngularFirestore,
-              private seo: SeoService,
-              private sanitizer: DomSanitizer){
+              private seo: SeoService){
   }
 
   ngOnInit(){
@@ -108,9 +106,5 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   joinTeam(team: string){
     window.location.href = `bzflag-launcher:${this.server.address}:${this.server.port} ${team}`;
     this.selectTeam = false;
-  }
-
-  sanitize(url: string){
-    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }
