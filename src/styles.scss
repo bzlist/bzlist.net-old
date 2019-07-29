@@ -110,7 +110,7 @@ hr.small{
 .badge{
   padding: 3px 6px;
   color: var(--bg);
-  background-image: linear-gradient(var(--bg-two), var(--bg-one));
+  background-color: var(--color-text-lighter);
   font-size: .75rem;
   text-align: center;
   border-radius: $border-radius/2;
