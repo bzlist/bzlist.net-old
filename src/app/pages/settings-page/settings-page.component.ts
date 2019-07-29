@@ -23,21 +23,21 @@ export class SettingsPageComponent implements OnInit{
   }
 
   get lightTheme(): boolean{
-    return this.settingsService.theme != "dark" && this.settingsService.theme != "midnight";
+    return this.settingsService.theme !== "dark" && this.settingsService.theme !== "midnight";
   }
   set lightTheme(value: boolean){
     this.setTheme(value ? "light" : "dark");
   }
 
   get darkTheme(): boolean{
-    return this.settingsService.theme == "dark";
+    return this.settingsService.theme === "dark";
   }
   set darkTheme(value: boolean){
     this.setTheme(value ? "dark" : "light");
   }
 
   get midnightTheme(): boolean{
-    return this.settingsService.theme == "midnight";
+    return this.settingsService.theme === "midnight";
   }
   set midnightTheme(value: boolean){
     this.setTheme(value ? "midnight" : "light");
