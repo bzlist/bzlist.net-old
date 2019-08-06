@@ -13,6 +13,7 @@ export class ServersService{
 
   lastUpdate = -1;
   playerCount = 0;
+  observerCount = 0;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private afs: AngularFirestore){
@@ -32,10 +33,17 @@ export class ServersService{
 
   private setServers(servers: Server[]): void{
     this.playerCount = 0;
+    this.observerCount = 0;
 
     let timestamp = 0;
     for(let i = 0; i < servers.length; i++){
       this.playerCount += servers[i].playersCount;
+
+      const observerTeam = servers[i].teams.find((team) => team.name === "Observer");
+      if(observerTeam){
+        this.observerCount += observerTeam.players;
+        this.playerCount -= observerTeam.players;
+      }
 
       if(servers[i].timestamp > timestamp){
         timestamp = servers[i].timestamp;

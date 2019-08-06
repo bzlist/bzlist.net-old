@@ -1,6 +1,6 @@
 <div *ngIf="ready && serversService.servers" class="container">
   <h2>{{serversService.servers.length + " Public Server" | autoPlural}} Online</h2>
-  <small>{{serversService.playerCount + " player" | autoPlural}} online. Last update was {{serversService.lastUpdate | timeAgo}}.</small>
+  <small>{{serversService.playerCount + " player" | autoPlural}} and {{serversService.observerCount + " observer" | autoPlural}} online. Last update was {{serversService.lastUpdate | timeAgo}}.</small>
 </div>
 <div *ngIf="ready && serversService.servers">
   <app-servers-table *ngIf="!settingsService.gridView" [servers]="serversService.servers" (rowClick)="showServerDetails($event)"></app-servers-table>
