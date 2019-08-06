@@ -50,7 +50,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
       // subscribe the the player data
       this.playerDataSub = this.afs.collection<Player>("players", ref =>
-        ref.where("server", "==", `${this.address}:${this.port}`).orderBy("callsign", "asc")
+        ref.where("server", "==", `${this.address}:${this.port}`)
       ).valueChanges().subscribe((data: Player[]) => {
         this.setPlayers(data);
       });

@@ -1,11 +1,11 @@
 <app-table>
   <tr>
-    <th *ngIf="hasColumn('callsign')">Callsign</th>
-    <th *ngIf="showServerColumn">Server</th>
-    <th *ngIf="hasColumn('team')">Team</th>
-    <th *ngIf="hasColumn('score')">Score</th>
-    <th *ngIf="hasColumn('winsLosses')">Wins / Losses</th>
-    <th *ngIf="showTkColumn && hasColumn('tks')">Team Kills</th>
+    <th *ngIf="hasColumn('callsign')" (click)="sortBy('callsign')">Callsign</th>
+    <th *ngIf="showServerColumn" (click)="sortBy('server')">Server</th>
+    <th *ngIf="hasColumn('team')" (click)="sortBy('team')">Team</th>
+    <th *ngIf="hasColumn('score')" (click)="sortBy('score')">Score</th>
+    <th *ngIf="hasColumn('winsLosses')" (click)="sortBy('winsLosses')">Wins / Losses</th>
+    <th *ngIf="showTkColumn && hasColumn('tks')" (click)="sortBy('tks')">Team Kills</th>
   </tr>
   <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="hasColumn('motto') && player.motto">({{player.motto}})</i></td>
