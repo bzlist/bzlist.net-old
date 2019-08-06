@@ -3,7 +3,7 @@
   <small>{{serversService.playerCount + " player" | autoPlural}} online. Last update was {{serversService.lastUpdate | timeAgo}}.</small>
 </div>
 <div *ngIf="ready && serversService.servers">
-  <app-servers-table *ngIf="!settingsService.gridView" (rowClick)="showServerDetails($event)"></app-servers-table>
+  <app-servers-table *ngIf="!settingsService.gridView" [servers]="serversService.servers" (rowClick)="showServerDetails($event)"></app-servers-table>
   <ul *ngIf="settingsService.gridView" class="list-nostyle list-card">
     <app-server-card *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
   </ul>

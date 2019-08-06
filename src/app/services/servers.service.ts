@@ -12,7 +12,6 @@ export class ServersService{
   private _servers: Server[];
 
   lastUpdate = -1;
-
   playerCount = 0;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
@@ -20,7 +19,7 @@ export class ServersService{
     // only get data if being rendered in a browser
     if(isPlatformBrowser(platformId)){
       this.afs.collection<Server>("servers", ref =>
-        ref.where("online", "==", true).orderBy("playersCount", "desc").orderBy("title")
+        ref.where("online", "==", true)
       ).valueChanges().subscribe((data: Server[]) => {
         this.setServers(data);
       });

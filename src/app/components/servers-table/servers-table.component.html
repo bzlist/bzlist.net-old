@@ -1,14 +1,14 @@
 <app-table>
   <tr>
-    <th *ngIf="hasColumn('players')">Players</th>
-    <th *ngIf="hasColumn('address')">Address</th>
-    <th *ngIf="hasColumn('owner')">Owner</th>
-    <th *ngIf="hasColumn('protocol')">Protocol</th>
-    <th *ngIf="hasColumn('country')">Country</th>
-    <th *ngIf="hasColumn('gameStyle')">Game Style</th>
-    <th *ngIf="hasColumn('title')">Title</th>
+    <th *ngIf="hasColumn('players')" (click)="sortBy('playersCount')">Players</th>
+    <th *ngIf="hasColumn('address')" (click)="sortBy('address')">Address</th>
+    <th *ngIf="hasColumn('owner')" (click)="sortBy('owner')">Owner</th>
+    <th *ngIf="hasColumn('protocol')" (click)="sortBy('protocol')">Protocol</th>
+    <th *ngIf="hasColumn('country')" (click)="sortBy('country')">Country</th>
+    <th *ngIf="hasColumn('gameStyle')" (click)="sortBy('gameStyle')">Game Style</th>
+    <th *ngIf="hasColumn('title')" (click)="sortBy('title')">Title</th>
   </tr>
-  <tr *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" (click)="rowClicked(server)">
+  <tr *ngFor="let server of servers; trackBy: trackByTimestamp" (click)="rowClicked(server)">
     <td *ngIf="hasColumn('players')">{{server.playersCount}}</td>
     <td *ngIf="hasColumn('address')">{{server.address}}:{{server.port}}</td>
     <td *ngIf="hasColumn('owner')">{{server.owner}}</td>

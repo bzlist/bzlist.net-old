@@ -1,7 +1,6 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy} from "@angular/core";
+import {Component, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, Input} from "@angular/core";
 
 import {SettingsService} from "../../services/settings.service";
-import {ServersService} from "../../services/servers.service";
 
 import {Server} from "../../models/server.model";
 
@@ -11,12 +10,18 @@ import {Server} from "../../models/server.model";
   styleUrls: ["./servers-table.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ServersTableComponent{
-  // @Input() servers: Server[];
+export class ServersTableComponent implements OnChanges{
+  @Input() servers: Server[];
   @Output() rowClick = new EventEmitter<Server>();
 
-  constructor(public settingsService: SettingsService,
-              public serversService: ServersService){
+  private sort: string;
+  private sortOrder = 1;
+
+  constructor(public settingsService: SettingsService){
+  }
+
+  ngOnChanges(): void{
+    this.sortBy("playersCount");
   }
 
   rowClicked(server: Server): void{
@@ -29,5 +34,40 @@ export class ServersTableComponent{
 
   trackByTimestamp(index: number, item: Server): number{
     return item.timestamp;
+  }
+
+  sortBy(sort: string): void{
+    if(sort === this.sort){
+      this.sortOrder = -this.sortOrder;
+    }else{
+      this.sortOrder = 1;
+    }
+    this.sort = sort;
+
+    switch(this.sort){
+      case "playersCount":
+        this.servers.sort((a, b) => a.playersCount > b.playersCount ? -this.sortOrder : this.sortOrder);
+        break;
+      case "address":
+        this.servers.sort((a, b) => a.address.toLowerCase() > b.address.toLowerCase() ? this.sortOrder : -this.sortOrder);
+        break;
+      case "owner":
+        this.servers.sort((a, b) => a.owner > b.owner ? this.sortOrder : -this.sortOrder);
+        break;
+      case "protocol":
+        this.servers.sort((a, b) => a.protocol > b.protocol ? this.sortOrder : -this.sortOrder);
+        break;
+      case "country":
+        this.servers.sort((a, b) => a.country > b.country ? this.sortOrder : -this.sortOrder);
+        break;
+      case "gameStyle":
+        this.servers.sort((a, b) => a.configuration.gameStyle > b.configuration.gameStyle ? this.sortOrder : -this.sortOrder);
+        break;
+      case "title":
+        this.servers.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? this.sortOrder : -this.sortOrder);
+        break;
+      default:
+        break;
+    }
   }
 }
