@@ -103,18 +103,18 @@
   </div>
   <div style="margin-top:18px">
     <h2>Teams</h2>
-    <app-table>
+    <app-table id="teams">
       <tr>
-        <th>Name</th>
-        <th>Score</th>
-        <th>Players</th>
-        <th>Wins</th>
-        <th>Losses</th>
+        <th (click)="teamSortBy('name')">Name</th>
+        <th (click)="teamSortBy('score')">Score</th>
+        <th (click)="teamSortBy('players')">Players</th>
+        <th (click)="teamSortBy('wins')">Wins</th>
+        <th (click)="teamSortBy('losses')">Losses</th>
       </tr>
       <tr *ngFor="let team of server.teams">
         <td>{{team.name}}</td>
         <td>{{team.name !== "Observer" ? team.wins - team.losses : "N/A"}}</td>
-        <td>{{team.players}}/{{team.maxPlayers}}</td>
+        <td>{{team.players}} / {{team.maxPlayers}}</td>
         <td>{{team.name !== "Observer" ? team.wins : "N/A"}}</td>
         <td>{{team.name !== "Observer" ? team.losses : "N/A"}}</td>
       </tr>

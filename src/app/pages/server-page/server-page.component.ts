@@ -31,12 +31,15 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   selectTeam = false;
 
+  private teamSort: string;
+  private teamSortOrder = 1;
+
   constructor(private route: ActivatedRoute,
               private afs: AngularFirestore,
               private seo: SeoService){
   }
 
-  ngOnInit(){
+  ngOnInit(): void{
     // get the route params
     this.routeSub = this.route.params.subscribe(params => {
       // get the address and port
@@ -57,7 +60,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy(): void{
     // clean up subscriptions
     this.routeSub.unsubscribe();
     this.serverDataSub.unsubscribe();
@@ -83,6 +86,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       title: `${this.server.title} - BZList`,
       description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
+
+    this.teamSortBy("score");
   }
 
   // set player data
@@ -101,6 +106,35 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     }
 
     this.players = players;
+  }
+
+  teamSortBy(sort: string): void{
+    if(sort === this.teamSort){
+      this.teamSortOrder = -this.teamSortOrder;
+    }else{
+      this.teamSortOrder = 1;
+    }
+    this.teamSort = sort;
+
+    switch(this.teamSort){
+      case "name":
+        this.server.teams.sort((a, b) => a.name > b.name ? this.teamSortOrder : -this.teamSortOrder);
+        break;
+      case "score":
+        this.server.teams.sort((a, b) => a.wins - a.losses > b.wins - b.losses ? -this.teamSortOrder : this.teamSortOrder);
+        break;
+      case "players":
+        this.server.teams.sort((a, b) => a.players > b.players ? -this.teamSortOrder : this.teamSortOrder);
+        break;
+      case "wins":
+        this.server.teams.sort((a, b) => a.wins > b.wins ? -this.teamSortOrder : this.teamSortOrder);
+        break;
+      case "losses":
+        this.server.teams.sort((a, b) => a.losses > b.losses ? -this.teamSortOrder : this.teamSortOrder);
+        break;
+      default:
+        break;
+    }
   }
 
   joinTeam(team: string){
