@@ -1,6 +1,16 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
-## 0.4.0 - Players are here! 🦸‍ (2019-8-28)
+## 0.5.0 - Sorting just arrived 📃 (2019-8-6)
+
+- Add midnight theme
+- Higher contrast badges
+- Add team information to server details page
+- Only show button the join teams that exist
+- Add sorting to all tables (servers, players, teams)
+- Improved security
+- Add number of online observers to server list
+
+## 0.4.0 - Players are here! 🦸‍ (2019-7-28)
 
 - Add button to launch BZFlag and join server
 - Add dedicated players page
