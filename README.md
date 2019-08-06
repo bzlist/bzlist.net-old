@@ -3,7 +3,6 @@
 [![GitHub license](https://img.shields.io/github/license/bzlist/bzlist.net.svg)](https://github.com/bzlist/bzlist.net/blob/master/LICENSE)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/bzlist/bzlist.net.svg)
 [![Build Status](https://travis-ci.org/bzlist/bzlist.net.svg?branch=master)](https://travis-ci.org/bzlist/bzlist.net)
-[![Website](https://img.shields.io/website/https/bzlist.net.svg)](https://bzlist.net)
 [![IRC #bzlist](https://img.shields.io/badge/IRC-%23bzlist-blue.svg)](http://webchat.freenode.net/?channels=#bzlist)
 
 Firebase + Angular = *(kind of)* real-time server stats for BZFlag.
