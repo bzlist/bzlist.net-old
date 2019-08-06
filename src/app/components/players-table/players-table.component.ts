@@ -20,7 +20,7 @@ export class PlayersTableComponent implements OnChanges{
 
   constructor(public settingsService: SettingsService){
   }
-  
+
   ngOnChanges(): void{
     this.sortBy("score");
   }
@@ -62,7 +62,7 @@ export class PlayersTableComponent implements OnChanges{
         this.players.sort((a, b) => a.tks > b.tks ? -this.sortOrder : this.sortOrder);
         break;
       default:
-        break;  
+        break;
     }
   }
 }
