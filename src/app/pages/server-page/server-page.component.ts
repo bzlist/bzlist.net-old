@@ -1,4 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 
 import {Subscription} from "rxjs";
@@ -34,7 +35,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   private teamSort: string;
   private teamSortOrder = 1;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private location: Location,
+              private route: ActivatedRoute,
               private afs: AngularFirestore,
               private seo: SeoService){
   }
