@@ -30,7 +30,7 @@
     "deploy:gh-pages": "ngh",
     "deploy:firebase": "firebase deploy",
     "deploy:firebase:hosting": "firebase deploy --only hosting",
-    "deploy:firebase:ssr": "firebase deploy --only functions:ssr",
+    "deploy:firebase:ssr": "firebase deploy --only functions:ssr,hosting",
     "stats": "webpack-bundle-analyzer ./dist/stats.json",
     "test": "ng test",
     "lint": "ng lint",
