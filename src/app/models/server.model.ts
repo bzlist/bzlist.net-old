@@ -14,6 +14,7 @@ export interface Player{
   team: string;
   wins: number;
   losses: number;
+  tks: number;
   score: number;
 }
 
