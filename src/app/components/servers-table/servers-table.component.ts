@@ -14,14 +14,14 @@ export class ServersTableComponent implements OnChanges{
   @Input() servers: Server[];
   @Output() rowClick = new EventEmitter<Server>();
 
-  private sort: string;
+  private sort = "playersCount";
   private sortOrder = 1;
 
   constructor(public settingsService: SettingsService){
   }
 
   ngOnChanges(): void{
-    this.sortBy("playersCount");
+    this.sortBy();
   }
 
   rowClicked(server: Server): void{
@@ -36,13 +36,15 @@ export class ServersTableComponent implements OnChanges{
     return item.timestamp;
   }
 
-  sortBy(sort: string): void{
-    if(sort === this.sort){
-      this.sortOrder = -this.sortOrder;
-    }else{
-      this.sortOrder = 1;
+  sortBy(sort?: string): void{
+    if(sort){
+      if(sort === this.sort){
+        this.sortOrder = -this.sortOrder;
+      }else{
+        this.sortOrder = 1;
+      }
+      this.sort = sort;
     }
-    this.sort = sort;
 
     switch(this.sort){
       case "playersCount":
