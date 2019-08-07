@@ -49,7 +49,7 @@ export class ServersService{
         timestamp = servers[i].timestamp;
       }
     }
-    
+
     servers.sort((a, b) => a.playersCount > b.playersCount ? -1 : 1);
     this._servers = servers;
 
