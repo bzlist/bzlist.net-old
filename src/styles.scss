@@ -17,6 +17,7 @@ html{
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
   --color-hover: rgba(0, 0, 0, .05);
+  --color-hover-light: rgba(0, 0, 0, .02);
   --color-hover-dark: rgba(0, 0, 0, .1);
   --color-text-headings: #111;
   --color-text: #333;
@@ -30,6 +31,7 @@ html[data-theme="dark"]{
   --bg-two: #5F5F5F;
   --bg-three: #4F4F4F;
   --color-hover: rgba(255, 255, 255, .05);
+  --color-hover-light: rgba(255, 255, 255, .02);
   --color-hover-dark: rgba(255, 255, 255, .1);
   --color-text-headings: #EEE;
   --color-text: #DDD;
@@ -43,6 +45,7 @@ html[data-theme="midnight"]{
   --bg-two: #3F3F3F;
   --bg-three: #2F2F2F;
   --color-hover: rgba(255, 255, 255, .1);
+  --color-hover-light: rgba(255, 255, 255, .05);
   --color-hover-dark: rgba(255, 255, 255, .2);
   --color-text-headings: #DDD;
   --color-text: #CCC;

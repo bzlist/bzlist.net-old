@@ -93,6 +93,13 @@ export class SettingsService{
     this.setBool("gridView", value);
   }
 
+  get newTables(): boolean{
+    return this.getBool("newTables");
+  }
+  set newTables(value: boolean){
+    this.setBool("newTables", value);
+  }
+
   toggleDisplayedServerColumn(column: string): void{
     if(!this.serverColumns.includes(column)){
       return;
