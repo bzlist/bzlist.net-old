@@ -1,9 +1,15 @@
 @import "../../../../variables.scss";
 
+b{
+  font-size: 1.2em;
+  text-align: center;
+  display: block;
+}
+
 .spinner{
   width: 64px;
   height: 64px;
-  margin: 100px auto;
+  margin: 32px auto;
   position: relative;
 }
 
