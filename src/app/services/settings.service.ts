@@ -100,6 +100,14 @@ export class SettingsService{
     this.setBool("newTables", value);
   }
 
+  get onlyServersWithPlayers(): boolean{
+    return this.getBool("onlyServersWithPlayers");
+  }
+  set onlyServersWithPlayers(value: boolean){
+    this.setBool("onlyServersWithPlayers", value);
+    location.reload();
+  }
+
   toggleDisplayedServerColumn(column: string): void{
     if(!this.serverColumns.includes(column)){
       return;

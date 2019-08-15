@@ -3,7 +3,8 @@
   <p>
     <app-checkbox [(checked)]="settingsService.compact">Compact Tables</app-checkbox><br>
     <app-checkbox [(checked)]="settingsService.newTables">Experimental Table Look</app-checkbox><br>
-    <app-checkbox [(checked)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</app-checkbox>
+    <app-checkbox [(checked)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</app-checkbox><br>
+    <app-checkbox [(checked)]="settingsService.onlyServersWithPlayers">Only Show Servers With Players</app-checkbox>
   </p>
   <h2>Theme</h2>
   <p>
