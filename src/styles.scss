@@ -177,7 +177,7 @@ hr.small{
   margin: 0 8px;
   margin-bottom: 16px;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: $breakpoint-mobile){
     flex: 1 0 300px;
     margin: 0 4px;
     margin-bottom: 8px;
