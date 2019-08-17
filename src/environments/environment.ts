@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  bzWebLoginURL: "https://my.bzflag.org/weblogin.php?action=weblogin&url=http%3A%2F%2Flocalhost%3A4200%2Faccount%3Fusername%3D%25USERNAME%25%26token%3D%25TOKEN%25"
+  bzWebLoginURL: "https://my.bzflag.org/weblogin.php?action=weblogin&url=http%3A%2F%2Flocalhost%3A4200%2Faccount%3Fusername%3D%25USERNAME%25%26token%3D%25TOKEN%25",
+  version: `${require("../../package.json").version}-DEV`
 };
 
 /*
