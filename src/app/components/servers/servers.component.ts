@@ -1,10 +1,8 @@
 import {Component, AfterViewInit} from "@angular/core";
 import {Router} from "@angular/router";
 
-import {SettingsService} from "../../services/settings.service";
-import {ServersService} from "../../services/servers.service";
-
-import {Server} from "../../models/server.model";
+import {SettingsService, ServersService} from "@app/services";
+import {Server} from "@app/models/server.model";
 
 @Component({
   selector: "app-servers",

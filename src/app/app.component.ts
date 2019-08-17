@@ -12,13 +12,14 @@ import {SettingsService} from "./services/settings.service";
   animations: [fadeAnimation]
 })
 export class AppComponent{
-  constructor(private swUpdate: SwUpdate,
+  constructor(swUpdate: SwUpdate,
               private settingsService: SettingsService){
     // if there is a service worker update available automatically update
-    swUpdate.available.subscribe(event => {
+    swUpdate.available.subscribe(() => {
       // once updated refresh the page
       swUpdate.activateUpdate().then(() => window.location.reload());
     });
+    swUpdate.checkForUpdate();
 
     // automatically set dark mode at startup
     try{

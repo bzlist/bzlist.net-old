@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 
-import {SettingsService} from "../../../services/settings.service";
+import {SettingsService} from "@app/services";
 
 @Component({
   selector: "app-table",

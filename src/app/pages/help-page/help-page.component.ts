@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 
-import {environment} from "../../../environments/environment";
+import {environment} from "@env/environment";
 
-import {SeoService} from "../../services/seo.service";
+import {SeoService} from "@app/services";
 
 @Component({
   selector: "app-help-page",

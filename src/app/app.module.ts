@@ -5,7 +5,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {ServiceWorkerModule} from "@angular/service-worker";
 
-import {environment} from "../environments/environment";
+import {environment} from "@env/environment";
 
 // modules
 import {AppRoutingModule} from "./app-routing.module";
@@ -17,9 +17,7 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
 import {firebase} from "./firebase.config";
 
 // services
-import {SettingsService} from "./services/settings.service";
-import {AuthService} from "./services/auth.service";
-import {SeoService} from "./services/seo.service";
+import {SettingsService, AuthService, SeoService} from "@app/services";
 
 // pipes
 import {TimeAgoPipe} from "./pipes/time-ago.pipe";

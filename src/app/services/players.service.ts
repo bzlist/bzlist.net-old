@@ -3,7 +3,7 @@ import {isPlatformBrowser} from "@angular/common";
 
 import {AngularFirestore} from "@angular/fire/firestore";
 
-import {Player} from "../models/server.model";
+import {Player} from "@app/models";
 
 @Injectable({
   providedIn: "root"

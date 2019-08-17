@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 
-import {AuthService} from "../../services/auth.service";
-import {SeoService} from "../../services/seo.service";
+import {AuthService, SeoService} from "@app/services";
 
 @Component({
   selector: "app-account-page",

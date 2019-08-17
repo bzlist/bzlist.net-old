@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 
-import {PlayersService} from "../../services/players.service";
-import {SeoService} from "../../services/seo.service";
+import {PlayersService, SeoService} from "@app/services";
 
 @Component({
   selector: "app-player-list-page",

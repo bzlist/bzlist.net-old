@@ -1,8 +1,7 @@
-import {Component, Input, ChangeDetectionStrategy, OnInit, AfterViewInit, AfterViewChecked, OnChanges} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy, OnChanges} from "@angular/core";
 
-import {SettingsService} from "../../services/settings.service";
-
-import {Player} from "../../models/server.model";
+import {SettingsService} from "@app/services";
+import {Player} from "@app/models";
 
 @Component({
   selector: "app-players-table",

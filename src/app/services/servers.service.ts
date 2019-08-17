@@ -4,7 +4,7 @@ import {isPlatformBrowser} from "@angular/common";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 import {SettingsService} from "./settings.service";
-import {Server} from "../models/server.model";
+import {Server} from "@app/models";
 
 @Injectable({
   providedIn: "root"
@@ -18,7 +18,7 @@ export class ServersService{
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private afs: AngularFirestore,
-              private settingsService: SettingsService){
+              settingsService: SettingsService){
     // only get data if being rendered in a browser
     if(isPlatformBrowser(platformId)){
       this.afs.collection<Server>("servers", ref =>

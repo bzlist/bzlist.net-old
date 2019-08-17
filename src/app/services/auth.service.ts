@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Router, ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
-import {environment} from "../../environments/environment";
+import {environment} from "@env/environment";
 
 import {Observable, of} from "rxjs";
 import {switchMap} from "rxjs/operators";

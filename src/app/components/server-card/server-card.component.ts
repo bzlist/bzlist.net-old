@@ -1,6 +1,6 @@
 import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 
-import {Server} from "../../models/server.model";
+import {Server} from "@app/models/server.model";
 
 @Component({
   selector: "app-server-card",
