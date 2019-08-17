@@ -1,5 +1,18 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
+## 0.4.1 (2019-8-17)
+
+- Improved UI
+- Make back button actually go back
+- Fixed server list going crazy when updating
+- Fixed servers in grid view not being sorted
+- Added loading spinner messages
+- Added experimental table look
+- Added setting to only show servers with players
+- Updated footer
+- Added version number to help page
+- Cleaned up code
+
 ## 0.5.0 - Sorting just arrived 📃 (2019-8-6)
 
 - Add midnight theme
