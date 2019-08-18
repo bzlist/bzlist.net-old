@@ -19,7 +19,9 @@ export class AppComponent{
       // once updated refresh the page
       swUpdate.activateUpdate().then(() => window.location.reload());
     });
-    swUpdate.checkForUpdate();
+    if(swUpdate.isEnabled){
+      swUpdate.checkForUpdate();
+    }
 
     // automatically set dark mode at startup
     try{
