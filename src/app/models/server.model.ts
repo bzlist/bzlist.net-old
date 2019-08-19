@@ -1,3 +1,5 @@
+import {Player} from "./player.model";
+
 interface Team{
   name: string;
   players: number;
@@ -41,6 +43,7 @@ export interface Server{
   title: string;
   online: boolean;
   teams: Array<Team>;
+  players?: Array<Player>;
   playersCount: number;
   configuration: Configuration;
 }

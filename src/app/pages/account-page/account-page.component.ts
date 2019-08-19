@@ -8,7 +8,7 @@ import {AuthService, SeoService} from "@app/services";
   styleUrls: ["./account-page.component.scss"]
 })
 export class AccountPageComponent implements OnInit{
-  constructor(public auth: AuthService,
+  constructor(// public auth: AuthService,
               private seo: SeoService){
   }
 

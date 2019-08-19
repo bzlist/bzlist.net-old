@@ -1,20 +1,14 @@
 <div class="container">
-  <p class="note">Accounts current do nothing, however that will be changed in the near future.</p>
-  <div *ngIf="auth.user | async as user; else login">
-    <h2>Signed in as {{user.username || user.email}}</h2>
-    <a *ngIf="user.bzid" href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{user.bzid}}" target="_blank">View BZFlag Profile</a>
+  <p class="note">Accounts currently disabled while a backend change is happening.</p>
+  <!-- <div *ngIf="auth.user | async as user; else login">
+    <h2>Signed in as {{user.callsign}}</h2>
+    <a href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{user.bzid}}" target="_blank">View BZFlag Profile</a>
     <p>
-      <button class="btn outline" (click)="auth.signOut()">Sign Out</button>&nbsp;
-      <a *ngIf="!user.bzid" class="btn outline" (click)="auth.bzflagSignin()">Connect to BZFlag</a>
-      <a *ngIf="user.bzid" class="btn outline" (click)="auth.disconnectBZFlag()">Disconnect from BZFlag</a>
+      <button class="btn outline" (click)="auth.signOut()">Sign Out</button>
     </p>
   </div>
   <ng-template #login>
     <h2>Sign In</h2>
-    <p>
-      <button class="btn outline" (click)="auth.googleSignin()"><i class="fab fa-google"></i>&nbsp; Sign In with Google</button>&nbsp;
-      <button class="btn outline" (click)="auth.githubSignin()"><i class="fab fa-github"></i>&nbsp; Sign In with GitHub</button>
-    </p>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  </ng-template>
+    <a *ngIf="!user.bzid" class="btn outline" (click)="auth.bzflagSignin()">Sign in with BZFlag</a>
+  </ng-template> -->
 </div>

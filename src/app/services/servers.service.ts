@@ -1,7 +1,7 @@
 import {Injectable, Inject, PLATFORM_ID} from "@angular/core";
 import {isPlatformBrowser} from "@angular/common";
 
-import {AngularFirestore} from "@angular/fire/firestore";
+import {Socket} from "ngx-socket-io";
 
 import {SettingsService} from "./settings.service";
 import {Server} from "@app/models";
@@ -17,15 +17,12 @@ export class ServersService{
   observerCount = 0;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
-              private afs: AngularFirestore,
-              settingsService: SettingsService){
+              private settingsService: SettingsService,
+              private socket: Socket){
     // only get data if being rendered in a browser
     if(isPlatformBrowser(platformId)){
-      this.afs.collection<Server>("servers", ref =>
-        settingsService.onlyServersWithPlayers ? ref.where("online", "==", true).where("playersCount", ">", 0) : ref.where("online", "==", true)
-      ).valueChanges().subscribe((data: Server[]) => {
-        this.setServers(data);
-      });
+      this.socket.fromEvent<Server[]>("data").subscribe((data: Server[]) => this.setServers(data));
+      this.socket.emit("servers", {onlinePlayers: this.settingsService.onlyServersWithPlayers});
     }
   }
 
@@ -56,5 +53,7 @@ export class ServersService{
     this._servers = servers;
 
     this.lastUpdate = timestamp;
+
+    console.log("servers updated");
   }
 }

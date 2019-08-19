@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 
 import {Subscription} from "rxjs";
 
-import {AngularFirestore} from "@angular/fire/firestore";
+import {Socket} from "ngx-socket-io";
 
 import {SeoService} from "@app/services";
 import {Server, Player} from "@app/models";
@@ -36,7 +36,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
   constructor(private location: Location,
               private route: ActivatedRoute,
-              private afs: AngularFirestore,
+              private socket: Socket,
               private seo: SeoService){
   }
 
@@ -47,17 +47,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.address = params["address"];
       this.port = +params["port"];
 
-      // subscribe the the server data
-      this.serverDataSub = this.afs.doc<Server>(`servers/${this.address}:${this.port}`).valueChanges().subscribe((data: Server) => {
-        this.setData(data);
-      });
-
-      // subscribe the the player data
-      this.playerDataSub = this.afs.collection<Player>("players", ref =>
-        ref.where("server", "==", `${this.address}:${this.port}`)
-      ).valueChanges().subscribe((data: Player[]) => {
-        this.setPlayers(data);
-      });
+      this.serverDataSub = this.socket.fromEvent<Server>("data").subscribe((data: Server) => this.setData(data));
+      this.socket.emit("server", {address: this.address, port: this.port});
     });
   }
 
@@ -65,7 +56,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     // clean up subscriptions
     this.routeSub.unsubscribe();
     this.serverDataSub.unsubscribe();
-    this.playerDataSub.unsubscribe();
+    // this.playerDataSub.unsubscribe();
   }
 
   // sets the server data and metadata
@@ -83,30 +74,32 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       return;
     }
 
+    this.setPlayers();
+
     this.seo.generateTags({
       title: `${this.server.title} - BZList`,
       description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
 
     this.teamSortBy("score");
+
+    console.log("server updated");
   }
 
   // set player data
-  private setPlayers(players: Player[]): void{
+  private setPlayers(): void{
     this.playerCount = 0;
     this.observerCount = 0;
 
-    for(let i = 0; i < players.length; i++){
-      players[i].score = players[i].wins - players[i].losses;
+    for(let i = 0; i < this.server.players.length; i++){
+      this.server.players[i].score = this.server.players[i].wins - this.server.players[i].losses;
 
-      if(players[i].team === "Observer"){
+      if(this.server.players[i].team === "Observer"){
         this.observerCount++;
       }else{
         this.playerCount++;
       }
     }
-
-    this.players = players;
   }
 
   teamSortBy(sort: string): void{

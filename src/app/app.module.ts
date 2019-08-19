@@ -10,11 +10,7 @@ import {environment} from "@env/environment";
 // modules
 import {AppRoutingModule} from "./app-routing.module";
 
-// firebase
-import {AngularFireModule} from "@angular/fire";
-import {AngularFirestoreModule} from "@angular/fire/firestore";
-import {AngularFireAuthModule} from "@angular/fire/auth";
-import {firebase} from "./firebase.config";
+import {SocketIoModule} from "ngx-socket-io";
 
 // services
 import {SettingsService, AuthService, SeoService} from "@app/services";
@@ -79,9 +75,7 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     HttpClientModule,
     FormsModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
-    AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule.enablePersistence({synchronizeTabs: true}),
-    AngularFireAuthModule
+    SocketIoModule.forRoot({url: "http://api.bzlist.net"})
   ],
   providers: [SettingsService, AuthService, SeoService],
   bootstrap: [AppComponent]

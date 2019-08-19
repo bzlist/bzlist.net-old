@@ -21,6 +21,7 @@ export class PlayersTableComponent implements OnChanges{
   }
 
   ngOnChanges(): void{
+    this.sort = "";
     this.sortBy("score");
   }
 

@@ -1,7 +1,7 @@
 import {Injectable, Inject, PLATFORM_ID} from "@angular/core";
 import {isPlatformBrowser} from "@angular/common";
 
-import {AngularFirestore} from "@angular/fire/firestore";
+import {Socket} from "ngx-socket-io";
 
 import {Player} from "@app/models";
 
@@ -17,14 +17,11 @@ export class PlayersService{
   totalObservers = 0;
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
-              private afs: AngularFirestore){
+              private socket: Socket){
     // only get data if being rendered in a browser
     if(isPlatformBrowser(platformId)){
-      this.afs.collection<Player>("players", ref =>
-        ref.orderBy("callsign", "asc")
-      ).valueChanges().subscribe((data: Player[]) => {
-        this.setPlayers(data);
-      });
+      this.socket.fromEvent<Player[]>("data").subscribe((data: Player[]) => this.setPlayers(data));
+      this.socket.emit("players");
     }
   }
 
@@ -53,5 +50,7 @@ export class PlayersService{
 
     this._players = players;
     this.lastUpdate = timestamp;
+
+    console.log("servers updated");
   }
 }
