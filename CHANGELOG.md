@@ -1,6 +1,12 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
-## 0.4.1 (2019-8-17)
+## 0.6.0 (2019-9-19)
+
+- Improved service worker
+- Use Socket.io instead of Firebase for data
+- Improved performance
+
+## 0.5.1 (2019-8-17)
 
 - Improved UI
 - Make back button actually go back
