@@ -18,6 +18,11 @@ export class PlayersService{
 
   constructor(@Inject(PLATFORM_ID) platformId: string,
               private socket: Socket){
+    try{
+      this.setPlayers(JSON.parse(localStorage.getItem("playersCache")));
+    }catch(err){
+    }
+
     // only get data if being rendered in a browser
     if(isPlatformBrowser(platformId)){
       this.socket.fromEvent<Player[]>("data").subscribe((data: Player[]) => this.setPlayers(data));
@@ -50,6 +55,11 @@ export class PlayersService{
 
     this._players = players;
     this.lastUpdate = timestamp;
+
+    try{
+      return localStorage.setItem("playersCache", JSON.stringify(this.players));
+    }catch(err){
+    }
 
     console.log("servers updated");
   }

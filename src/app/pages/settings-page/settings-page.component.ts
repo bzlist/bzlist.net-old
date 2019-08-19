@@ -10,12 +10,20 @@ import {SettingsService, SeoService} from "@app/services";
 export class SettingsPageComponent implements OnInit{
   mobile = false;
 
+  cache = [];
+
   constructor(public settingsService: SettingsService,
               public seo: SeoService){
-    // check if the window width is smaller then the mobile threshold
     try{
+      // check if the window width is smaller then the mobile threshold
       if(window.innerWidth <= 768){
         this.mobile = true;
+      }
+
+      for(let i = 0; i < localStorage.length; i++){
+        if(localStorage.key(i).endsWith("Cache")){
+          this.cache.push(localStorage.key(i));
+        }
       }
     }catch(err){
     }
@@ -87,6 +95,12 @@ export class SettingsPageComponent implements OnInit{
       document.documentElement.setAttribute("data-theme", value);
     }else{
       document.documentElement.setAttribute("data-theme", value);
+    }
+  }
+
+  private clearCache(): void{
+    for(let i = 0; i < this.cache.length; i++){
+      localStorage.removeItem(this.cache[i]);
     }
   }
 }

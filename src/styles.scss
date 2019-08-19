@@ -150,6 +150,11 @@ hr.small{
   background-color: var(--color-hover);
 }
 
+.btn[disabled]{
+  color: var(--color-text-lighter);
+  background-color: var(--color-hover);
+}
+
 .outline{
   border: 1px solid var(--color-hover-dark);
 }

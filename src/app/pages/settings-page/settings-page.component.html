@@ -26,4 +26,7 @@
       <app-checkbox [checked]="getPlayerColumn(column)" (checkedChange)="togglePlayerColumn(column)">{{playerColumnName(column)}}</app-checkbox>
     </li>
   </ul>
+  <p>
+    <button class="btn outline" [disabled]="cache.length == 0" (click)="clearCache()">Clear Cache</button>
+  </p>
 </div>

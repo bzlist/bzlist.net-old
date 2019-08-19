@@ -23,7 +23,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   port: number;
 
   server: Server;
-  players: Player[];
   badAddress = false;
 
   playerCount = 0;
@@ -46,6 +45,11 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       // get the address and port
       this.address = params["address"];
       this.port = +params["port"];
+
+      try{
+        this.setData(JSON.parse(localStorage.getItem(`${this.address}:${this.port}Cache`)));
+      }catch(err){
+      }
 
       this.serverDataSub = this.socket.fromEvent<Server>("data").subscribe((data: Server) => this.setData(data));
       this.socket.emit("server", {address: this.address, port: this.port});
@@ -82,6 +86,11 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     });
 
     this.teamSortBy("score");
+
+    try{
+      return localStorage.setItem(`${this.address}:${this.port}Cache`, JSON.stringify(this.server));
+    }catch(err){
+    }
 
     console.log("server updated");
   }
