@@ -75,7 +75,7 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     HttpClientModule,
     FormsModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
-    SocketIoModule.forRoot({url: "http://api.bzlist.net"})
+    SocketIoModule.forRoot({url: "https://api.bzlist.net"})
   ],
   providers: [SettingsService, AuthService, SeoService],
   bootstrap: [AppComponent]
