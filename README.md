@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/bzlist/bzlist.net.svg?branch=master)](https://travis-ci.org/bzlist/bzlist.net)
 [![IRC #bzlist](https://img.shields.io/badge/IRC-%23bzlist-blue.svg)](http://webchat.freenode.net/?channels=#bzlist)
 
-Firebase + Angular = *(kind of)* real-time server stats for BZFlag.
+Socket.io + Angular = *(kind of)* real-time server stats for BZFlag.
 
 The changelog can be found [here](CHANGELOG.md) and the offical site at [bzlist.net](https://bzlist.net).
 
