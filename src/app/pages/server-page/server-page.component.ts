@@ -85,6 +85,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       description: `${this.server.title} (${this.server.address}:${this.server.port}) is currently ${this.server.online ? "online" : "offline"} and owned by ${this.server.owner}`
     });
 
+    this.teamSort = "";
     this.teamSortBy("score");
 
     try{
