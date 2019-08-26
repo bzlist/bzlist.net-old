@@ -17,7 +17,6 @@ import {Server, Player} from "@app/models";
 export class ServerPageComponent implements OnInit, OnDestroy{
   routeSub: Subscription;
   serverDataSub: Subscription;
-  playerDataSub: Subscription;
 
   address: string;
   port: number;
@@ -47,7 +46,14 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.port = +params["port"];
 
       try{
-        this.setData(JSON.parse(localStorage.getItem(`${this.address}:${this.port}Cache`)));
+        const servers = JSON.parse(localStorage.getItem(`serversCache`));
+        const players = JSON.parse(localStorage.getItem(`playersCache`));
+
+        if(servers && players){
+          const server = servers.filter((server: Server) => server.address === this.address && server.port === this.port)[0];
+          server.players = players.filter((player: Player) => player.server === `${this.address}:${this.port}`);
+          this.setData(server);
+        }
       }catch(err){
       }
 
@@ -60,7 +66,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     // clean up subscriptions
     this.routeSub.unsubscribe();
     this.serverDataSub.unsubscribe();
-    // this.playerDataSub.unsubscribe();
   }
 
   // sets the server data and metadata
@@ -87,11 +92,6 @@ export class ServerPageComponent implements OnInit, OnDestroy{
 
     this.teamSort = "";
     this.teamSortBy("score");
-
-    try{
-      return localStorage.setItem(`${this.address}:${this.port}Cache`, JSON.stringify(this.server));
-    }catch(err){
-    }
 
     console.log("server updated");
   }
