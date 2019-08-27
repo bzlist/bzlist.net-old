@@ -50,9 +50,9 @@ export class ServerPageComponent implements OnInit, OnDestroy{
         const players = JSON.parse(localStorage.getItem(`playersCache`));
 
         if(servers && players){
-          const server = servers.filter((server: Server) => server.address === this.address && server.port === this.port)[0];
-          server.players = players.filter((player: Player) => player.server === `${this.address}:${this.port}`);
-          this.setData(server);
+          const _server = servers.filter((server: Server) => server.address === this.address && server.port === this.port)[0];
+          _server.players = players.filter((player: Player) => player.server === `${this.address}:${this.port}`);
+          this.setData(_server);
         }
       }catch(err){
       }
