@@ -1,7 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 
-import {environment} from "@env/environment";
-
 import {SeoService} from "@app/services";
 
 @Component({
@@ -9,8 +7,6 @@ import {SeoService} from "@app/services";
   templateUrl: "./help-page.component.html"
 })
 export class HelpPageComponent implements OnInit{
-  version = environment.version;
-
   constructor(private seo: SeoService){
   }
 
