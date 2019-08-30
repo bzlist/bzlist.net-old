@@ -43,7 +43,7 @@ These are the most useful commands defined in `package.json`:
 
 - `npm start` - runs the TypeScript compiler, asset copier, and dev server all at the same time in "watch mode."
 - `npm run build:prod` - runs the TypeScript compiler with optimizations and asset copier once and outputs it into `dist/browser`.
-- `npm run build:stats && npm run stats` - builds the app and generates stats into `dist` and opens the stats in your browser.
+- `npm run build:stats && (npm run stats-es5 or stats-2015)` - builds the app and generates stats into `dist` and opens the stats in your browser.
 - `npm run build:gh-pages` - the same as `build:prod` and adds the prefix `bzlist.net` for use with GitHub Pages.
 - `npm run build:ssr` - builds with server-side rendering.
 - `npm run deploy:gh-page` - deploys to GitHub Pages.

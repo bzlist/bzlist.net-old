@@ -31,7 +31,8 @@
     "deploy:firebase": "firebase deploy",
     "deploy:firebase:hosting": "firebase deploy --only hosting",
     "deploy:firebase:ssr": "firebase deploy --only functions:ssr,hosting",
-    "stats": "webpack-bundle-analyzer ./dist/stats.json",
+    "stats-es5": "webpack-bundle-analyzer ./dist/browser/stats-es5.json",
+    "stats-es2015": "webpack-bundle-analyzer ./dist/browser/stats-es2015.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
