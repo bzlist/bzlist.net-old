@@ -59,29 +59,22 @@
                   "type": "bundle",
                   "name": "polyfills",
                   "baseline": "115kb",
-                  "maximumWarning": "30kb",
-                  "maximumError": "50kb"
-                },
-                {
-                  "type": "bundle",
-                  "name": "vendor",
-                  "baseline": "900kb",
-                  "maximumWarning": "100kb",
-                  "maximumError": "200kb"
+                  "maximumWarning": "15kb",
+                  "maximumError": "30kb"
                 },
                 {
                   "type": "bundle",
                   "name": "styles",
                   "baseline": "3kb",
-                  "maximumWarning": "5kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "5kb"
                 },
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "950kb",
-                  "maximumWarning": "50kb",
-                  "maximumError": "150kb"
+                  "baseline": "490kb",
+                  "maximumWarning": "20kb",
+                  "maximumError": "50kb"
                 }
               ],
               "serviceWorker": true
