@@ -108,6 +108,22 @@ export class SettingsService{
     location.reload();
   }
 
+  get serverSort(): any{
+    const data = this.getItem("serverSort");
+    return data ? JSON.parse(data) : {sort: "playersCount", sortOrder: 1};
+  }
+  set serverSort(value: any){
+    this.setItem("serverSort", JSON.stringify(value));
+  }
+
+  get playerSort(): any{
+    const data = this.getItem("playerSort");
+    return data ? JSON.parse(data) : {sort: "score", sortOrder: 1};
+  }
+  set playerSort(value: any){
+    this.setItem("playerSort", JSON.stringify(value));
+  }
+
   toggleDisplayedServerColumn(column: string): void{
     if(!this.serverColumns.includes(column)){
       return;

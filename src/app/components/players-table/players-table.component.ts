@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, OnChanges} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges} from "@angular/core";
 
 import {SettingsService} from "@app/services";
 import {Player} from "@app/models";
@@ -15,14 +15,18 @@ export class PlayersTableComponent implements OnChanges{
   @Input() showTkColumn = true;
 
   private sort: string;
-  private sortOrder = 1;
+  private sortOrder: number;
 
   constructor(public settingsService: SettingsService){
   }
 
-  ngOnChanges(): void{
-    this.sort = "";
-    this.sortBy("score");
+  ngOnChanges(changes: SimpleChanges): void{
+    if(!changes.players.previousValue){
+      this.sortOrder = this.settingsService.playerSort.sortOrder;
+      this.sortBy(this.settingsService.playerSort.sort);
+    }else{
+      this.sortBy();
+    }
   }
 
   getServerLink(server: string): string{
@@ -34,13 +38,15 @@ export class PlayersTableComponent implements OnChanges{
     return this.settingsService.displayedPlayerColumns.includes(column);
   }
 
-  sortBy(sort: string): void{
-    if(sort === this.sort){
-      this.sortOrder = -this.sortOrder;
-    }else{
-      this.sortOrder = 1;
+  sortBy(sort?: string): void{
+    if(sort){
+      if(sort === this.sort){
+        this.sortOrder = -this.sortOrder;
+      }else{
+        this.sortOrder = 1;
+      }
+      this.sort = sort;
     }
-    this.sort = sort;
 
     switch(this.sort){
       case "callsign":
@@ -64,5 +70,7 @@ export class PlayersTableComponent implements OnChanges{
       default:
         break;
     }
+
+    this.settingsService.playerSort = {sort: this.sort, sortOrder: this.sortOrder};
   }
 }

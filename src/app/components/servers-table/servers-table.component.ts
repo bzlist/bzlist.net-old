@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, Input} from "@angular/core";
+import {Component, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, Input, SimpleChanges} from "@angular/core";
 
 import {SettingsService} from "@app/services";
 import {Server} from "@app/models/server.model";
@@ -13,14 +13,19 @@ export class ServersTableComponent implements OnChanges{
   @Input() servers: Server[];
   @Output() rowClick = new EventEmitter<Server>();
 
-  private sort = "playersCount";
-  private sortOrder = 1;
+  private sort: string;
+  private sortOrder: number;
 
   constructor(public settingsService: SettingsService){
   }
 
-  ngOnChanges(): void{
-    this.sortBy();
+  ngOnChanges(changes: SimpleChanges): void{
+    if(!changes.servers.previousValue){
+      this.sortOrder = this.settingsService.serverSort.sortOrder;
+      this.sortBy(this.settingsService.serverSort.sort);
+    }else{
+      this.sortBy();
+    }
   }
 
   rowClicked(server: Server): void{
@@ -70,5 +75,7 @@ export class ServersTableComponent implements OnChanges{
       default:
         break;
     }
+
+    this.settingsService.serverSort = {sort: this.sort, sortOrder: this.sortOrder};
   }
 }
