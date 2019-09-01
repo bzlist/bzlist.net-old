@@ -1,8 +1,6 @@
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
 import {ServiceWorkerModule} from "@angular/service-worker";
 
 import {environment} from "@env/environment";
@@ -72,8 +70,6 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     BrowserModule.withServerTransition({appId: "bzlist"}),
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     SocketIoModule.forRoot({url: "https://api.bzlist.net"})
   ],
