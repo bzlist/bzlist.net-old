@@ -56,10 +56,9 @@ th{
 
 .new tr{
   border-radius: $border-radius;
-  transition: 200ms ease-in-out;
   
   &:hover{
-    background: none;
+    background: var(--color-hover-light);
     box-shadow: $shadow;
   }
 
