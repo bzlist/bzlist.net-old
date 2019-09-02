@@ -76,6 +76,11 @@ export class SettingsService{
     return this.getItem("theme");
   }
   set theme(value: string){
+    if(value === "light"){
+      this.removeItem("theme");
+      return;
+    }
+
     this.setItem("theme", value);
   }
 
