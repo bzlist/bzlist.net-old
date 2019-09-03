@@ -1,15 +1,12 @@
 import {Component} from "@angular/core";
 import {SwUpdate} from "@angular/service-worker";
 
-import {fadeAnimation} from "./animations";
-
 import {SettingsService} from "./services/settings.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
-  animations: [fadeAnimation]
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent{
   constructor(swUpdate: SwUpdate,

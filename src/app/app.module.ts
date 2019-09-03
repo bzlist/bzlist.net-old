@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ServiceWorkerModule} from "@angular/service-worker";
 
 import {environment} from "@env/environment";
@@ -68,7 +67,6 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
   ],
   imports: [
     BrowserModule.withServerTransition({appId: "bzlist"}),
-    BrowserAnimationsModule,
     AppRoutingModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     SocketIoModule.forRoot({url: "https://api.bzlist.net"})
