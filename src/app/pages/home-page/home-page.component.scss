@@ -10,7 +10,7 @@
   }
 
   .headline{
-    color: #1976D2;
+    color: $color-primary;
     font-size: 3rem;
 
     @media screen and (max-width: $breakpoint-mobile){

@@ -4,7 +4,7 @@
   "discription": "BZFlag server and player information",
   "scope": "/",
   "start_url": "/",
-  "theme_color": "#1976D2",
+  "theme_color": "#19A9D2",
   "background_color": "#FFFFFF",
   "display": "standalone",
   "orientation": "any",
