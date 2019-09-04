@@ -13,6 +13,8 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@nguniversal/express-engine": "^8.0.0-rc.1",
+    "@nguniversal/module-map-ngfactory-loader": "^8.0.0-rc.1",
     "firebase": "^5.10.1",
     "firebase-admin": "~7.0.0",
     "firebase-functions": "^2.2.0",

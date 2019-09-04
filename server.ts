@@ -47,7 +47,6 @@ app.get(
 
 // All regular routes use the Universal engine
 app.get("*", (req, res) => {
-  console.log(`Express Request Url: ${req.url}`);
   res.render("index", {req});
 });
 

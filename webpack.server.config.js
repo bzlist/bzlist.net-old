@@ -11,12 +11,9 @@ module.exports = {
   },
   target: "node",
   resolve: {extensions: [".ts", ".js"]},
-  // optimization: {
-  //   minimize: false
-  // },
-  externals: [
-    /^firebase/
-  ],
+  optimization: {
+    minimize: true
+  },
   output: {
     // Puts the output at the root of the dist folder
     path: path.join(__dirname, "dist"),
