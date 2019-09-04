@@ -98,7 +98,7 @@ export class SettingsPageComponent implements OnInit{
     }
   }
 
-  private clearCache(): void{
+  clearCache(): void{
     for(let i = 0; i < this.cache.length; i++){
       localStorage.removeItem(this.cache[i]);
     }
