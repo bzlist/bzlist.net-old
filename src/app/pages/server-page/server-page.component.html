@@ -1,3 +1,4 @@
+<img *ngIf="address && port" class="banner" src="/assets/images/servers/{{address}}`{{port}}.png" onerror="this.style.display='none'">
 <div *ngIf="server" class="container">
   <h1><a class="btn icon" style="position:relative;margin-right:8px;top:-4px" (click)="location.back()">&#xE830;</a>{{server.title}}</h1>
   <span style="margin-bottom:12px">
