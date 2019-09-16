@@ -28,6 +28,8 @@ export class ServersService{
     if(isPlatformBrowser(platformId)){
       this.socket.fromEvent<Server[]>("data").subscribe((data: Server[]) => this.setServers(data));
       this.socket.emit("servers", {onlinePlayers: this.settingsService.onlyServersWithPlayers});
+    }else{
+      this.socket.disconnect();
     }
   }
 
