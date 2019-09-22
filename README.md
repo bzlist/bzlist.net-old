@@ -16,7 +16,7 @@ It's easy to get started, just follow the few steps below.
 
 ### Get the code
 
-You can get the code be either cloning the reposity (which is recommended) or downloading it as a ZIP file.
+You can get the code by either cloning the reposity (which is recommended) or downloading it as a ZIP file.
 
 To clone the repository run the following (you must have Git installed).
 ```sh
