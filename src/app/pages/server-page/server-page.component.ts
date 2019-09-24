@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy, HostListener, ViewChild, AfterViewInit} from "@angular/core";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 
@@ -14,7 +14,7 @@ import {Server, Player} from "@app/models";
   templateUrl: "./server-page.component.html",
   styleUrls: ["./server-page.component.scss"]
 })
-export class ServerPageComponent implements OnInit, OnDestroy{
+export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
   routeSub: Subscription;
   serverDataSub: Subscription;
 
@@ -28,6 +28,10 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   observerCount = 0;
 
   selectTeam = false;
+
+  fixedHeader = false;
+  @ViewChild("header", {static: false}) header;
+  headerPosition: number;
 
   private teamSort: string;
   private teamSortOrder = 1;
@@ -60,6 +64,10 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.serverDataSub = this.socket.fromEvent<Server>("data").subscribe((data: Server) => this.setData(data));
       this.socket.emit("server", {address: this.address, port: this.port});
     });
+  }
+
+  ngAfterViewInit(): void{
+    this.headerPosition = this.header.nativeElement.offsetTop;
   }
 
   ngOnDestroy(): void{
@@ -144,5 +152,10 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   joinTeam(team: string){
     window.location.href = `bzflag-launcher:${this.server.address}:${this.server.port} ${team.toLowerCase()}`;
     this.selectTeam = false;
+  }
+
+  @HostListener("window:scroll", ["$event"])
+  checkScroll(): void{
+    this.fixedHeader = window.pageYOffset >= this.headerPosition;
   }
 }

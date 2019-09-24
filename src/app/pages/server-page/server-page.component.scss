@@ -1,14 +1,104 @@
+@import "../../../variables.scss";
+
 .banner{
-  width: auto;
-  height: 300px;
-  background-position: center;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
-.badge > img{
-  position: relative;
-  top: 4px;
+.banner:before{
+  content: "";
+  width: 100%;
+  height: 300px;
+  background: #333;
+  position: absolute;
+  display: block;
+}
+
+.title{
+  margin-top: 150px;
+  color: #EEE;
+}
+
+.header{
+  margin-bottom: 16px;
+  transition: 200ms;
+
+  div{
+    margin-right: 32px;
+    display: inline-block;
+    height: 38px;
+    line-height: .9em;
+  }
+
+  b{
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
+.header-fixed{
+  width: 100vw;
+  padding: 6px 16px;
+  background-color: var(--bg);
+  box-shadow: $shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.header-fixed + .content {
+  padding-top: 60px;
+}
+
+.play{
+  padding: 0 32px;
+  background-image: linear-gradient(to right, #60EE00 , #30DD40);
+  color: #FFF;
+  font-size: 1.1em;
+  line-height: 38px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  cursor: pointer;
 }
 
 #teams th{
   cursor: pointer;
+}
+
+.play-popup{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+
+  .helper{
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .icon{
+    position: absolute;
+    top: 2px;
+    right: 0;
+  }
+
+  & > div{
+    min-width: 300px;
+    height: auto;
+    min-height: 100px;
+    padding: 8px 12px;
+    background-color: var(--bg);
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    box-shadow: $shadow;
+    border-radius: $border-radius;
+  }
 }
