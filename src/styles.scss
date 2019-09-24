@@ -133,23 +133,22 @@ hr.small{
 }
 
 .btn{
+  min-width: 70px;
   margin: 0 2px;
-  padding: 0 12px;
+  padding: 0 14px;
   color: var(--color-text-headings);
   background: transparent;
-  font-size: .9rem;
-  line-height: 36px;
+  font-size: .9em;
+  line-height: 32px;
   display: inline-block;
   border: none;
   border-radius: $border-radius;
   outline: none;
   cursor: pointer;
   user-select: none;
-  transition: background-color .2s ease-in-out;
 }
 
 .btn:hover{
-  color: var(--color-text-headings);
   background-color: var(--color-hover);
 }
 
@@ -160,12 +159,14 @@ hr.small{
 
 .btn img{
   height: 14px;
-  top: 2px;
-  position: relative;
+}
+
+.btn.icon{
+  min-width: 0;
 }
 
 .outline{
-  border: 1px solid var(--color-hover-dark);
+  border: 1px solid var(--color-text-light);
 }
 
 .bg-primary{
