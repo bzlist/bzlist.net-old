@@ -126,11 +126,15 @@
   <a routerLink="/">Home</a>
 </div>
 <div *ngIf="selectTeam" class="play-popup">
-  <span class="helper"></span>
+  <span class="overlay" (click)="selectTeam = false"></span>
   <div>
-    <button class="btn icon" (click)="selectTeam = false">&#xE711;</button>
-    <h3>Select Team</h3><br>
-    <button *ngFor="let team of server.teams" class="btn outline" (click)="joinTeam(team.name)">{{team.name}}</button>
+    <div class="popup-header">
+      <h3>Select Team</h3>
+      <div class="close"><button class="btn icon" (click)="selectTeam = false">&#xE711;</button></div>
+    </div>
+    <div class="inner">
+      <button *ngFor="let team of server.teams" class="btn outline" (click)="joinTeam(team.name)">{{team.name}}</button>
+    </div>
   </div>
 </div>
 <app-spinner [show]="!server && !badAddress"></app-spinner>
