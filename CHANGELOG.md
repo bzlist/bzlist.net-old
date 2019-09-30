@@ -1,5 +1,27 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
+## 0.7.0 - Server page redesign ✨ (2019-9-30)
+
+### Additions
+- Server and player data is now cached
+- Remember last sorted field for tables
+- Added banner image to server page
+
+### Changes
+- GitHub link now goes directly to bzlist.net project
+- Removed old account button
+- Moved version number to navigation bar
+- Adjusted new table hover effect
+- New logo
+- Updated server page design
+- Updated button design
+- Updated splashscreen
+
+### Fixes
+- Fixed team sorting getting messed up
+- Fixed settings page
+- Fixed typo in README
+
 ## 0.6.0 (2019-9-19)
 
 - Improved service worker
