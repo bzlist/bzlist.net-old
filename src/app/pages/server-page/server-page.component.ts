@@ -54,8 +54,8 @@ export class ServerPageComponent implements OnInit, OnDestroy{
       this.port = +params["port"];
 
       try{
-        const servers = JSON.parse(localStorage.getItem(`serversCache`));
-        const players = JSON.parse(localStorage.getItem(`playersCache`));
+        const servers = JSON.parse(localStorage.getItem("serversCache"));
+        const players = JSON.parse(localStorage.getItem("playersCache"));
 
         if(servers && players){
           const _server = servers.filter((server: Server) => server.address === this.address && server.port === this.port)[0];
