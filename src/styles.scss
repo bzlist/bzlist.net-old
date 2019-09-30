@@ -16,6 +16,7 @@ html{
   --bg-one: #AFAFAF;
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
+  --bg-light: #FFF;
   --color-hover: rgba(0, 0, 0, .05);
   --color-hover-light: rgba(0, 0, 0, .02);
   --color-hover-dark: rgba(0, 0, 0, .1);
@@ -31,6 +32,7 @@ html[data-theme="dark"]{
   --bg-one: #6F6F6F;
   --bg-two: #5F5F5F;
   --bg-three: #4F4F4F;
+  --bg-light: #333;
   --color-hover: rgba(255, 255, 255, .05);
   --color-hover-light: rgba(255, 255, 255, .02);
   --color-hover-dark: rgba(255, 255, 255, .1);
@@ -38,7 +40,7 @@ html[data-theme="dark"]{
   --color-text: #DDD;
   --color-text-lighter: #BBB;
   --color-text-light: #999;
-  --color-base: 0, 0, 0;
+  --color-base: 50, 50, 50;
 }
 
 html[data-theme="midnight"]{
@@ -46,6 +48,7 @@ html[data-theme="midnight"]{
   --bg-one: #4F4F4F;
   --bg-two: #3F3F3F;
   --bg-three: #2F2F2F;
+  --bg-light: #111;
   --color-hover: rgba(255, 255, 255, .1);
   --color-hover-light: rgba(255, 255, 255, .05);
   --color-hover-dark: rgba(255, 255, 255, .2);
@@ -109,7 +112,7 @@ hr.small{
   flex-direction: column;
 
   @media screen and (max-width: $breakpoint-mobile){
-    padding: 16px 18px;
+    padding: 12px 8px;
   }
 }
 

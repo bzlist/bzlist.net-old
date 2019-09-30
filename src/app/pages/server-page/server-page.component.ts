@@ -1,6 +1,7 @@
-import {Component, OnInit, OnDestroy, HostListener, ViewChild, AfterViewInit} from "@angular/core";
+import {Component, OnInit, OnDestroy, HostListener, AfterViewInit} from "@angular/core";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs";
 
@@ -30,14 +31,16 @@ export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
   selectTeam = false;
 
   fixedHeader = false;
-  @ViewChild("header", {static: false}) header;
-  headerPosition: number;
+  private headerPosition: number;
+
+  banner: SafeStyle;
 
   private teamSort: string;
   private teamSortOrder = 1;
 
   constructor(private location: Location,
               private route: ActivatedRoute,
+              private sanitizer: DomSanitizer,
               private socket: Socket,
               private seo: SeoService){
   }
@@ -67,7 +70,7 @@ export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   ngAfterViewInit(): void{
-    this.headerPosition = this.header.nativeElement.offsetTop;
+    
   }
 
   ngOnDestroy(): void{
@@ -79,6 +82,8 @@ export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
   // sets the server data and metadata
   setData(server: Server): void{
     this.server = server;
+    this.banner = this.sanitizer.bypassSecurityTrustStyle(`url(/assets/images/servers/${server.address}_${server.port}.png), url(/assets/images/servers/default.png) no-repeat top center`);
+    setTimeout(() => this.headerPosition = document.querySelector("header").offsetTop);
 
     if(this.server == null){
       this.badAddress = true;
