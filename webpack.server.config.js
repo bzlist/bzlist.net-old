@@ -11,9 +11,8 @@ module.exports = {
   },
   target: "node",
   resolve: {extensions: [".ts", ".js"]},
-  optimization: {
-    minimize: true
-  },
+  // this makes sure we include node_modules and other 3rd party libraries
+  externals: [/node_modules/, "utf-8-validate", "bufferutil"],
   output: {
     // Puts the output at the root of the dist folder
     path: path.join(__dirname, "dist"),

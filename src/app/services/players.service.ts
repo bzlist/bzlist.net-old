@@ -27,6 +27,8 @@ export class PlayersService{
     if(isPlatformBrowser(platformId)){
       this.socket.fromEvent<Player[]>("data").subscribe((data: Player[]) => this.setPlayers(data));
       this.socket.emit("players");
+    }else{
+      this.socket.disconnect();
     }
   }
 

@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, HostListener, AfterViewInit} from "@angular/core";
-import {Location} from "@angular/common";
+import {Component, OnInit, OnDestroy, PLATFORM_ID, Inject, HostListener} from "@angular/core";
+import {Location, isPlatformBrowser} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
 
@@ -15,7 +15,7 @@ import {Server, Player} from "@app/models";
   templateUrl: "./server-page.component.html",
   styleUrls: ["./server-page.component.scss"]
 })
-export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
+export class ServerPageComponent implements OnInit, OnDestroy{
   routeSub: Subscription;
   serverDataSub: Subscription;
 
@@ -38,7 +38,8 @@ export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
   private teamSort: string;
   private teamSortOrder = 1;
 
-  constructor(private location: Location,
+  constructor(@Inject(PLATFORM_ID) private platformId: string,
+              private location: Location,
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,
               private socket: Socket,
@@ -64,13 +65,14 @@ export class ServerPageComponent implements OnInit, AfterViewInit, OnDestroy{
       }catch(err){
       }
 
-      this.serverDataSub = this.socket.fromEvent<Server>("data").subscribe((data: Server) => this.setData(data));
-      this.socket.emit("server", {address: this.address, port: this.port});
+      // only get data if being rendered in a browser
+      if(isPlatformBrowser(this.platformId)){
+        this.serverDataSub = this.socket.fromEvent<Server>("data").subscribe((data: Server) => this.setData(data));
+        this.socket.emit("server", {address: this.address, port: this.port});
+      }else{
+        this.socket.disconnect();
+      }
     });
-  }
-
-  ngAfterViewInit(): void{
-    
   }
 
   ngOnDestroy(): void{
