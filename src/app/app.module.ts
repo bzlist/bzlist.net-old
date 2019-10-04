@@ -7,8 +7,6 @@ import {environment} from "@env/environment";
 // modules
 import {AppRoutingModule} from "./app-routing.module";
 
-import {SocketIoModule} from "ngx-socket-io";
-
 // services
 import {SettingsService, AuthService, SeoService} from "@app/services";
 
@@ -68,8 +66,7 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
   imports: [
     BrowserModule.withServerTransition({appId: "bzlist"}),
     AppRoutingModule,
-    ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
-    SocketIoModule.forRoot({url: "https://api.bzlist.net"})
+    ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production})
   ],
   providers: [SettingsService, AuthService, SeoService],
   bootstrap: [AppComponent]

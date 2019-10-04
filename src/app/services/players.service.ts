@@ -1,8 +1,6 @@
-import {Injectable, Inject, PLATFORM_ID} from "@angular/core";
-import {isPlatformBrowser} from "@angular/common";
+import {Injectable} from "@angular/core";
 
-import {Socket} from "ngx-socket-io";
-
+import {SocketService} from "./socket.service";
 import {Player} from "@app/models";
 
 @Injectable({
@@ -16,20 +14,14 @@ export class PlayersService{
   totalPlayers = 0;
   totalObservers = 0;
 
-  constructor(@Inject(PLATFORM_ID) platformId: string,
-              private socket: Socket){
+  constructor(private socketService: SocketService){
     try{
       this.setPlayers(JSON.parse(localStorage.getItem("playersCache")));
     }catch(err){
     }
 
-    // only get data if being rendered in a browser
-    if(isPlatformBrowser(platformId)){
-      this.socket.fromEvent<Player[]>("data").subscribe((data: Player[]) => this.setPlayers(data));
-      this.socket.emit("players");
-    }else{
-      this.socket.disconnect();
-    }
+    this.socketService.on<Player[]>("players").subscribe((data: Player[]) => this.setPlayers(data));
+    this.socketService.emit("players");
   }
 
   get players(): Player[]{
@@ -63,6 +55,6 @@ export class PlayersService{
     }catch(err){
     }
 
-    console.log("servers updated");
+    console.log("players updated");
   }
 }
