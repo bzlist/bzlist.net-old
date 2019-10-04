@@ -1,4 +1,4 @@
-<div *ngIf="ready && serversService.servers" class="container">
+<div *ngIf="serversService.servers" class="container">
   <h2>{{serversService.servers.length + " Public Server" | autoPlural}} Online {{settingsService.onlyServersWithPlayers ? "With Players" : ""}}</h2>
   <small>{{serversService.playerCount + " player" | autoPlural}} and {{serversService.observerCount + " observer" | autoPlural}} online. Last update was {{serversService.lastUpdate | timeAgo}}.</small>
 </div>
@@ -8,4 +8,20 @@
     <app-server-card *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
   </ul>
 </div>
-<app-spinner [show]="!ready || !serversService.servers"></app-spinner>
+<ul *ngIf="!ready || !serversService.servers" class="list-nostyle list-shimmer">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>

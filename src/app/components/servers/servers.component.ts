@@ -18,7 +18,7 @@ export class ServersComponent implements AfterViewInit{
     // if the window width is smaller then the mobile threshold then use grid view
     try{
       if(window.innerWidth <= 768){
-      this.settingsService.gridView = true;
+        this.settingsService.gridView = true;
       }
     }catch(err){
     }

@@ -221,6 +221,25 @@ p.note{
   text-align: center;
 }
 
+.list-shimmer li{
+  width: 95%;
+  height: 16px;
+  margin: 18px auto;
+  background: linear-gradient(to right, var(--color-hover) 4%, var(--color-hover-light) 25%, var(--color-hover) 36%);
+  background-size: 1000px 100%;
+  border-radius: 16px;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer{
+  0%{
+    background-position: -1000px 0;
+  }
+  100%{
+    background-position: 1000px 0;
+  }
+}
+
 @media screen and (max-width: $breakpoint-mobile){
   .mobile-hide{
     display: none !important;
