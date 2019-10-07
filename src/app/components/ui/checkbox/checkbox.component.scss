@@ -1,24 +1,17 @@
 @import "../../../../variables.scss";
 
 .checkbox{
-  cursor: pointer;
-  align-items: baseline;
-  vertical-align: middle;
   display: inline-flex;
+  cursor: pointer;
 
   .checkbox-inner-container{
     width: 16px;
     height: 16px;
-    margin: auto;
     margin-right: 8px;
-    display: inline-block;
-    order: 0;
-    position: relative;
-    vertical-align: middle;
     white-space: nowrap;
     flex-shrink: 0;
     border: 1px solid var(--color-text-light);
-    border-radius: $border-radius/2;
+    border-radius: $border-radius;
   }
   
   .checkbox-background{
@@ -29,14 +22,15 @@
 
   .checkmark{
     transition: .1s all ease-out;
+    -webkit-font-smoothing: antialiased;
   }
 
   .checkbox-label{
-    display: inline-flex;
-    vertical-align: middle;
+    font-size: 14px;
+    line-height: 18px;
   }
 
-  &[checked=true] .checkbox-inner-container{
+  &[checked=true] .checkbox-inner-container, &:active .checkbox-inner-container{
     border-color: $color-primary;
   }
 
