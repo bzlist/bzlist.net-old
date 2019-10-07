@@ -60,7 +60,7 @@ export class SettingsPageComponent implements OnInit{
     this.settingsService.toggleDisplayedPlayerColumn(column);
   }
 
-  private setTheme(value: string): void{
+  setTheme(value: string): void{
     this.settingsService.theme = value;
 
     // and transition to document
