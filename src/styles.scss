@@ -231,6 +231,13 @@ p.note{
   animation: shimmer 2s infinite;
 }
 
+.label{
+  padding: 2px 0;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 @keyframes shimmer{
   0%{
     background-position: -1000px 0;

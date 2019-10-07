@@ -28,6 +28,8 @@ import {PlayersTableComponent} from "./components/players-table/players-table.co
 import {TableComponent} from "./components/ui/table/table.component";
 import {CheckboxComponent} from "./components/ui/checkbox/checkbox.component";
 import {SpinnerComponent} from "./components/ui/spinner/spinner.component";
+import {DropdownComponent} from "./components/ui/dropdown/dropdown.component";
+import {DropdownOptionComponent} from "./components/ui/dropdown/dropdown-option.component";
 
 // pages
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
@@ -49,6 +51,8 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     PlayersTableComponent,
     CheckboxComponent,
     SpinnerComponent,
+    DropdownComponent,
+    DropdownOptionComponent,
     // pages
     HomePageComponent,
     HelpPageComponent,

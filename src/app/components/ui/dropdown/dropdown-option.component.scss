@@ -1,0 +1,17 @@
+@import "../../../../variables.scss";
+
+.option{
+  width: 100%;
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 20px;
+  text-transform: capitalize;
+  cursor: pointer;
+
+  &:hover{
+    background-color: var(--color-hover);
+  }
+}

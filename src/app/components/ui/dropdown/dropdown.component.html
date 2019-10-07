@@ -1,0 +1,5 @@
+<div class="dropdown" (click)="show = !show">
+  <span class="title">{{label}}</span>
+  <span class="icon caret">&#xE70D;</span>
+</div>
+<div *ngIf="show" class="content"><ng-content></ng-content></div>

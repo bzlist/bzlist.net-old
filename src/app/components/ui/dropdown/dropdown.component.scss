@@ -1,0 +1,44 @@
+@import "../../../../variables.scss";
+
+.dropdown{
+  width: 300px;
+  position: relative;
+  user-select: none;
+  font-size: 14px;
+}
+
+.title{
+  height: 30px;
+  padding: 0 8px;
+  background: none;
+  display: block;
+  position: relative;
+  line-height: 30px;
+  border: 1px solid var(--color-text-light);
+  border-radius: $border-radius;
+  user-select: none;
+  cursor: pointer;
+
+  &:active{
+    border-color: $color-primary;
+  }
+}
+
+.caret{
+  height: 32px;
+  position: absolute;
+  top: 1px;
+  right: 8px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.content{
+  width: 300px;
+  background-color: var(--bg);
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+  border-radius: $border-radius;
+  user-select: none;
+  z-index: 1;
+}
