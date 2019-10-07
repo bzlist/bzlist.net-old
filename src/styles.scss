@@ -160,8 +160,9 @@ hr.small{
   background-color: var(--color-hover);
 }
 
-.btn img{
+.btn svg{
   height: 14px;
+  fill: var(--color-text-headings);
 }
 
 .btn.icon{
