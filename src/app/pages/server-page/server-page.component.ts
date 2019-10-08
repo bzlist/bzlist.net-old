@@ -5,7 +5,7 @@ import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
 
 import {Subscription} from "rxjs/internal/Subscription";
 
-import {SeoService, SocketService} from "@app/services";
+import {SeoService, SocketService, SettingsService} from "@app/services";
 import {Server, Player} from "@app/models";
 
 @Component({
@@ -40,6 +40,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
               private route: ActivatedRoute,
               private sanitizer: DomSanitizer,
               private socketService: SocketService,
+              private settingsService: SettingsService,
               private seo: SeoService){
   }
 
@@ -151,6 +152,23 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   joinTeam(team: string){
     window.location.href = `bzflag-launcher:${this.server.address}:${this.server.port} ${team.toLowerCase()}`;
     this.selectTeam = false;
+  }
+
+  isServerHidden(): boolean{
+    return this.settingsService.getList("hiddenServers", []).includes(`${this.server.address}:${this.server.port}`);
+  }
+
+  toggleHiddenServer(): void{
+    const server = `${this.server.address}:${this.server.port}`;
+    const hiddenServers = this.settingsService.getList("hiddenServers", []);
+
+    if(hiddenServers.includes(server)){
+      hiddenServers.splice(hiddenServers.indexOf(server), 1);
+    }else{
+      hiddenServers.splice(hiddenServers.indexOf(server), 0, server);
+    }
+
+    this.settingsService.setList("hiddenServers", hiddenServers, []);
   }
 
   @HostListener("window:scroll", ["$event"])

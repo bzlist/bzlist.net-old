@@ -11,8 +11,6 @@ export class ServersService{
   private _servers: Server[];
 
   lastUpdate = -1;
-  playerCount = 0;
-  observerCount = 0;
 
   constructor(private settingsService: SettingsService,
               private socketService: SocketService){
@@ -26,23 +24,12 @@ export class ServersService{
   }
 
   get servers(): Server[]{
-    return this._servers;
+    return this.settingsService.showHiddenServers ? this._servers : this._servers.filter((server) => !this.settingsService.getList("hiddenServers", []).includes(`${server.address}:${server.port}`));
   }
 
   private setServers(servers: Server[]): void{
-    this.playerCount = 0;
-    this.observerCount = 0;
-
     let timestamp = 0;
     for(let i = 0; i < servers.length; i++){
-      this.playerCount += servers[i].playersCount;
-
-      const observerTeam = servers[i].teams.find((team) => team.name === "Observer");
-      if(observerTeam){
-        this.observerCount += observerTeam.players;
-        this.playerCount -= observerTeam.players;
-      }
-
       if(servers[i].timestamp > timestamp){
         timestamp = servers[i].timestamp;
       }
@@ -59,5 +46,31 @@ export class ServersService{
     }
 
     console.log("servers updated");
+  }
+
+  playerCount(): number{
+    let playerCount = 0;
+    for(const server of this.servers){
+      playerCount += server.playersCount;
+
+      const observerTeam = server.teams.find((team) => team.name === "Observer");
+      if(observerTeam){
+        playerCount -= observerTeam.players;
+      }
+    }
+
+    return playerCount;
+  }
+
+  observerCount(): number{
+    let observerCount = 0;
+    for(const server of this.servers){
+      const observerTeam = server.teams.find((team) => team.name === "Observer");
+      if(observerTeam){
+        observerCount += observerTeam.players;
+      }
+    }
+
+    return observerCount;
   }
 }

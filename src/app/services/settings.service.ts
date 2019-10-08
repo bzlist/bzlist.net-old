@@ -36,7 +36,7 @@ export class SettingsService{
     }
   }
 
-  private getList(key: string, defaults: string[] = []): string[]{
+  getList(key: string, defaults: string[] = []): string[]{
     const data = this.getItem(`${SettingsService.prefix}${key}`);
     if(!data){
       return [...defaults];
@@ -45,7 +45,7 @@ export class SettingsService{
     return JSON.parse(data);
   }
 
-  private setList(key: string, value: string[], defaults: string[] = []): void{
+  setList(key: string, value: string[], defaults: string[] = []): void{
     if(JSON.stringify(value) === JSON.stringify(defaults)){
       return this.removeItem(`${SettingsService.prefix}${key}`);
     }
@@ -127,6 +127,13 @@ export class SettingsService{
   }
   set playerSort(value: any){
     this.setItem("playerSort", JSON.stringify(value));
+  }
+
+  get showHiddenServers(): boolean{
+    return this.getBool("showHiddenServers");
+  }
+  set showHiddenServers(value: boolean){
+    this.setBool("showHiddenServers", value);
   }
 
   toggleDisplayedServerColumn(column: string): void{

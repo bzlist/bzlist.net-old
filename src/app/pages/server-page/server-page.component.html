@@ -119,6 +119,9 @@
         </app-table>
       </div>
     </div>
+    <div class="container">
+      <app-checkbox style="margin-left:12px" [checked]="isServerHidden()" (checkedChange)="toggleHiddenServer()">Hide Server</app-checkbox>
+    </div>
   </div>
 </div>
 <div *ngIf="badAddress" class="container">
