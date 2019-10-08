@@ -1,0 +1,5 @@
+<div class="search-box">
+  <div class="icon-container"><span class="icon">&#xE721;</span></div>
+  <input type="text" [placeholder]="placeholder" [value]="value" (input)="value = $event.target.value">
+  <button *ngIf="value.length > 0" class="btn icon" (click)="value = ''">&#xE894;</button>
+</div>

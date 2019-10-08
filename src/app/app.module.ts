@@ -30,6 +30,7 @@ import {CheckboxComponent} from "./components/ui/checkbox/checkbox.component";
 import {SpinnerComponent} from "./components/ui/spinner/spinner.component";
 import {DropdownComponent} from "./components/ui/dropdown/dropdown.component";
 import {DropdownOptionComponent} from "./components/ui/dropdown/dropdown-option.component";
+import {SearchComponent} from "./components/ui/search/search.component";
 
 // pages
 import {ServerPageComponent} from "./pages/server-page/server-page.component";
@@ -53,6 +54,7 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     SpinnerComponent,
     DropdownComponent,
     DropdownOptionComponent,
+    SearchComponent,
     // pages
     HomePageComponent,
     HelpPageComponent,

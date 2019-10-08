@@ -1,6 +1,7 @@
 <div *ngIf="playersService.players" class="container">
   <h2>{{playersService.totalPlayers}} Players and {{playersService.totalObservers}} Observers Online</h2>
-  <small>Last update was {{playersService.lastUpdate | timeAgo}}.</small>
+  <small>Last update was {{playersService.lastUpdate | timeAgo}}.</small><br>
+  <app-search placeholder="Search by callsign" [(value)]="playersService.searchText"></app-search>
 </div>
 <app-players-table *ngIf="playersService.players" [players]="playersService.players" [showServerColumn]="true"></app-players-table>
 <app-spinner [show]="!playersService.players"></app-spinner>

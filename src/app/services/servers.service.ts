@@ -11,6 +11,7 @@ export class ServersService{
   private _servers: Server[];
 
   lastUpdate = -1;
+  searchText = "";
 
   constructor(private settingsService: SettingsService,
               private socketService: SocketService){
@@ -24,7 +25,12 @@ export class ServersService{
   }
 
   get servers(): Server[]{
-    return this.settingsService.showHiddenServers ? this._servers : this._servers.filter((server) => !this.settingsService.getList("hiddenServers", []).includes(`${server.address}:${server.port}`));
+    let servers = this._servers.filter((server) => server.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+                                                  `${server.address.toLowerCase()}:${server.port}`.includes(this.searchText.toLowerCase()));
+    servers = this.settingsService.showHiddenServers ? this._servers :
+              this._servers.filter((server) => !this.settingsService.getList("hiddenServers", []).includes(`${server.address}:${server.port}`));
+
+    return servers;
   }
 
   private setServers(servers: Server[]): void{

@@ -1,0 +1,52 @@
+@import "../../../../variables.scss";
+
+.search-box{
+  height: 32px;
+  padding: 1px 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  border: 1px solid var(--color-text-light);
+  border-radius: $border-radius;
+
+  &:hover{
+    border-color: var(--color-text);
+  }
+
+  .icon-container{
+    width: 32px;
+    color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input{
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 14px;
+    box-sizing: border-box;
+    flex: 1 1 0px;
+    border: none;
+    outline: none;
+    overflow: hidden;
+  }
+
+  .btn{
+    width: 32px;
+    height: auto;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 16px;
+    position: relative;
+    right: -6px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+}

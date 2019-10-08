@@ -10,6 +10,7 @@ export class PlayersService{
   private _players: Player[];
 
   lastUpdate = -1;
+  searchText = "";
 
   totalPlayers = 0;
   totalObservers = 0;
@@ -25,7 +26,7 @@ export class PlayersService{
   }
 
   get players(): Player[]{
-    return this._players;
+    return this._players.filter((player) => player.callsign.toLowerCase().includes(this.searchText.toLowerCase()));
   }
 
   private setPlayers(players: Player[]): void{
