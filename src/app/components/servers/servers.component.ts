@@ -2,7 +2,7 @@ import {Component, AfterViewInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 import {SettingsService, ServersService} from "@app/services";
-import {Server} from "@app/models/server.model";
+import {Server} from "@app/models";
 
 @Component({
   selector: "app-servers",

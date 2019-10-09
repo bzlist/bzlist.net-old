@@ -1,12 +1,7 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 
-import {HomePageComponent} from "./pages/home-page/home-page.component";
-import {HelpPageComponent} from "./pages/help-page/help-page.component";
-import {ServerPageComponent} from "./pages/server-page/server-page.component";
-import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
-import {AccountPageComponent} from "./pages/account-page/account-page.component";
-import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page.component";
+import {HomePageComponent, HelpPageComponent, ServerPageComponent, SettingsPageComponent, PlayerListPageComponent} from "./pages";
 
 const routes: Routes = [
   {
@@ -24,10 +19,6 @@ const routes: Routes = [
   {
     path: "settings",
     component: SettingsPageComponent
-  },
-  {
-    path: "account",
-    component: AccountPageComponent
   },
   {
     path: "players",

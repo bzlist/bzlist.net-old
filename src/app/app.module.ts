@@ -11,41 +11,20 @@ import {AppRoutingModule} from "./app-routing.module";
 import {SettingsService, AuthService, SeoService} from "@app/services";
 
 // pipes
-import {TimeAgoPipe} from "./pipes/time-ago.pipe";
-import {BooleanYesNoPipe} from "./pipes/boolean-yes-no.pipe";
-import {NumberZeroNoPipe} from "./pipes/number-zero-no.pipe";
-import {VerboseGameStylePipe} from "./pipes/verbose-game-style.pipe";
-import {AutoPluralPipe} from "./pipes/auto-plural.pipe";
+import {TimeAgoPipe, BooleanYesNoPipe, NumberZeroNoPipe, VerboseGameStylePipe, AutoPluralPipe} from "@app/pipes";
 
 // components
 import {AppComponent} from "./app.component";
-import {ServersComponent} from "./components/servers/servers.component";
-import {NavigationToolbarComponent} from "./components/navigation-toolbar/navigation-toolbar.component";
-import {ServerCardComponent} from "./components/server-card/server-card.component";
-import {ServersTableComponent} from "./components/servers-table/servers-table.component";
-import {PlayersTableComponent} from "./components/players-table/players-table.component";
-// ui
-import {TableComponent} from "./components/ui/table/table.component";
-import {CheckboxComponent} from "./components/ui/checkbox/checkbox.component";
-import {SpinnerComponent} from "./components/ui/spinner/spinner.component";
-import {DropdownComponent} from "./components/ui/dropdown/dropdown.component";
-import {DropdownOptionComponent} from "./components/ui/dropdown/dropdown-option.component";
-import {SearchComponent} from "./components/ui/search/search.component";
+import {ServersComponent, ServerCardComponent, ServersTableComponent, PlayersTableComponent} from "@app/components";
+import {TableComponent, CheckboxComponent, DropdownComponent, DropdownOptionComponent, SearchComponent, SpinnerComponent} from "@app/components/ui";
 
-// pages
-import {ServerPageComponent} from "./pages/server-page/server-page.component";
-import {SettingsPageComponent} from "./pages/settings-page/settings-page.component";
-import {HomePageComponent} from "./pages/home-page/home-page.component";
-import {HelpPageComponent} from "./pages/help-page/help-page.component";
-import {AccountPageComponent} from "./pages/account-page/account-page.component";
-import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page.component";
+import {HomePageComponent, HelpPageComponent, ServerPageComponent, SettingsPageComponent, PlayerListPageComponent} from "@app/pages";
 
 @NgModule({
   declarations: [
     // components
     AppComponent,
     ServersComponent,
-    NavigationToolbarComponent,
     ServerCardComponent,
     ServersTableComponent,
     TableComponent,
@@ -60,7 +39,6 @@ import {PlayerListPageComponent} from "./pages/player-list-page/player-list-page
     HelpPageComponent,
     ServerPageComponent,
     SettingsPageComponent,
-    AccountPageComponent,
     PlayerListPageComponent,
     // pipes
     TimeAgoPipe,

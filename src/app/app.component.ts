@@ -1,7 +1,9 @@
 import {Component} from "@angular/core";
 import {SwUpdate} from "@angular/service-worker";
 
-import {SettingsService} from "./services/settings.service";
+import {environment} from "@env/environment";
+
+import {SettingsService} from "@app/services";
 
 @Component({
   selector: "app-root",
@@ -9,6 +11,8 @@ import {SettingsService} from "./services/settings.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent{
+  version = environment.version;
+
   constructor(swUpdate: SwUpdate,
               private settingsService: SettingsService){
     // if there is a service worker update available automatically update
