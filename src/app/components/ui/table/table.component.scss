@@ -2,13 +2,11 @@
 
 table{
   width: 100%;
-  box-shadow: $shadow;
   border-collapse: collapse;
 }
 
 tr{
   height: 36px;
-  background-color: rgba(255, 255, 255, .02);
 }
 
 tr:hover{
@@ -20,12 +18,12 @@ td, th{
 }
 
 td{
-  font-size: .9em;
+  font-size: 14px;
 }
 
 th{
   color: var(--color-text-light);
-  font-size: .8em;
+  font-size: 12px;
   font-weight: normal;
   text-align: left;
 }
@@ -43,27 +41,21 @@ th{
 }
 
 .new{
-  width: calc(100% - 32px);
-  margin: 0 auto;
   box-shadow: none;
   border-collapse: separate;
   border-spacing: 0px 10px;
-
-  @media screen and (max-width: $breakpoint-mobile){
-    width: calc(100% - 8px);
-  }
 }
 
 .new tr{
   border-radius: $border-radius;
   
   &:hover{
-    background: var(--color-hover-light);
+    background: transparent;
     box-shadow: $shadow;
   }
 
   td, th{
-    padding: 0 4px;
+    padding: 0 12px;
   
     @media screen and (max-width: $breakpoint-mobile){
       padding: 0 2px;

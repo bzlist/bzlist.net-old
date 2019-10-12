@@ -1,22 +1,18 @@
 @import "../../../../variables.scss";
 
 .search-box{
-  height: 32px;
+  height: 40px;
   padding: 1px 4px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: stretch;
-  border: 1px solid var(--color-text-light);
+  box-shadow: 0 2px 8px rgba(20, 20, 20, .2);
   border-radius: $border-radius;
 
-  &:hover{
-    border-color: var(--color-text);
-  }
-
   .icon-container{
-    width: 32px;
+    width: 40px;
     color: $color-primary;
     display: flex;
     flex-direction: column;
@@ -25,7 +21,7 @@
   }
 
   input{
-    margin: 0;
+    margin: 0 4px;
     padding: 0;
     background: transparent;
     color: var(--color-text);
@@ -35,10 +31,14 @@
     border: none;
     outline: none;
     overflow: hidden;
+
+    &::placeholder{
+      color: var(--color-text);
+    }
   }
 
   .btn{
-    width: 32px;
+    width: 40px;
     height: auto;
     padding: 0 4px;
     font-size: 12px;

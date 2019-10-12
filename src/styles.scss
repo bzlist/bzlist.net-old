@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
 
 @import "variables.scss";
 
@@ -8,11 +8,11 @@
 }
 
 *{
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 html{
-  --bg: #F7F7F7;
+  --bg: #FFF;
   --bg-one: #AFAFAF;
   --bg-two: #BFBFBF;
   --bg-three: #DFDFDF;
@@ -20,10 +20,10 @@ html{
   --color-hover: rgba(0, 0, 0, .05);
   --color-hover-light: rgba(0, 0, 0, .02);
   --color-hover-dark: rgba(0, 0, 0, .1);
-  --color-text-headings: #111;
-  --color-text: #222;
-  --color-text-lighter: #444;
-  --color-text-light: #666;
+  --color-text-headings: #606060;
+  --color-text: #707070;
+  --color-text-lighter: #7A7A7A;
+  --color-text-light: #808080;
   --color-base: 255, 255, 255;
 }
 
@@ -76,11 +76,17 @@ body{
   padding: 0;
   color: var(--color-text);
   background-color: var(--bg);
+  overflow-x: hidden;
 }
 
 h1, h2, h3{
   margin: 0;
   color: var(--color-text-headings);
+  font-weight: normal;
+}
+
+h1{
+  font-size: 32px;
 }
 
 a{
@@ -90,6 +96,10 @@ a{
 
 a:hover{
   color: lighten($color-primary, 15%);
+}
+
+small{
+  font-size: 14px;
 }
 
 hr{
@@ -128,19 +138,17 @@ hr.small{
 
 .card{
   padding: 16px 24px;
-  background-color: rgba(255, 255, 255, .05);
   display: block;
-  border: 1px solid var(--color-hover-dark);
+  box-shadow: 0 2px 8px rgba(20, 20, 20, .2);
   border-radius: $border-radius;
-  box-shadow: $shadow;
 }
 
 .btn{
   min-width: 70px;
   margin: 0 2px;
   padding: 0 14px;
-  color: var(--color-text-headings);
   background: transparent;
+  color: var(--color-text);
   font-size: .9em;
   line-height: 32px;
   display: inline-block;
@@ -161,7 +169,7 @@ hr.small{
 }
 
 .btn svg{
-  fill: var(--color-text-headings);
+  fill: var(--color-text);
 }
 
 .btn.icon{
@@ -191,14 +199,14 @@ hr.small{
 }
 
 .list-card > *{
-  flex: 1 0 400px;
   margin: 0 8px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  flex: 1 0 400px;
 
   @media screen and (max-width: $breakpoint-mobile){
-    flex: 1 0 300px;
     margin: 0 4px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    flex-basis: 300px;
   }
 }
 
@@ -222,13 +230,16 @@ p.note{
 }
 
 .list-shimmer li{
-  width: 95%;
   height: 16px;
   margin: 18px auto;
-  background: linear-gradient(to right, var(--color-hover) 4%, var(--color-hover-light) 25%, var(--color-hover) 36%);
+  background: linear-gradient(to right, var(--color-hover-dark) 4%, var(--color-hover) 25%, var(--color-hover-dark) 36%);
   background-size: 1000px 100%;
-  border-radius: 16px;
+  border-radius: $border-radius;
   animation: shimmer 2s infinite;
+
+  &:first-of-type{
+    margin-top: 0;
+  }
 }
 
 .label{
@@ -236,6 +247,55 @@ p.note{
   display: inline-block;
   font-size: 14px;
   font-weight: 500;
+}
+
+.header{
+  width: 85vw;
+  margin: 0 auto;
+  padding: 64px 0;
+
+  .headline{
+    color: $color-primary;
+    font-size: 56px;
+  }
+
+  .tagline{
+    font-size: 28px;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile){
+    width: 90vw;
+
+    .headline{
+      font-size: 36px;
+    }
+
+    .tagline{
+      font-size: 20px;
+    }
+  }
+}
+
+.search{
+  width: 70vw;
+  margin: 0 auto;
+  margin-bottom: 128px;
+
+  @media screen and (max-width: $breakpoint-mobile){
+    width: 90vw;
+    margin-bottom: 64px;
+  }
+}
+
+.wrapper{
+  width: 85vw;
+  margin: 0 auto;
+  margin-top: 64px;
+
+  @media screen and (max-width: $breakpoint-mobile){
+    width: 90vw;
+    margin-top: 32px;
+  }
 }
 
 @keyframes shimmer{

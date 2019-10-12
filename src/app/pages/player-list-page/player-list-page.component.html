@@ -1,7 +1,11 @@
-<div *ngIf="playersService.players" class="container">
-  <h2>{{playersService.totalPlayers}} Players and {{playersService.totalObservers}} Observers Online</h2>
-  <small>Last update was {{playersService.lastUpdate | timeAgo}}.</small><br>
-  <app-search placeholder="Search by callsign" [(value)]="playersService.searchText"></app-search>
+<div class="header">
+  <h1 class="headline">Real-time BZFlag server stats - but the players</h1>
+  <p class="tagline">With offline and mobile support</p>
 </div>
-<app-players-table *ngIf="playersService.players" [players]="playersService.players" [showServerColumn]="true"></app-players-table>
+<div class="search"><app-search placeholder="Search by callsign" [(value)]="playersService.searchText"></app-search></div>
+<div *ngIf="playersService.players" class="container">
+  <h1>{{playersService.totalPlayers}} Players and {{playersService.totalObservers}} Observers Online</h1>
+  Last update was {{playersService.lastUpdate | timeAgo}}.<br><br>
+  <app-players-table [players]="playersService.players" [showServerColumn]="true"></app-players-table>
+</div>
 <app-spinner [show]="!playersService.players"></app-spinner>

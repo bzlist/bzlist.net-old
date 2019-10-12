@@ -2,16 +2,16 @@
   <div class="banner" [style.background]="banner"></div>
   <div class="container"><h1 class="title"><a class="btn icon" style="position:relative;margin-right:8px;top:-2px;color:#EEE;font-size:1rem" (click)="location.back()">&#xE830;</a>{{server.title}}</h1></div>
   <div style="background-color:var(--bg)">
-    <header class="header" [class.header-fixed]="fixedHeader">
+    <div class="server-header" [class.header-fixed]="fixedHeader">
       <div class="mobile-hide"><button class="play" (click)="selectTeam = true" title="Requires BZFlag Launcher">&#9658; Play</button></div>
       <div *ngIf="fixedHeader"><button class="btn icon" style="position:relative;margin-right:8px;top:2px" (click)="location.back()">&#xE830;</button>{{server.title}}</div>
       <div *ngIf="!fixedHeader" style="position:relative;bottom:2px"><img src="https://countryflags.io/{{server.countryCode}}/flat/32.png" style="margin-bottom:-10px;margin-right:6px" alt=""> <b>{{server.country}}</b></div>
       <div *ngIf="!fixedHeader" style="position:relative;top:4px"><b>Updated</b><br><small>{{server.timestamp | timeAgo}}</small></div>
       <div *ngIf="!fixedHeader && server.players.length == 0">No Players Online</div>
-    </header>
+    </div>
     <div class="container content">
       <div>
-        <h2>Info</h2><br>
+        <h1>Info</h1><br>
         <app-table>
           <tr>
             <th>Online</th>
@@ -96,11 +96,11 @@
         </app-table>
       </div>
       <div *ngIf="server.players.length > 0">
-        <h2>{{playerCount + " Player" | autoPlural}} and {{observerCount + " Observer" | autoPlural}} Online</h2><br>
+        <h1>{{playerCount + " Player" | autoPlural}} and {{observerCount + " Observer" | autoPlural}} Online</h1><br>
         <app-players-table *ngIf="playerCount > 0 || observerCount > 0" [players]="server.players" [showTkColumn]="!server.configuration.noTeamKills"></app-players-table>
       </div>
       <div>
-        <h2>Teams</h2><br>
+        <h1>Teams</h1><br>
         <app-table id="teams">
           <tr>
             <th (click)="teamSortBy('name')">Name</th>
