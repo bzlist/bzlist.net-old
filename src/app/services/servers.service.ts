@@ -27,8 +27,8 @@ export class ServersService{
   get servers(): Server[]{
     let servers = this._servers.filter((server) => server.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
                                                   `${server.address.toLowerCase()}:${server.port}`.includes(this.searchText.toLowerCase()));
-    servers = this.settingsService.showHiddenServers ? this._servers :
-              this._servers.filter((server) => !this.settingsService.getList("hiddenServers", []).includes(`${server.address}:${server.port}`));
+    servers = this.settingsService.showHiddenServers ? servers :
+              servers.filter((server) => !this.settingsService.getList("hiddenServers", []).includes(`${server.address}:${server.port}`));
 
     return servers;
   }
