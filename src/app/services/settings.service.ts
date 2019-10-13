@@ -73,14 +73,9 @@ export class SettingsService{
   }
 
   get theme(): string{
-    return this.getItem("theme");
+    return this.getItem("theme") ? this.getItem("theme") : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
   set theme(value: string){
-    if(value === "light"){
-      this.removeItem("theme");
-      return;
-    }
-
     this.setItem("theme", value);
   }
 
