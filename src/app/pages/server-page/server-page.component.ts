@@ -3,7 +3,7 @@ import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer, SafeStyle} from "@angular/platform-browser";
 
-import {Subscription} from "rxjs/internal/Subscription";
+import {Subscription} from "rxjs";
 
 import {SeoService, SocketService, SettingsService} from "@app/services";
 import {Server, Player} from "@app/models";

@@ -2,7 +2,7 @@ import {Injectable, PLATFORM_ID, Inject} from "@angular/core";
 import {isPlatformBrowser} from "@angular/common";
 
 import * as io from "socket.io-client";
-import {Observable} from "rxjs/internal/Observable";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: "root"
