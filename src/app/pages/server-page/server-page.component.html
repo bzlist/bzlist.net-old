@@ -9,6 +9,10 @@
       <div *ngIf="!fixedHeader" style="position:relative;top:4px"><b>Updated</b><br><small>{{server.timestamp | timeAgo}}</small></div>
       <div *ngIf="!fixedHeader && server.players.length == 0">No Players Online</div>
     </div>
+    <div class="container">
+      <app-checkbox [checked]="isServerHidden()" (checkedChange)="toggleHiddenServer()">Hide Server</app-checkbox>&nbsp;
+      <button class="btn" style="position:relative;bottom:3px" (click)="share()"><span class="icon" style="position:relative;top:2px">&#xE72D;</span> Copy</button>
+    </div>
     <div class="container content">
       <div>
         <h1>Info</h1><br>
@@ -118,9 +122,6 @@
           </tr>
         </app-table>
       </div>
-    </div>
-    <div class="container">
-      <app-checkbox style="margin-left:12px" [checked]="isServerHidden()" (checkedChange)="toggleHiddenServer()">Hide Server</app-checkbox>
     </div>
   </div>
 </div>

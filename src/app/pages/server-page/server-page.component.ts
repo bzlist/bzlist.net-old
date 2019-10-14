@@ -173,6 +173,15 @@ export class ServerPageComponent implements OnInit, OnDestroy{
     this.settingsService.setList("hiddenServers", hiddenServers, []);
   }
 
+  share(): void{
+    const el = document.createElement("textarea");
+    el.value = `${this.server.address}:${this.server.port}`;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  }
+
   @HostListener("window:scroll", ["$event"])
   checkScroll(): void{
     this.fixedHeader = window.pageYOffset >= this.headerPosition;

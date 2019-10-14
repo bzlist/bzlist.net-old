@@ -118,8 +118,6 @@ hr.small{
 
 .container{
   padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
 
   @media screen and (max-width: $breakpoint-mobile){
     padding: 12px 8px;
