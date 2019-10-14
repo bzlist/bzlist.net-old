@@ -78,7 +78,7 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   setData(server: Server): void{
     this.server = server;
     this.banner = this.sanitizer.bypassSecurityTrustStyle(`url(/assets/images/servers/${server.address}_${server.port}.png), url(/assets/images/servers/default.png) no-repeat top center`);
-    setTimeout(() => this.headerPosition = document.querySelector<HTMLElement>(".header").offsetTop);
+    setTimeout(() => this.headerPosition = document.querySelector<HTMLElement>(".server-header").offsetTop);
 
     if(this.server == null){
       this.badAddress = true;
