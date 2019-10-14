@@ -71,7 +71,9 @@ export class ServerPageComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void{
     // clean up subscriptions
     this.routeSub.unsubscribe();
-    this.serverDataSub.unsubscribe();
+    if(this.serverDataSub){
+      this.serverDataSub.unsubscribe();
+    }
   }
 
   // sets the server data and metadata
