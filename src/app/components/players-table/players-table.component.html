@@ -1,7 +1,7 @@
 <app-table>
   <tr>
     <th *ngIf="hasColumn('callsign')" (click)="sortBy('callsign')">Callsign</th>
-    <th *ngIf="showServerColumn" (click)="sortBy('server')">Server</th>
+    <th *ngIf="showServerColumn && hasColumn('server')" (click)="sortBy('server')">Server</th>
     <th *ngIf="hasColumn('team')" (click)="sortBy('team')">Team</th>
     <th *ngIf="hasColumn('score')" (click)="sortBy('score')">Score</th>
     <th *ngIf="hasColumn('winsLosses')" (click)="sortBy('winsLosses')">Wins / Losses</th>
@@ -9,7 +9,7 @@
   </tr>
   <tr *ngFor="let player of players">
     <td *ngIf="hasColumn('callsign')">{{player.callsign}} <i *ngIf="hasColumn('motto') && player.motto">({{player.motto}})</i></td>
-    <td *ngIf="showServerColumn"><a [routerLink]="getServerLink(player.server)">{{player.server}}</a></td>
+    <td *ngIf="showServerColumn && hasColumn('server')"><a [routerLink]="getServerLink(player.server)">{{player.server}}</a></td>
     <td *ngIf="hasColumn('team')">{{player.team}}</td>
     <td *ngIf="hasColumn('score')">{{player.team !== "Observer" ? player.score : "N/A"}}</td>
     <td *ngIf="hasColumn('winsLosses')">{{player.team !== "Observer" ? player.wins + " / " + player.losses : "N/A"}}</td>

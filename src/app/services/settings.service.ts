@@ -7,13 +7,13 @@ export class SettingsService{
   static readonly prefix = "setting_";
 
   static readonly serverColumnsDefault = ["players", "address", "owner", "country", "gameStyle", "title"];
-  static readonly playerColumnsDefault = ["callsign", "motto", "team", "score", "winsLosses", "tks"];
+  static readonly playerColumnsDefault = ["callsign", "motto", "server", "team", "score", "winsLosses", "tks"];
 
   readonly serverColumns = ["players", "address", "owner", "protocol", "country", "gameStyle", "title"];
   readonly serverColumnNames = ["Players", "Address", "Owner", "Protocol", "Country", "Game Style", "Title"];
 
-  readonly playerColumns = ["callsign", "motto", "team", "score", "winsLosses", "tks"];
-  readonly playerColumnNames = ["Callsign", "Motto", "Team", "Score", "Wins / Losses", "Team Kills"];
+  readonly playerColumns = ["callsign", "motto", "server", "team", "score", "winsLosses", "tks"];
+  readonly playerColumnNames = ["Callsign", "Motto", "Server", "Team", "Score", "Wins / Losses", "Team Kills"];
 
   getItem(key: string){
     try{
