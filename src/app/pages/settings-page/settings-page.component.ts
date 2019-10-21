@@ -70,16 +70,34 @@ export class SettingsPageComponent implements OnInit{
     }, 100);
 
     // set data-theme
-    if(value){
-      document.documentElement.setAttribute("data-theme", value);
-    }else{
-      document.documentElement.setAttribute("data-theme", value);
-    }
+    document.documentElement.setAttribute("data-theme", value);
   }
 
   clearCache(): void{
     for(let i = 0; i < this.cache.length; i++){
       localStorage.removeItem(this.cache[i]);
     }
+  }
+
+  reset(): void{
+    const settings = [];
+    for(let i = 0; i < localStorage.length; i++){
+      if(localStorage.key(i).startsWith(SettingsService.prefix)){
+        settings.push(localStorage.key(i));
+      }
+    }
+
+    for(let i = 0; i < settings.length; i++){
+      localStorage.removeItem(settings[i]);
+    }
+
+    // and transition to document
+    document.documentElement.classList.add("transition");
+    setTimeout(() => {
+      document.documentElement.classList.remove("transition");
+    }, 100);
+
+    // set data-theme
+    document.documentElement.setAttribute("data-theme", this.settingsService.theme);
   }
 }

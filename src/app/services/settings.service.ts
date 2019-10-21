@@ -73,10 +73,11 @@ export class SettingsService{
   }
 
   get theme(): string{
-    return this.getItem("theme") ? this.getItem("theme") : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return this.getItem(`${SettingsService.prefix}theme`) ?
+      this.getItem(`${SettingsService.prefix}theme`) : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
   set theme(value: string){
-    this.setItem("theme", value);
+    this.setItem(`${SettingsService.prefix}theme`, value);
   }
 
   get compact(): boolean{

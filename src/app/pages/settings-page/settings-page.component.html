@@ -6,7 +6,7 @@
     <app-checkbox [(checked)]="settingsService.gridView" [disabled]="mobile">Server List Grid View (used on mobile)</app-checkbox><br>
     <app-checkbox [(checked)]="settingsService.onlyServersWithPlayers">Only Show Servers With Players</app-checkbox><br><br>
     <span class="label">Theme</span>
-    <app-dropdown [selected]="settingsService.theme ? settingsService.theme : 'light'" (change)="setTheme($event)">
+    <app-dropdown [selected]="settingsService.theme" (change)="setTheme($event)">
       <app-dropdown-option value="light"></app-dropdown-option>
       <app-dropdown-option value="dark"></app-dropdown-option>
       <app-dropdown-option value="midnight"></app-dropdown-option>
@@ -27,6 +27,7 @@
     </li>
   </ul>
   <p>
+    <button class="btn outline" (click)="reset()">Reset</button>
     <button class="btn outline" [disabled]="cache.length == 0" (click)="clearCache()">Clear Cache</button>
   </p>
 </div>
