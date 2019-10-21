@@ -1,5 +1,30 @@
 *Note: this is an outline and does not contain every change. Check the commits for a full list of changes.*
 
+## 0.8.0 - Search & new UI 🔍 (2019-10-21)
+
+### Additions
+- Custom wrapper for Socket.io
+- Added option to hide specific servers
+- Added search for servers and players
+- Use OS theme when one is not selected
+- Copy to clipboard button on server page
+- Player list server column addded to settings
+- Settings reset button
+
+### Changes
+- Updated help page
+- Shimmer effect when servers are loading
+- Updated checkbox
+- Dropdown for theme selection
+- Redesigned UI
+
+### Fixes
+- Build error in settings page
+- GitHub icon not changing color with theme
+- Navigation bar overflowing on mobile
+- Server page header not sticking
+- SSR error
+
 ## 0.7.0 - Server page redesign ✨ (2019-9-30)
 
 ### Additions
