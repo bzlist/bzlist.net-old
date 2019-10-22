@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "net.bzlist.twa",
+               "sha256_cert_fingerprints": ["20:59:54:9E:77:64:78:95:0C:20:B0:42:99:F7:49:EF:61:21:4E:67:51:06:62:21:98:FC:87:48:21:21:A0:C3"] }
+}]
