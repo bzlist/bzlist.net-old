@@ -8,7 +8,7 @@
 }
 
 *{
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 html{
@@ -27,7 +27,7 @@ html{
   --color-base: 255, 255, 255;
 }
 
-html[data-theme="dark"]{
+html[data-theme=dark]{
   --bg: #222;
   --bg-one: #6F6F6F;
   --bg-two: #5F5F5F;
@@ -43,7 +43,7 @@ html[data-theme="dark"]{
   --color-base: 50, 50, 50;
 }
 
-html[data-theme="midnight"]{
+html[data-theme=midnight]{
   --bg: #000;
   --bg-one: #4F4F4F;
   --bg-two: #3F3F3F;
@@ -57,14 +57,6 @@ html[data-theme="midnight"]{
   --color-text-lighter: #AAA;
   --color-text-light: #888;
   --color-base: 0, 0, 0;
-}
-
-html.transition,
-html.transition *,
-html.transition *:before,
-html.transition *:after{
-  transition: all 200ms !important;
-  transition-delay: 0 !important;
 }
 
 html, body{
@@ -300,6 +292,7 @@ p.note{
   0%{
     background-position: -1000px 0;
   }
+
   100%{
     background-position: 1000px 0;
   }
@@ -321,4 +314,12 @@ p.note{
   h2{
     font-size: 1.4rem;
   }
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after{
+  transition: all 200ms !important;
+  transition-delay: 0 !important;
 }

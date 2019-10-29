@@ -39,13 +39,9 @@
   z-index: 1;
 }
 
-.header-fixed + .content {
-  margin-top: 58px;
-}
-
 .play{
   padding: 0 32px;
-  background-image: linear-gradient(to right, #60EE00 , #30DD40);
+  background-image: linear-gradient(to right, #60EE00, #30DD40);
   color: #FFF;
   font-size: 1.1em;
   line-height: 38px;
@@ -69,6 +65,10 @@
     margin-bottom: 22px;
     flex: 1 350px;
   }
+}
+
+.header-fixed + .content{
+  margin-top: 58px;
 }
 
 #teams th{
@@ -106,7 +106,7 @@
     min-height: 100px;
     background-color: var(--bg-light);
     position: relative;
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
+    box-shadow: rgba(0, 0, 0, .22) 0 25.6px 57.6px 0, rgba(0, 0, 0, .18) 0 4.8px 14.4px 0;
     border-radius: $border-radius;
   }
 

@@ -37,7 +37,7 @@
   width: 300px;
   background-color: var(--bg);
   position: absolute;
-  box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px, rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+  box-shadow: rgba(0, 0, 0, .133) 0 3.2px 7.2px 0, rgba(0, 0, 0, .11) 0 .6px 1.8px 0;
   border-radius: $border-radius;
   user-select: none;
   z-index: 1;

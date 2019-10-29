@@ -14,12 +14,12 @@
     outline: none;
   }
 
-  nav .btn{
-    margin-right: 24px;
-  }
-
   .btn{
     color: var(--color-text);
+  }
+
+  nav .btn{
+    margin-right: 24px;
   }
 
   @media screen and (max-width: $breakpoint-mobile){

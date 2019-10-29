@@ -40,26 +40,35 @@ th{
   }
 }
 
+.new tr td, .new tr th{
+  padding: 0 12px;
+
+  @media screen and (max-width: $breakpoint-mobile){
+    padding: 0 2px;
+  }
+}
+
+.table-compact tr,
+.table-compact tr img{
+  height: 24px;
+
+  td{
+    font-size: .9em;
+  }
+}
+
 .new{
   box-shadow: none;
   border-collapse: separate;
-  border-spacing: 0px 10px;
+  border-spacing: 0 10px;
 }
 
 .new tr{
   border-radius: $border-radius;
-  
+
   &:hover{
     background: transparent;
     box-shadow: $shadow;
-  }
-
-  td, th{
-    padding: 0 12px;
-  
-    @media screen and (max-width: $breakpoint-mobile){
-      padding: 0 2px;
-    }
   }
 
   td:first-child,
@@ -82,14 +91,5 @@ th{
     @media screen and (max-width: $breakpoint-mobile){
       padding-right: 0 6px;
     }
-  }
-}
-
-.table-compact tr,
-.table-compact tr img{
-  height: 24px;
-
-  td{
-    font-size: .9em;
   }
 }
