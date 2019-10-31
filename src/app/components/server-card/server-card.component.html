@@ -1,14 +1,22 @@
 <div class="card">
-  <h2>{{server.title}}</h2>
-  {{server.address}}:{{server.port}} • {{server.owner}}<br>
-  <p>
-    <span><span class="badge">{{server.configuration.gameStyle | verboseGameStyle}}</span>&nbsp;</span>
-    <span *ngIf="server.configuration.superflags"><span class="badge">Flags</span>&nbsp;</span>
-    <span *ngIf="server.configuration.noTeamKills"><span class="badge">No TKs</span>&nbsp;</span>
-  </p>
+  <h2>{{server.title}}</h2><br>
+  <app-table style="width: 100%;">
+    <tr>
+      <td>Server</td>
+      <td>{{server.address}}:{{server.port}}</td>
+    </tr>
+    <tr>
+      <td>IP Address</td>
+      <td>{{server.ip}}</td>
+    </tr>
+    <tr>
+      <td>Game Style</td>
+      <td>{{server.configuration.gameStyle | verboseGameStyle}}</td>
+    </tr>
+  </app-table>
   <hr>
   <small>
-    <img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" alt="{{server.countryCode}}" title="{{server.country}}">
-    {{server.playersCount}} players online • updated {{server.timestamp | timeAgo}}
+    <img src="https://countryflags.io/{{server.countryCode}}/flat/16.png" onerror="this.style.display='none'" title="{{server.country}}">
+    {{server.country}} • {{server.playersCount}} players online
   </small>
 </div>

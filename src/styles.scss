@@ -122,14 +122,14 @@ hr.small{
   background-color: var(--color-text-lighter);
   font-size: .75rem;
   text-align: center;
-  border-radius: $border-radius/2;
+  border-radius: $border-radius;
   white-space: nowrap;
 }
 
 .card{
   padding: 16px 24px;
   display: block;
-  box-shadow: 0 2px 8px rgba(20, 20, 20, .2);
+  box-shadow: $shadow;
   border-radius: $border-radius;
 }
 
@@ -190,13 +190,30 @@ hr.small{
 
 .list-card > *{
   margin: 0 8px;
-  margin-bottom: 8px;
-  flex: 1 0 400px;
+  margin-bottom: 16px;
+  flex: 1 0 450px;
 
   @media screen and (max-width: $breakpoint-mobile){
     margin: 0 4px;
     margin-bottom: 16px;
     flex-basis: 300px;
+  }
+}
+
+.list-card > *:nth-child(-n+6){
+  top: 32px;
+  position: relative;
+  animation: slide .5s linear forwards;
+}
+
+@keyframes slide{
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    top: 0;
+    opacity: 1;
   }
 }
 
