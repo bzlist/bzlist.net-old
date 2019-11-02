@@ -82,7 +82,7 @@ export class SettingsPageComponent implements OnInit{
   reset(): void{
     const settings = [];
     for(let i = 0; i < localStorage.length; i++){
-      if(localStorage.key(i).startsWith(SettingsService.prefix)){
+      if(localStorage.key(i).startsWith(SettingsService.prefix) && localStorage.key(i) !== SettingsService.prefix+"syncSettings"){
         settings.push(localStorage.key(i));
       }
     }
@@ -90,6 +90,8 @@ export class SettingsPageComponent implements OnInit{
     for(let i = 0; i < settings.length; i++){
       localStorage.removeItem(settings[i]);
     }
+
+    this.settingsService.updateSync();
 
     // and transition to document
     document.documentElement.classList.add("transition");

@@ -183,7 +183,7 @@ export class SettingsService{
     this.setList("playerColumns", columns, SettingsService.playerColumnsDefault);
   }
 
-  private updateSync(): void{
+  updateSync(): void{
     if(!this.syncSettings || !this.syncReady){
       return;
     }
@@ -209,6 +209,9 @@ export class SettingsService{
     // fetch settings
     const data = await this.accountService.getSettings();
 
+    if(!data){
+      return;
+    }
     if(data.error){
       console.error("error getting settings:", data.error);
       return;
