@@ -1,6 +1,6 @@
 <div *ngIf="server">
   <div class="banner" [style.background]="banner"></div>
-  <div class="container"><h1 class="title"><a class="btn icon" style="position:relative;margin-right:8px;top:-2px;color:#EEE;font-size:1rem" (click)="location.back()">&#xE830;</a>{{server.title}}</h1></div>
+  <div class="container"><h1 class="title"><button class="btn icon" style="position:relative;margin-right:8px;top:-2px;color:#EEE;font-size:1rem" (click)="location.back()">&#xE830;</button>{{server.title}}</h1></div>
   <div style="background-color:var(--bg)">
     <div class="server-header" [class.header-fixed]="fixedHeader">
       <div class="mobile-hide"><button class="play" (click)="selectTeam = true" title="Requires BZFlag Launcher">&#9658; Play</button></div>

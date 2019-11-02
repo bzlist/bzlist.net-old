@@ -1,4 +1,4 @@
-export * from "./auth.service";
+export * from "./account.service";
 export * from "./players.service";
 export * from "./seo.service";
 export * from "./servers.service";

@@ -60,8 +60,9 @@
 }
 
 footer{
-  width: 70vw;
-  margin: 32px auto;
+  width: 80vw;
+  margin: 16px auto;
+  margin-top: 64px;
   padding: 0;
   display: block;
   font-size: 14px;
@@ -107,7 +108,7 @@ footer{
 
 .Path_1, .Ellipse_1, .Polygon_1{
   stroke: var(--color-text);
-  stroke-width: 4px;
-  opacity: .25;
+  stroke-width: 2px;
+  opacity: .1;
   z-index: -99;
 }

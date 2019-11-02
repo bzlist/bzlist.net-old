@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 
+import {AccountService} from "./account.service";
+
 @Injectable({
   providedIn: "root"
 })
@@ -15,6 +17,8 @@ export class SettingsService{
   readonly playerColumns = ["callsign", "motto", "server", "team", "score", "winsLosses", "tks"];
   readonly playerColumnNames = ["Callsign", "Motto", "Server", "Team", "Score", "Wins / Losses", "Team Kills"];
 
+  private syncReady = false;
+
   getItem(key: string){
     try{
       return localStorage.getItem(key);
@@ -24,16 +28,20 @@ export class SettingsService{
 
   setItem(key: string, value: string){
     try{
-      return localStorage.setItem(key, value);
+      localStorage.setItem(key, value);
     }catch(err){
     }
+
+    this.updateSync();
   }
 
   removeItem(key: string){
     try{
-      return localStorage.removeItem(key);
+      localStorage.removeItem(key);
     }catch(err){
     }
+
+    this.updateSync();
   }
 
   getList(key: string, defaults: string[] = []): string[]{
@@ -132,6 +140,17 @@ export class SettingsService{
     this.setBool("showHiddenServers", value);
   }
 
+  get syncSettings(): boolean{
+    return this.getBool("syncSettings");
+  }
+  set syncSettings(value: boolean){
+    this.setBool("syncSettings", value);
+  }
+
+  constructor(private accountService: AccountService){
+    this.fetchSync();
+  }
+
   toggleDisplayedServerColumn(column: string): void{
     if(!this.serverColumns.includes(column)){
       return;
@@ -162,5 +181,69 @@ export class SettingsService{
     }
 
     this.setList("playerColumns", columns, SettingsService.playerColumnsDefault);
+  }
+
+  private updateSync(): void{
+    if(!this.syncSettings || !this.syncReady){
+      return;
+    }
+
+    console.log("updating sync");
+
+    const settings = {};
+    for(let i = 0; i < localStorage.length; i++){
+      const settingKey = localStorage.key(i);
+      if(settingKey.startsWith(SettingsService.prefix) && settingKey !== SettingsService.prefix+"syncSettings"){
+        settings[settingKey.replace(SettingsService.prefix, "")] = localStorage.getItem(settingKey);
+      }
+    }
+
+    this.accountService.setSettings(settings);
+  }
+
+  async fetchSync(){
+    if(!this.syncSettings){
+      return;
+    }
+
+    // fetch settings
+    const data = await this.accountService.getSettings();
+
+    if(data.error){
+      console.error("error getting settings:", data.error);
+      return;
+    }
+
+    // clear local settings first
+    const settings = [];
+    for(let i = 0; i < localStorage.length; i++){
+      if(localStorage.key(i).startsWith(SettingsService.prefix) && localStorage.key(i) !== SettingsService.prefix+"syncSettings"){
+        settings.push(localStorage.key(i));
+      }
+    }
+    for(let i = 0; i < settings.length; i++){
+      localStorage.removeItem(settings[i]);
+    }
+
+    // set new settings
+    for(const key in data){
+      if(data.hasOwnProperty(key)){
+        this.setItem(SettingsService.prefix+key, data[key]);
+
+        if(key === "theme"){
+          // and transition to document
+          document.documentElement.classList.add("transition");
+          setTimeout(() => {
+            document.documentElement.classList.remove("transition");
+          }, 100);
+
+          // set data-theme
+          document.documentElement.setAttribute("data-theme", data[key]);
+        }
+      }
+    }
+
+    this.syncReady = true;
+    console.log("sync ready");
   }
 }

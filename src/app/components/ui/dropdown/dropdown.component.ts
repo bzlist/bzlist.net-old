@@ -1,4 +1,4 @@
-import {Component, Input, ContentChildren, QueryList, AfterViewInit, Output, EventEmitter, HostListener} from "@angular/core";
+import {Component, Input, ContentChildren, QueryList, AfterViewInit, Output, EventEmitter, HostListener, OnChanges, SimpleChanges} from "@angular/core";
 
 import {DropdownOptionComponent} from "./dropdown-option.component";
 
@@ -7,7 +7,7 @@ import {DropdownOptionComponent} from "./dropdown-option.component";
   templateUrl: "./dropdown.component.html",
   styleUrls: ["./dropdown.component.scss"]
 })
-export class DropdownComponent implements AfterViewInit{
+export class DropdownComponent implements AfterViewInit, OnChanges{
   @Input() label = "Select an option";
   @Input() selected: string;
 
@@ -31,6 +31,15 @@ export class DropdownComponent implements AfterViewInit{
       }
 
       this.options.forEach((option) => option.click.subscribe(() => this.selectOption(option)));
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void{
+    setTimeout(() => {
+      this.selectedOption = this.options.find((option) => option.value === this.selected);
+      if(this.selectedOption){
+        this.label = this.selectedOption.value[0].toUpperCase() + this.selectedOption.value.slice(1);
+      }
     });
   }
 

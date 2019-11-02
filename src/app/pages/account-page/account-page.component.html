@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="form">
+    <div *ngIf="accountService.signedIn">
+      <h1>{{accountService.callsign}}</h1>
+      <p>View <a href="https://forums.bzflag.org/memberlist.php?mode=viewprofile&u={{accountService.bzid}}" target="_blank">forum profile</a>.</p>
+      <app-checkbox [(checked)]="settingsService.syncSettings">Sync Settings</app-checkbox><br><br>
+      <a (click)="accountService.signout()">Sign Out</a> • <a (click)="accountService.delete()">Delete Account</a>
+    </div>
+    <div *ngIf="!accountService.signedIn">
+      <h1>Account</h1>
+      <p>Sync your settigs across devices.</p>
+      <button class="btn btn-primary" (click)="accountService.signin()">Sign In with BZFlag</button>
+    </div>
+    <p *ngIf="accountService.error" class="no">Error: {{accountService.error}}</p>
+  </div>
+</div>

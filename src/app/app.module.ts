@@ -8,7 +8,7 @@ import {environment} from "@env/environment";
 import {AppRoutingModule} from "./app-routing.module";
 
 // services
-import {SettingsService, AuthService, SeoService} from "@app/services";
+import {SettingsService, SeoService} from "@app/services";
 
 // pipes
 import {TimeAgoPipe, BooleanYesNoPipe, NumberZeroNoPipe, VerboseGameStylePipe, AutoPluralPipe} from "@app/pipes";
@@ -18,7 +18,16 @@ import {AppComponent} from "./app.component";
 import {ServersComponent, ServerCardComponent, ServersTableComponent, PlayersTableComponent} from "@app/components";
 import {TableComponent, CheckboxComponent, DropdownComponent, DropdownOptionComponent, SearchComponent, SpinnerComponent} from "@app/components/ui";
 
-import {HomePageComponent, HelpPageComponent, ServerPageComponent, SettingsPageComponent, PlayerListPageComponent} from "@app/pages";
+import {
+  HomePageComponent,
+  HelpPageComponent,
+  ServerPageComponent,
+  SettingsPageComponent,
+  PlayerListPageComponent,
+  AccountPageComponent,
+  PrivacyPolicyPageComponent,
+  TermsOfServicePageComponent
+} from "@app/pages";
 
 @NgModule({
   declarations: [
@@ -40,6 +49,9 @@ import {HomePageComponent, HelpPageComponent, ServerPageComponent, SettingsPageC
     ServerPageComponent,
     SettingsPageComponent,
     PlayerListPageComponent,
+    AccountPageComponent,
+    PrivacyPolicyPageComponent,
+    TermsOfServicePageComponent,
     // pipes
     TimeAgoPipe,
     BooleanYesNoPipe,
@@ -52,7 +64,7 @@ import {HomePageComponent, HelpPageComponent, ServerPageComponent, SettingsPageC
     AppRoutingModule,
     ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production})
   ],
-  providers: [SettingsService, AuthService, SeoService],
+  providers: [SettingsService, SeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

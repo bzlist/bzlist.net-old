@@ -21,9 +21,9 @@ html{
   --color-hover-light: rgba(0, 0, 0, .02);
   --color-hover-dark: rgba(0, 0, 0, .1);
   --color-text-headings: #606060;
-  --color-text: #707070;
-  --color-text-lighter: #7A7A7A;
-  --color-text-light: #808080;
+  --color-text: #606060;
+  --color-text-lighter: #6A6A6A;
+  --color-text-light: #707070;
   --color-base: 255, 255, 255;
 }
 
@@ -74,7 +74,10 @@ body{
 h1, h2, h3{
   margin: 0;
   color: var(--color-text-headings);
-  font-weight: normal;
+}
+
+h2, h3{
+  font-weight: 500;
 }
 
 h1{
@@ -84,10 +87,12 @@ h1{
 a{
   color: $color-primary;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover{
-  color: lighten($color-primary, 15%);
+  color: lighten($color-primary, 10%);
+  text-decoration: underline;
 }
 
 small{
@@ -136,11 +141,12 @@ hr.small{
 .btn{
   min-width: 70px;
   margin: 0 2px;
-  padding: 0 14px;
+  padding: 0 18px;
   background: transparent;
   color: var(--color-text);
-  font-size: .9em;
-  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 30px;
   display: inline-block;
   border: none;
   border-radius: $border-radius;
@@ -164,15 +170,22 @@ hr.small{
 
 .btn.icon{
   min-width: 0;
+  padding: 0 14px;
 }
 
 .outline{
   border: 1px solid var(--color-text-light);
 }
 
-.bg-primary{
-  background-color: lighten($color-primary, 5);
+.btn-primary{
+  background-color: $color-primary;
   color: #FFF;
+  border: 1px solid $color-primary;
+
+  &:hover{
+    background-color: darken($color-primary, 5%);
+    border-color: darken($color-primary, 5%);
+  }
 }
 
 .list-nostyle{
@@ -198,12 +211,6 @@ hr.small{
     margin-bottom: 16px;
     flex-basis: 300px;
   }
-}
-
-.list-card > *:nth-child(-n+6){
-  top: 32px;
-  position: relative;
-  animation: slide .5s linear forwards;
 }
 
 @keyframes slide{
@@ -264,6 +271,7 @@ p.note{
   .headline{
     color: $color-primary;
     font-size: 56px;
+    font-weight: normal;
   }
 
   .tagline{
@@ -291,6 +299,35 @@ p.note{
   @media screen and (max-width: $breakpoint-mobile){
     width: 90vw;
     margin-bottom: 64px;
+  }
+}
+
+.text-box{
+  height: 32px;
+  padding: 1px 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  border: 1px solid var(--color-text-light);
+  border-radius: $border-radius;
+
+  input{
+    margin: 0 4px;
+    padding: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 14px;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    border: none;
+    outline: none;
+    overflow: hidden;
+
+    &::placeholder{
+      color: var(--color-text);
+    }
   }
 }
 
@@ -339,4 +376,10 @@ html.transition *:before,
 html.transition *:after{
   transition: all 200ms !important;
   transition-delay: 0 !important;
+}
+
+.list-card > *:nth-child(-n+6){
+  top: 32px;
+  position: relative;
+  animation: slide .5s linear forwards;
 }
