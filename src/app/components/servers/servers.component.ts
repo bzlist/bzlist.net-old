@@ -11,6 +11,7 @@ import {Server} from "@app/models";
 })
 export class ServersComponent implements AfterViewInit{
   ready = false;
+  mobile = false;
 
   constructor(private router: Router,
               private settingsService: SettingsService,
@@ -18,7 +19,7 @@ export class ServersComponent implements AfterViewInit{
     // if the window width is smaller then the mobile threshold then use grid view
     try{
       if(window.innerWidth <= 768){
-        this.settingsService.gridView = true;
+        this.mobile = true;
       }
     }catch(err){
     }

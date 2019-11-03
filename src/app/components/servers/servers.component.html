@@ -4,8 +4,8 @@
   {{serversService.playerCount() + " player" | autoPlural}} and {{serversService.observerCount() + " observer" | autoPlural}} online. Last update was {{serversService.lastUpdate | timeAgo}}.
   <app-checkbox *ngIf="settingsService.getList('hiddenServers').length > 0" [(checked)]="settingsService.showHiddenServers">Show Hidden Servers</app-checkbox><br><br>
   <div *ngIf="ready">
-    <app-servers-table *ngIf="!settingsService.gridView" [servers]="serversService.servers" (rowClick)="showServerDetails($event)"></app-servers-table>
-    <ul *ngIf="settingsService.gridView" class="list-nostyle list-card">
+    <app-servers-table *ngIf="!settingsService.gridView && !mobile" [servers]="serversService.servers" (rowClick)="showServerDetails($event)"></app-servers-table>
+    <ul *ngIf="settingsService.gridView || mobile" class="list-nostyle list-card">
       <app-server-card *ngFor="let server of serversService.servers; trackBy: trackByTimestamp" [server]="server" (click)="showServerDetails(server)"></app-server-card>
     </ul>
   </div>
