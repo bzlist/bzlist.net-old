@@ -266,23 +266,23 @@ p.note{
 .header{
   width: 85vw;
   margin: 0 auto;
-  padding: 64px 0;
+  padding: 48px 0;
 
   .headline{
     color: $color-primary;
-    font-size: 56px;
+    font-size: 44px;
     font-weight: normal;
   }
 
   .tagline{
-    font-size: 28px;
+    font-size: 22px;
   }
 
   @media screen and (max-width: $breakpoint-mobile){
     width: 90vw;
 
     .headline{
-      font-size: 36px;
+      font-size: 30px;
     }
 
     .tagline{
@@ -294,11 +294,11 @@ p.note{
 .search{
   width: 70vw;
   margin: 0 auto;
-  margin-bottom: 128px;
+  margin-bottom: 48px;
 
   @media screen and (max-width: $breakpoint-mobile){
     width: 90vw;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
   }
 }
 
