@@ -47,7 +47,7 @@ export class ServersService{
     this.lastUpdate = timestamp;
 
     try{
-      return localStorage.setItem("serversCache", JSON.stringify(this.servers));
+      localStorage.setItem("serversCache", JSON.stringify(this.servers));
     }catch(err){
     }
 

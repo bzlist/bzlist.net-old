@@ -231,7 +231,7 @@ export class SettingsService{
     // set new settings
     for(const key in data){
       if(data.hasOwnProperty(key)){
-        this.setItem(SettingsService.prefix+key, data[key]);
+        localStorage.setItem(SettingsService.prefix+key, data[key]);
 
         if(key === "theme"){
           // and transition to document

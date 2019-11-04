@@ -52,7 +52,7 @@ export class PlayersService{
     this.lastUpdate = timestamp;
 
     try{
-      return localStorage.setItem("playersCache", JSON.stringify(this.players));
+      localStorage.setItem("playersCache", JSON.stringify(this.players));
     }catch(err){
     }
 

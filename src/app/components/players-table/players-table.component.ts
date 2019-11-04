@@ -21,6 +21,10 @@ export class PlayersTableComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void{
+    if(!changes.players){
+      return;
+    }
+
     if(!changes.players.previousValue){
       this.sortOrder = this.settingsService.playerSort.sortOrder;
       this.sortBy(this.settingsService.playerSort.sort);
@@ -71,6 +75,8 @@ export class PlayersTableComponent implements OnChanges{
         break;
     }
 
-    this.settingsService.playerSort = {sort: this.sort, sortOrder: this.sortOrder};
+    if(this.settingsService.playerSort.sort !== this.sort || this.settingsService.playerSort.sortOrder !== this.sortOrder){
+      this.settingsService.playerSort = {sort: this.sort, sortOrder: this.sortOrder};
+    }
   }
 }

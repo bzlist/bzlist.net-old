@@ -20,6 +20,10 @@ export class ServersTableComponent implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void{
+    if(!changes.servers){
+      return;
+    }
+
     if(!changes.servers.previousValue){
       this.sortOrder = this.settingsService.serverSort.sortOrder;
       this.sortBy(this.settingsService.serverSort.sort);
@@ -76,6 +80,8 @@ export class ServersTableComponent implements OnChanges{
         break;
     }
 
-    this.settingsService.serverSort = {sort: this.sort, sortOrder: this.sortOrder};
+    if(this.settingsService.serverSort.sort !== this.sort || this.settingsService.serverSort.sortOrder !== this.sortOrder){
+      this.settingsService.serverSort = {sort: this.sort, sortOrder: this.sortOrder};
+    }
   }
 }
